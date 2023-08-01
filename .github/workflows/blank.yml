@@ -37,5 +37,5 @@ jobs:
       - name: Upload static site content
         uses: actions/upload-artifact@v3
         with:
-          name: static-site
+          name: Beta
           path: /home/runner/work/Gaming-Optimizer/Gaming-Optimizer

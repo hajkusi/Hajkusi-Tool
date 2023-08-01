@@ -1,3 +1,0 @@
-﻿1.Odpal PowerShell z Run With Administator
-2.Wpisz ten script:"set-executionpolicy unrestricted" i kliknij enter
-3.Wpisz "Y", kliknij enter i zamknij PowerShell'a
