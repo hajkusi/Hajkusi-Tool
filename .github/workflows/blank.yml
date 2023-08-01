@@ -34,3 +34,8 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+      - name: Upload static site content
+        uses: actions/upload-artifact@v3
+        with:
+          name: static-site
+          path: 
