@@ -1,4 +1,4 @@
-name: Create and Validate Atlas Playbook
+name: Create and Validate Gaming-Optimize Pack
 
 on:
   push:
