@@ -1,0 +1,9 @@
+1.Odpal gameutil-rs.exe ( nie ma na moment 01.08.2023)
+2.Odznacz DWM i zaznacz "Disable Idle"
+3.Ustaw Timer Resolution na 0.1
+4.Kliknij Clean Memory i Kliknij "Start"
+English:
+1. Run gameutil-rs.exe (not available at the moment 01.08.2023)
+2. Deselect DWM and select "Disable Idle"
+3. Set Timer Resolution to 0.1
+4.Click Clean Memory and Click "Start"

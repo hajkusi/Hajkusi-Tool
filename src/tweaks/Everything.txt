@@ -1,0 +1,48 @@
+Tcp optimizer
+1.Na select optimal below
+2..Apply
+3.Yes.
+Hone:
+1.Install hone (hone.gg)
+2.Click Select All 
+3.If you have Atlas OS or another custom os, deselect Optimize Power Plan
+4.Select the "Games"tab
+5.Select a game and click "Apply this Tweak"
+QuickBoost
+1.Click "Exclusive Full-Screen & Disable Xbox GameBar"
+2.Click "Disable Startup Telemetry"
+3.Click "Disable Mouse Acceleration"
+4.Click "Disable Unnecessary System Services"
+5.Click "Disable Powersaving"
+6.Click "Apply System Profile Tweaks"
+7.Select tab number 2
+8.Click "Disable PowerThrottling"
+9.Click "Memory Tweaks"
+10.Click " BCD Tweaks (Latency)"
+11.Click " HardwareDataQueueSize (Latency)
+12.If you have nvidia graphics card click "Nvidia Highest P-State "click " Enable"
+13.Select tab number 3
+14.Click "Clean All Temporary Files" and wait (it may take a while)
+15.Select tab number 4
+OT-Optimizer
+1.If there is an update download it 
+2.Type 1 and click enter
+3.Follow the intrusions
+16.Click "Apply Nvidia Control Panel Tweaks"
+17.Click " MSI Utility (Latency)"
+18.Find your graphics card or integrated graphics card and set "High"on the right
+19.Find your Ethernet or Wifi network card and set "High"on the right
+20.In the upper-right corner, click Apply.
+Optimizer
+1.Choose Language English
+2.Check the left side in System 1,2,3,4,6,7,8 option and if you are not using printer then 5 too
+3.Check the left in drives 3 option and 2 if you do not have HDD in your computer
+4.Select all options on the right in the initial applications
+5.Select the first option on the right in privacy
+6.Select the Windows 10 tab at the top
+7.Select on the left in System 2 if you are not using contacts, 3, 4,5,6 option\
+8.Select the option on the left in Windows Update 1.3
+9.Select the Privacy 1,2,3,4,5 option on the right
+10.Select the option on the right in Game 1, 2 and 3 if you don't use xbox live and gamebar
+11.Select right in touch all options
+12.In the upper-right corner of the app, click Restart to apply the changes
