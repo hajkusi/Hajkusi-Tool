@@ -7,6 +7,8 @@ jobs:
       steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Install NPM dependencies
+        run: install npm
       - name: Build project assets
         run: npm run build
       - name: Upload static site content
