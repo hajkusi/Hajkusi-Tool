@@ -12,8 +12,6 @@ jobs:
   filter:
     runs-on: ubuntu-latest  
     steps:
-      - name: Make dir Downloads
-        run: mkdir Downloads
       - name: github context
         run: echo "${{toJSON(github.event)}}"
   build:
@@ -25,4 +23,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: Beta
-        path: home\Downloads
+        path: home\src\
