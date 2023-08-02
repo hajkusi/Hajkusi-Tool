@@ -50,8 +50,8 @@ mkdir %temp%
 goto PromptDism
 
 :PromptDism
-echo Do you want to clear you winsxs folder\Chcesz oczyścić twój folder winsxs (Good For More Space)\(Dobre żeby zwolnić miejsce) 
 cls
+echo Do you want to clear you winsxs folder\Czy Chcesz Oczyścić Twój Folder Winsxs (Good For More Space)\(Dobre żeby zwolnić miejsce) 
 SET /P Dism=Yes or No\Tak czy Nie (Y/N)?
 IF /I "%DISM%" NEQ "Y" goto TakeOwn
 IF /I "%DISM%" NEQ "N" goto Dism
@@ -81,6 +81,7 @@ IF /I "%ISTHATTRUE%" NEQ "Y" goto Powershell
 IF /I "%ISTHATTRUE%" NEQ "N" goto Trash
 
 :Trash
+cls
 Echo Cleaning Trash\Oczyszczanie Kosza
 del /q /s %systemdrive%\$Recycle.bin\*
 for /d %%x in (%systemdrive%\$Recycle.bin\*) do @rd /s /q "%%x"
@@ -100,6 +101,7 @@ IF /I "%TEMPFORTNITEANDEPICGAMES%" NEQ "Y" goto LogFiles
 IF /I "%TEMPFORTNITEANDEPICGAMES%" NEQ "N" goto TempFortniteAndEpicGames
 
 :TempFortniteAndEpicGames
+cls
 Echo Clearing Epic Games and Fortnite Temporary Files\Czyszczenie plikow tymczasowych Epic Games i Fortnite:
 erase /F /S /Q "%SystemRoot%\TEMP*.*"
 for /D %%G in ("%SystemRoot%\TEMP*") do RD /S /Q "%%G"
@@ -109,6 +111,7 @@ cls
 goto LogFiles
 
 :LogFiles
+cls
 Echo Clearing Log Files From The System\Usuwanie plików dziennika z systemu
 echo.
 @echo off
@@ -150,7 +153,7 @@ net stop bits
 net stop dosvc
 @echo
 goto PromptForWindowspdateTempFiles
-U
+
 :PromptForWindowsUpdateTempFiles
 cls
 echo Do You Want To Clear Your Windows Update Temp Folder(Safe)\Chcesz Usunąć Pliki Tymczasowe Windows Update(Bezpieczne)
@@ -181,6 +184,6 @@ goto :done
 
 :done
 cls
-echo Deleting unnecessery files is now complete\Usuwanie niepotrzebnych plikow zostalo zakonczone
+echo Deleting unnecessery files is now complete\Usuwanie niepotrzebnych plików zostalo zakończone
 TimeOut /T 2 /nobreak
 Exit

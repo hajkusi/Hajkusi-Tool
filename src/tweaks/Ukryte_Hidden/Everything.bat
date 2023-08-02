@@ -1,6 +1,6 @@
 @Echo off
 Title Applying Tweaks
-echo Applying BCD Tweaks for lower Input Delay
+echo Applying BCD Tweaks For Lower Input Delay
 echo.
 bcdedit /set disabledynamictick yes
 bcdedit /deletevalue useplatformclock
@@ -8,20 +8,20 @@ bcdedit /set useplatformtick yes
 echo.
 goto BluetoothFix
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-echo fixing bluetooth
+echo Fixing Bluetooth
   
 :BluetoothFix 
-echo fix bluetooth by scar#1000
+echo Fix Bluetooth By scar#1000
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DevicesFlowUserSvc" /v Start /t REG_DWORD /d "3" /f
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DevicePickerUserSvc" /v Start /t REG_DWORD /d "3" /f
 goto gpu
 
-echo Tweaking your Gpu
+echo Tweaking Your Gpu\Tweakowanie Twojej Karty Graficznej
 
 :gpu
 cls
 cls
-echo What Brand is Your GPU?
+echo What Brand is Your GPU?(If You Don't Have one Just type 2 or 3)\Jakiej Marki Jest Twoja Karta Graficzna (Jeśli Nie Masz To Wybierz 2 lub 3)
 echo 1. Nvidia
 echo 2. AMD
 echo 3. Intel
@@ -30,19 +30,18 @@ if errorlevel  3 goto:AMD
 if errorlevel  2 goto:AMD
 if errorlevel  1 goto:NV
 
-echo Installing Debloated Drivers
+echo Installing Debloated Drivers\Instalowanie Sterowników Bez NiePotrzebnych Serwisów I Funkcji 
 
 :NV
 cls
+Echo Choosing Type Of Drivers\Wybieranie Typu Sterowników
 echo.
 echo 1. Better Average FPS (Stability)
 echo 2. Better Max FPS (for show-off)
 echo.   
-choice /C:123 /M "> Enter The Choice on the Keyboard: "	
+choice /C:123 /M "> Enter The Choice On The Keyboard: "	
 if errorlevel  2 goto:NV2
 if errorlevel  1 goto:NV1
-
-Echo Choosing type of drivers
 
 :NV1
 powershell -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/460788721789173760/836340936865742918/nvidiaProfileInspector.exe' -OutFile C:\Windows\nvidiaProfileInspector.exe
@@ -60,7 +59,7 @@ goto :AMD
 
 :AMD
 
-Echo Applying SystemProfile (GPU and Network) Tweaks.
+Echo Applying SystemProfile (GPU and Network) Tweaks.\Stosowanie Profilu Systemu (Karty Graficznej I Internetu.)
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex" /t REG_DWORD /d "10" /f
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "SystemResponsiveness" /t REG_DWORD /d "10" /f
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NoLazyMode" /t REG_DWORD /d "1" /f
@@ -72,22 +71,22 @@ Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\System
 cls
 goto DeliveryOptions
 
-Echo Optimizing Delivery Options
-
 :DeliveryOptions
+cls
+Echo Optimizing Delivery Options
 @REM Disable Delivery Optimization P2P Update downlods outside of local network
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" /v DODownloadMode /t REG_DWORD /d 0 /f
 goto DistributeTimers
 
-Echo Distributing Timers
-
 :DistributeTimers
+cls
+Echo Distributing Timers
 echo Disable DistributeTimers
 Reg.exe delete "HKLM\SYSTEM\ControlSet001\Control\Session Manager\kernel" /v "DistributeTimers" /f
 Reg.exe add "HKLM\SYSTEM\ControlSet001\Control\Session Manager\kernel" /f
 goto MouseAcceleration
 
-Echo disabling Mouse Acceleration
+Echo Disabling Mouse Acceleration
 
 :MouseAcceleration
 Reg.exe add "HKCU\Control Panel\Mouse" /v "MouseSpeed" /t REG_SZ /d "0" /f
@@ -163,7 +162,7 @@ goto Services
 
 :Services
 cls
-Echo Disabling unnecessary System Services for less System Usage
+Echo Disabling Unnecessary System Services For Less System Usage\Wyłączanie Niepotrzebnych Serwisów Dla Mniejszego Użycia Systemu
 echo.
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\TapiSrv" /v "Start" /t REG_DWORD /d "3" /f 
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\FontCache3.0.0.0" /v "Start" /t REG_DWORD /d "4" /f
@@ -415,7 +414,7 @@ reg add "HKCU\SOFTWARE\Microsoft\Office\16.0\Common" /v "QMEnable" /t REG_DWORD 
 reg add "HKCU\SOFTWARE\Microsoft\Office\15.0\Common\Feedback" /v "Enabled" /t REG_DWORD /d 0 /f
 reg add "HKCU\SOFTWARE\Microsoft\Office\16.0\Common\Feedback" /v "Enabled" /t REG_DWORD /d 0 /f
 
-Echo Disabling Data Collection Bloatwares
+Echo Disabling Data Collection Bloatwares\Wyłączanie Gromadzenie Danych Dla Oprogramowań Typu BloatWare
 
 @rem *** Disable Data Collection bloatwares ***
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata" /v PreventDeviceMetadataFromNetwork /t REG_DWORD /d 1 /f
@@ -428,7 +427,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v "AllowTelem
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\AutoLogger-Diagtrack-Listener" /v "Start" /t REG_DWORD /d 0 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\SQMLogger" /v "Start" /t REG_DWORD /d 0 /f
 
-Echo Disabling Settings App Unnecessary and Telemetry Options
+Echo Disabling Settings App Unnecessary And Telemetry Options\Wyłączanie NiePotrzebnych Ustawień Aplikacji I Opcje Telemetrii
 
 @rem *** Disable Settings App unnecessary and telemetry Options ***
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" /v Enabled /t REG_DWORD /d 0 /f
@@ -438,7 +437,7 @@ REM - Let websites provide locally...
 reg add "HKCU\Control Panel\International\User Profile" /v HttpAcceptLanguageOptOut /t REG_DWORD /d 1 /f
 goto NvProfile
 
-Echo Applying Nv Profile
+Echo Applying NV Profile\Zastosowywanie Profilu NV
 
 :NvProfile
 powershell -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/460788721789173760/836340936865742918/nvidiaProfileInspector.exe' -OutFile C:\Windows\nvidiaProfileInspector.exe
@@ -448,7 +447,7 @@ timeout 2 >nul
 goto FSE
 
 :FSE
-Echo Enabling Full-screen Exclusive
+Echo Enabling Full-screen Exclusive\Włączanie Trybu Ekskluzywny Peły Ekran
 Reg.exe delete "HKCU\System\GameConfigStore" /v "Win32_AutoGameModeDefaultProfile" /f
 Reg.exe delete "HKCU\System\GameConfigStore" /v "Win32_GameModeRelatedProcesses" /f
 Reg.exe add "HKCU\System\GameConfigStore" /v "GameDVR_DSEBehavior" /t REG_DWORD /d "2" /f
@@ -463,7 +462,7 @@ Reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement
 goto GpuTweaks
 
 :GpuTweaks
-Echo Applying SystemProfile (GPU and Network) Tweaks.
+Echo Applying SystemProfile (GPU and Network) Tweaks.\Zastosowywanie Profilu Systemowego (Karta Graficzna I Internetu)
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex" /t REG_DWORD /d "10" /f
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "SystemResponsiveness" /t REG_DWORD /d "10" /f
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NoLazyMode" /t REG_DWORD /d "1" /f
@@ -472,7 +471,7 @@ Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\System
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Priority" /t REG_DWORD /d "6" /f
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Scheduling Category" /t REG_SZ /d "High" /f
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "SFIO Priority" /t REG_SZ /d "High" /f
-echo Enabling Hardware Accelerated GPU Scheduling
+echo Enabling Hardware Accelerated GPU Scheduling\Włączanie Przyśpieszonego Sprzętowo Planowania Karty Graficznej
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /F /V "HwSchMode" /T REG_DWORD /d "2"
 cls
 goto GetInput
@@ -492,30 +491,30 @@ goto Prompt
 
 :Prompt
 cls
-SET /P AREYOUSURE=Size of a HardwareDataQueueSize you choosed is %HardwareDataQueueSize% Continue?, or Change Number (Y/N)?
+SET /P AREYOUSURE=Size of a HardwareDataQueueSize You Choosed Is %HardwareDataQueueSize% Continue?, Or Change Number\Rozmiar Wybranej Kolejki Sprzętu Komputerowego to %HardwareDataQueueSize % Kontynuuj? Czy Zmień Numer (Y/N)?
 IF /I "%AREYOUSURE%" NEQ "Y" goto GetInput
 IF /I "%AREYOUSURE%" NEQ "N" goto HardwareDataQueueSize
 
 :HardwareDataQueueSize
-Echo Setting HardwareDataQueueSize
+Echo Setting HardwareDataQueueSize\Ustawianie Rozmiaru Sprzętowej Kolejki Komputerowej
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\mouclass\Parameters" /v "MouseDataQueueSize" /t REG_DWORD /d "%HardwareDataQueueSize%" /f
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters" /v "KeyboardDataQueueSize" /t REG_DWORD /d "%HardwareDataQueueSize%" /f
 goto ImproveResponsiveness
 
 :ImproveResponsiveness
-Echo Making menu more responsive by scar#1301
+Echo Making Menu More Responsive By scar#1301\Zwiększenie responsywności menu dzięki Scar#1301
 reg add "HKU\.DEFAULT\Control Panel\Desktop" /v "MenuShowDelay" /t REG_SZ /d "0" /f >NUL 2>&1
 goto MemoryTweaks
 
 :MemoryTweaks
 echo.
-Echo Adding more ram for applications in system memory caching to improve microstuttering
+Echo Adding more ram for applications in system memory caching to improve microstuttering\Dodanie większej ilości pamięci RAM dla aplikacji w buforowaniu pamięci systemowej w celu poprawy mikrozacinania
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "LargeSystemCache" /t REG_DWORD /d "1" /f
 
-Echo Paging executive is used to load system files such as kernel and hardware drivers to the page file when needed. Disable will force run into not virtual memory
+Echo Paging Executive Is Used To Load System Files Such As Kernel And Hardware Drivers To The Page File When Needed. Disable Will Force Run Into Not Virtual Memory\Paging Executive Służy Do Ładowania Plików Systemowych, Takich Jak Sterowniki Jądra I Sprzętu, Do Pliku Stronicowania W Razie Potrzeby. Wyłącz Spowoduje Wymuszenie Uruchomienia Pamięci Nie Nirtualnej
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingExecutive" /t REG_DWORD /d "1" /f
 
-Echo Disabling Windows attempt to save as much RAM as possible, such as sharing pages for images, copy-on-write for data pages, and compression
+Echo Disabling Windows Attempt To Save As Much RAM As Possible, Such As Sharing Pages For Images, Copy-On-Write For Data Pages, And Compression\Wyłączanie Systemu Windows Próba Zaoszczędzenia Jak Największej Ilości Pamięci RAM, Na Przykład Udostępnianie Stron Obrazów, Kopiowanie Przy Zapisie Stron Danych I Kompresji
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingCombining" /t REG_DWORD /d "1" /f
 
 reg add "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher" /t REG_DWORD /d "0" /f
@@ -523,20 +522,20 @@ reg add "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management
 goto NormalFortnitePriority
 
 :NormalFortnitePriority
-Echo Enabling Normal Priority for Fortnite
+Echo Enabling Normal Priority For Fortnite\Włączanie Normalnego Piorytetu Dla Fortnite
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\FortniteClient-Win64-Shipping.exe\PerfOptions" /v "CpuPriorityClass" /t REG_DWORD /d "2" /f
 goto OptimalWin32Priority
 
 :OptimalWin32Priority
-Echo Applying Optimal Win32Priority for balanced FPS and Latency
+Echo Applying Optimal Win32Priority For Balanced FPS And Latency\Zastosowywanie Optymalnych Ustawień Dla Win32Priority Dla Zbalansowanych Fps i Mniejszego Opóżnienia Systemu
 reg add "HKLM\SYSTEM\ControlSet001\Control\PriorityControl" /v "Win32PrioritySeparation" /t REG_DWORD /d "38" /f
 
 Echo
 timeout 2 >nul
 cls
 ::========================================================================================================================================
-echo 1. Remove Preinstalled Apps
-echo 2. Keep Preinstalled Apps
+echo 1. Remove Preinstalled Apps\Usuń Wstępnie Zainstalowane Aplikacje
+echo 2. Keep Preinstalled Apps\Zatrzymaj Wstępnie Zainstalowane Aplikacje
 echo.
 
 choice /C:12 /M "> Enter The Choice on the Keyboard: "	
@@ -573,7 +572,7 @@ PowerShell -Command "Get-AppxPackage *Office.OneNote* | Remove-AppxPackage"
 goto SvcHost
 
 :SvcHost
-Echo Enter the amount of RAM that you have. (Example: 4GB, 6GB, 8GB, 16GB, 32GB, 64GB)
+Echo Enter The Amount Of RAM That You Have\Wpisz Ilość Ramu Który Posiadasz. (Example\NP.: 4GB, 6GB, 8GB, 16GB, 32GB, 64GB)
 echo.
 echo.
 set choice=
@@ -591,7 +590,7 @@ Echo "%choice%" is not valid, try again
 
 :PromptChoice
 cls
-SET /P RAM=Size of Ram you choosed is %Choice% Continue?, or Change?(Y/N)?
+SET /P RAM=Size Of Ram Which Was Chosen Is %Choice% Continue?, Or Change?\Wielkosc Ramu, Ktora Zostala Wybrana To %Choice% Kontynuuj, Lub Zmienic? (Y/N)?
 IF /I "%RAM%" NEQ "Y" goto SvcHost
 IF /I "%RAM%" NEQ "N" goto Yes
 
@@ -616,7 +615,7 @@ goto PromptOptionalTweaks
 
 :PromptOptionalTweaks
 cls
-SET /P Optional=Do you want to go to the Optional Tweaks?(Y/N)?
+SET /P Optional=Do You Want To Go To The Optional Tweaks\Czy Chcesz Zastosowac Opcjonalne Tweaki(Y/N)?
 IF /I "%OPTIONAL%" NEQ "Y" goto PromptforGPeditEnabler
 IF /I "%OPTIONAL%" NEQ "N" goto OptionalTweaks
 pause
@@ -641,14 +640,14 @@ cls
 goto PromptforIEUnintaller
 
 :PromptforGPeditEnabler
-Echo Do You Want to Enable GPedit?
+Echo Do You Want To Enable GPedit\Chcesz Włączyć GPedit?
 SET /P GPEDIT= Yes or No? (Y/N)
 IF /I "%GPEDIT%" NEQ "Y" goto PromptforIEUnintaller
 IF /I "%GPEDIT%" NEQ "N" goto GPeditEnablerInHome
 pause
 
 :PromptforIEUnintaller
-Echo Do You Want to Unintall Internet Explorer version 8,9,10,11?
+Echo Do You Want to Unintall Internet Explorer version 8,9,10,11\Odinstalować Internet Explorer Wersja 8,9,10,11?
 SET /P UNINSTALL= Yes or No? (Y/N)
 IF /I "%UNINSTALL%" NEQ "Y" goto end
 IF /I "%UNINSTALL%" NEQ "N" goto IEUnintaller
@@ -662,7 +661,7 @@ setlocal
 :Version
 cls
 set "Input=%~1"
-set /p "Input=> Which Version of Internet Explorer? (8, 9, 10, or 11): "
+set /p "Input=> Which Version of Internet Explorer\Która Wersja Internet Explorer? (8, 9, 10, or 11): "
 if defined Input set "Input=%Input:"=%"
 if /i "%Input%"=="8" goto SetVersion
 if /i "%Input%"=="9" goto SetVersion
@@ -676,7 +675,7 @@ endlocal & set "Version=%Input%"
 setlocal
 :Prompt
 set "Input=%~2"
-set /p "Input=> Uninstall Internet Explorer %Version%? (y or n): "
+set /p "Input=> Uninstall Internet Explorer %Version%?\Odinstalować Internet Explorer %Version% (y or n): "
 if defined Input set "Input=%Input:"=%"
 if /i "%Input%"=="n" goto :Version
 if /i not "%Input:~-1%"=="y" goto :Prompt
@@ -694,9 +693,9 @@ for /f "delims=" %%A in ('dir /a-d /b /o-d Microsoft-Windows-InternetExplorer-*~
 popd
 
 :: Restart Notice
-echo Packages have been uninstalled.
+echo Packages Have Been Uninstalled.\Pakiety Zostały Odinstalowane
 echo.
-echo The computer needs to be restarted to finish.
+echo The Computer Needs To Be Restarted To Finish.\Komputer Musi Być Zrestartowany Żeby Zakończyć
 
 :: Restart Prompt
 setlocal
@@ -712,15 +711,8 @@ endlocal
 shutdown /r /t 15 /d p:4:2 /c "IE %Version% Uninstalled by %USERNAME%"
 goto end
 
-echo.
-cls
-
-Echo.
-Echo. [101;41mThe Telemetry Tasks has been disabled![0m
-goto End
-
 :End
-Title Done
-Echo   Tweaks Are Done        
+Title Done\zakończone
+Echo   Tweaks Are Done\Tweaksy Są zakończone     
 TIMEOUT /T 2 /nobreak
 exit                                                                                                                                                                                                                                                                                                                                                                                                
