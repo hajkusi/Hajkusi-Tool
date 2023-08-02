@@ -2,7 +2,7 @@
 goto Prompt1
 
 :PROMPT1
-SET /P AREYOUSURE= Do you want to Delete download files? (You can choose which files are deleted) (Y/N)?
+SET /P AREYOUSURE= Do you want to Delete download files? (You can choose which files are deleted)\Chcesz Usunąć pliki z folderu pobrane (Możesz wybierać,które)(Y/N)?
 IF /I "%AREYOUSURE%" NEQ "Y" goto home
 IF /I "%AREYOUSURE%" NEQ "N" goto GetInput
 
@@ -47,6 +47,14 @@ for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q)
 rd %temp%
 md %temp%
 mkdir %temp%
+goto PromptDism
+
+:PromptDism
+echo Do you want to clear you winsxs folder\Chcesz oczyścić twój folder winsxs (Good For More Space)\(Dobre żeby zwolnić miejsce) 
+cls
+SET /P Dism=Yes or No\Tak czy Nie (Y/N)?
+IF /I "%DISM%" NEQ "Y" goto TakeOwn
+IF /I "%DISM%" NEQ "N" goto Dism
 
 cls
 :Dism
@@ -63,7 +71,14 @@ takeown /f %systemdrive%\$Recycle.bin\ /r /d y
 takeown /f C:\Users\%USERNAME%\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Code Cache\ /r /d y
 takeown /f C:\Users\%USERNAME%\AppData\Local\Fortnitegame\saved\ /r /d y
 takeown /f C:\Users\%USERNAME%\AppData\Local\Google\Chrome\User Data\Default\Code Cache\ /r /d y
-goto Trash
+goto PromptForTrash
+
+:PromptForTrash
+cls
+echo Do You Want To Clear Your Trash Folder\Chcesz Usunąć Pliki Z Kosza
+SET /P ISTHATTRUE=Yes or No\Tak Czy Nie? (Y/N)?
+IF /I "%ISTHATTRUE%" NEQ "Y" goto Powershell
+IF /I "%ISTHATTRUE%" NEQ "N" goto Trash
 
 :Trash
 Echo Cleaning Trash\Oczyszczanie Kosza
@@ -75,7 +90,14 @@ goto PowerShell
 :PowerShell
 powershell.exe Remove-Item -Path $env:TEMP -Recurse -Force -ErrorAction SilentlyContinue
 cls
-goto TempFortniteAndEpicGames
+goto PromptForTempFortniteAndEpicGames
+
+:PromptForTempFortniteAndEpicGames
+cls
+echo Do You Want To Clear Your Fortnite and Epic Games Temp Files\Chcesz Usunąć Pliki Temp Fortnite i Epic Games
+SET /P TempFortniteAndEpicGames=Yes or No\Tak Czy Nie? (Y/N)?
+IF /I "%TEMPFORTNITEANDEPICGAMES%" NEQ "Y" goto LogFiles
+IF /I "%TEMPFORTNITEANDEPICGAMES%" NEQ "N" goto TempFortniteAndEpicGames
 
 :TempFortniteAndEpicGames
 Echo Clearing Epic Games and Fortnite Temporary Files\Czyszczenie plikow tymczasowych Epic Games i Fortnite:
@@ -92,7 +114,6 @@ echo.
 @echo off
 cd/
 del *.log /a /s /q /f
-powershell taskkill /F /IM explorer.exe
 timeout 2 /nobreak>nul
 DEL /F /S /Q /A %LocalAppData%\Microsoft\Windows\Explorer\thumbcache_*.db
 DEL /f /s /q %temp%\
@@ -117,7 +138,6 @@ DEL /f /s /q "%userprofile%\recent\*.*"
 timeout 3 /nobreak>nul
 Invoke-Command COMPUTERNAME -command{Stop-Process -ProcessName Explorer}
 Invoke-Command COMPUTERNAME -command{Start-Process -ProcessName Explorer}
-powershell Start explorer.exe
 cls
 goto Net
 
@@ -129,7 +149,14 @@ net stop bits
 @echo
 net stop dosvc
 @echo
-goto WindowsUpdate
+goto PromptForWindowsUpdateTempFiles
+
+:PromptForWindowsUpdateTempFiles
+cls
+echo Do You Want To Clear Your Windows Update Temp Folder(Safe)\Chcesz Usunąć Pliki Tymczasowe Windows Update(Bezpieczne)
+SET /P WindowsUpdate=Yes or No\Tak Czy Nie? (Y/N)?
+IF /I "%WINDOWSUPDATE%" NEQ "Y" goto PromptForWindowsCleaner
+IF /I "%WINDOWSUPDATE%" NEQ "N" goto WindowsUpdate
 
 :WindowsUpdate
 Echo Deleting Windows Update Temp Files\Usuwanie Plików Tymczasowych Windows Update:
@@ -138,7 +165,14 @@ md C:\Windows\SoftwareDistribution
 cls
 echo.
 cls
-goto WindowsCleaner
+goto PromptForWindowsCleaner
+
+:PromptForWindowsCleaner
+cls
+echo Do you Want To Start Windows Cleaner (cleanmgr.exe)\Czy chcesz uruchomić narzędzie do czyszczenia systemu Windows(cleanmgr.exe)
+SET /P WindowsCleaner=Yes or No\Tak Czy Nie? (Y/N)?
+IF /I "%WINDOWSCLEANER%" NEQ "Y" goto done
+IF /I "%WINDOWSCLEANER%" NEQ "N" goto WindowsCleaner
 
 :WindowsCleaner
 Echo Running Windows Cleaner\Uruchamianie programu Windows Cleaner (cleanmgr.exe)

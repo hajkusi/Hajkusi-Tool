@@ -1,3 +1,5 @@
-Proszę Nie Dotykaj Plików Bo Zniszczysz Skrypty.
 English:
-Please Do Not Touch The Files Or You Will Destroy The Scripts.
+Please Don't Touch Files Because You May Destroy The Scripts.
+
+Polish:
+Proszę Nie Dotykaj Plików Bo możesz Zniszczyć Skrypty.

@@ -1,3 +1,49 @@
-﻿1.Odpal PowerShell z Run With Administator
+﻿English:
+1.Launch PowerShell with Run with Administrator
+2.Type this script:"set-executionpolicy unrestricted" and click enter
+3.Type "Y", click enter and close PowerShell
+
+Still Doesn't Work?!
+4. Launch PowerShell with Run As Administrator
+5. Type: dir C:\Users\hajku\Downloads\*PowerShell* | Unblock-File I Click Enter Type "Y" And Click Enter
+6. Type: Unblock-File -Path C:\Users\name\Desktop\gaming\gaming\1.PowerShell\WindowsToolbox-1.0.4\main.ps1 -confirm
+7.Click Enter Type "Y" And Click Enter
+8.Type:dir C:\Users\name\Desktop\gaming\gaming\1.PowerShell\WindowsToolbox-1.0.4\ -File -Recurse | Unblock-File-confirm
+9.Click Enter Type "Y" And Click Enter
+!!!Before you start doing points from 6 to 9 replace in these commands below Username with Your Username
+
+                        Your username
+                             ┃
+                             ┃
+                             ▼
+Unblock-File -Path C:\Users\name\Desktop\gaming\gaming\1.PowerShell\WindowsToolbox-1.0.4\main.ps1 -confirm
+dir C:\Users\name\Desktop\gaming\gaming\1.PowerShell\WindowsToolbox-1.0.4\ -File -Recurse | Unblock-File-confirm
+              ▲
+              ┃
+              ┃
+Your username
+
+Polski:
+1.Odpal PowerShell z Uruchom Jako Administator
 2.Wpisz ten script:"set-executionpolicy unrestricted" i kliknij enter
 3.Wpisz "Y", kliknij enter i zamknij PowerShell'a
+
+Dalej Nie Działa?!
+4.Odpal PowerShell z Uruchom Jako Administrator
+5.Wpisz: dir C:\Users\hajku\Downloads\*PowerShell* | Unblock-File I Kliknij Enter Wpisz "Y" I Kliknij Enter
+6.Wpisz:Unblock-File -Path C:\Users\nazwa\Pulpit\gaming\gaming\1.PowerShell\WindowsToolbox-1.0.4\main.ps1 -confirm
+7.Kliknij Enter Wpisz "Y" I Kliknij Enter
+8.Wpisz:dir C:\Users\nazwa\Pulpit\gaming\gaming\1.PowerShell\WindowsToolbox-1.0.4\ -File -Recurse | Unblock-File -confirm
+9.Kliknij Enter Wpisz "Y" I Kliknij Enter
+!!!Zanim Zaczniesz Robić Punkty Od 6 Do 9 Zamień W Tych Komendach Poniżej Nazwę Użytkownika Na Twoją Nazwę Użytkownika
+
+                        Twoja nazwa użytkownika
+                             ┃
+                             ┃
+                             ▼
+Unblock-File -Path C:\Users\nazwa\Pulpit\gaming\gaming\1.PowerShell\WindowsToolbox-1.0.4\main.ps1 -confirm
+dir C:\Users\nazwa\Pulpit\gaming\gaming\1.PowerShell\WindowsToolbox-1.0.4\ -File -Recurse | Unblock-File -confirm
+              ▲
+              ┃
+              ┃
+Twoja nazwa użytkownika
