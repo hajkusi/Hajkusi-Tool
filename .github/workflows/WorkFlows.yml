@@ -9,6 +9,11 @@ on:
     - '.github/workflows/*'
 
 jobs:
+  first-job:
+    runs-on: Windows-Latest
+    steps:
+    - run: npm node --version
+    - run: npm --version
   filter:
     runs-on: ubuntu-latest  
     steps:
