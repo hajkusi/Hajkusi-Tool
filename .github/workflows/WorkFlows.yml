@@ -23,4 +23,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: Beta
-        path:
+        path: home/runner/work/Gaming-Optimizer/Gaming-Optimizer
