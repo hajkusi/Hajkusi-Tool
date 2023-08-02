@@ -8,7 +8,7 @@ IF /I "%AREYOUSURE%" NEQ "N" goto GetInput
 
 :PROMPT2
 cls
-Echo Your User Download directory is %UserDownloadDir%\Twój katalog pobierania użytkownika to %UserDownloadDir%
+Echo Your User Download directory is %UserDownloadDir%\Twoj katalog pobierania uzytkownika to %UserDownloadDir%
 SET /P ISTHATTRUE=Is that true? (Y/N)?
 IF /I "%ISTHATTRUE%" NEQ "Y" goto GetInput
 IF /I "%ISTHATTRUE%" NEQ "N" goto Y
