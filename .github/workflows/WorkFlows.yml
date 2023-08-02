@@ -25,5 +25,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: Beta
-        path: home/**
+        path: home/src/
         if-no-files-found: error
