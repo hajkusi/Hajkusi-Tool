@@ -2,13 +2,13 @@
 goto Prompt1
 
 :PROMPT1
-SET /P AREYOUSURE= Do you want to Delete download files? (You can choose which files are deleted)\Chcesz Usunąć pliki z folderu pobrane (Możesz wybierać,które)(Y/N)?
+SET /P AREYOUSURE= Do You Want To Delete Download Files? (You can choose which files are deleted)\Chcesz Usunac Pliki Z Folderu Pobrane (Mozesz wybierac,ktore)(Y/N)?
 IF /I "%AREYOUSURE%" NEQ "Y" goto home
 IF /I "%AREYOUSURE%" NEQ "N" goto GetInput
 
 :PROMPT2
 cls
-Echo Your User Download directory is %UserDownloadDir%
+Echo Your User Download directory is %UserDownloadDir%\Twój katalog pobierania użytkownika to %UserDownloadDir%
 SET /P ISTHATTRUE=Is that true? (Y/N)?
 IF /I "%ISTHATTRUE%" NEQ "Y" goto GetInput
 IF /I "%ISTHATTRUE%" NEQ "N" goto Y
@@ -149,8 +149,8 @@ net stop bits
 @echo
 net stop dosvc
 @echo
-goto PromptForWindowsUpdateTempFiles
-
+goto PromptForWindowspdateTempFiles
+U
 :PromptForWindowsUpdateTempFiles
 cls
 echo Do You Want To Clear Your Windows Update Temp Folder(Safe)\Chcesz Usunąć Pliki Tymczasowe Windows Update(Bezpieczne)
