@@ -25,5 +25,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: Beta
-        path: /home/runner/work/Gaming-Optimizer/Gaming-Optimizer/src
+        path: home/runner/work/Gaming-Optimizer/Gaming-Optimizer
         if-no-files-found: error
