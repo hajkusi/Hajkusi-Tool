@@ -1,0 +1,13 @@
+name: Filtering
+on:
+  push:
+    branches:
+      - main
+    paths:
+    - 'home/runner/work/Gaming-Optimizer/Gaming-Optimizer'
+jobs:
+ filter:
+  runs-on: ubuntu-latest  
+  steps:
+    - name: github context
+      run: echo "${{toJSON(github.event)}}"
