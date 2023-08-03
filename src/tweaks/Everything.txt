@@ -1,13 +1,13 @@
 Tcp optimizer
-1.Na select optimal below
+1.Na Select Optimal Below
 2..Apply
 3.Yes.
 Hone:
-1.Install hone (hone.gg)
+1.Install Hone (hone.gg)
 2.Click Select All 
-3.If you have Atlas OS or another custom os, deselect Optimize Power Plan
-4.Select the "Games"tab
-5.Select a game and click "Apply this Tweak"
+3.If you Have Atlas OS Or Another Custom Os, Unselect Optimize Power Plan
+4.Select The "Games" Tab
+5.Select A Game And Click "Apply this Tweak"
 QuickBoost
 1.Click "Exclusive Full-Screen & Disable Xbox GameBar"
 2.Click "Disable Startup Telemetry"
@@ -15,34 +15,32 @@ QuickBoost
 4.Click "Disable Unnecessary System Services"
 5.Click "Disable Powersaving"
 6.Click "Apply System Profile Tweaks"
-7.Select tab number 2
+7.Select Tab Number 2
 8.Click "Disable PowerThrottling"
 9.Click "Memory Tweaks"
-10.Click " BCD Tweaks (Latency)"
-11.Click " HardwareDataQueueSize (Latency)
-12.If you have nvidia graphics card click "Nvidia Highest P-State "click " Enable"
-13.Select tab number 3
-14.Click "Clean All Temporary Files" and wait (it may take a while)
-15.Select tab number 4
+10.Click "BCD Tweaks (Latency)"
+11.Click "HardwareDataQueueSize (Latency)"
+12.If You Have Nvidia Graphics Card Click "Nvidia Highest P-State " Click " Enable"
+13.Close QuickBoost
 OT-Optimizer
-1.If there is an update download it 
-2.Type 1 and click enter
-3.Follow the intrusions
+1.If There Is An Update Download It 
+2.Type 1 and Click Enter
+3.Follow The Intrusions
 16.Click "Apply Nvidia Control Panel Tweaks"
 17.Click " MSI Utility (Latency)"
-18.Find your graphics card or integrated graphics card and set "High"on the right
-19.Find your Ethernet or Wifi network card and set "High"on the right
-20.In the upper-right corner, click Apply.
+18.Find your Graphics Card Or Integrated Graphics Card And Set "High" On The Right
+19.Find your Ethernet or Wifi Network Card And Set "High" On The Right
+20.In The Upper-Right Corner, And Click Apply.
 Optimizer
 1.Choose Language English
-2.Check the left side in System 1,2,3,4,6,7,8 option and if you are not using printer then 5 too
-3.Check the left in drives 3 option and 2 if you do not have HDD in your computer
-4.Select all options on the right in the initial applications
-5.Select the first option on the right in privacy
-6.Select the Windows 10 tab at the top
+2.Check The Left Side In System 1,2,3,4,6,7,8 Option And If You Are Not Using Printer Then 5 Too
+3.Check The Left In Drives 3 Option And 2 If You Do Not Have HDD Or You Any HDD In Your Computer
+4.Select All Options On The Right In The Initial Applications
+5.Select The First Option On The Right In Privacy
+6.Select The Windows 10 Tab At The Top
 7.Select on the left in System 2 if you are not using contacts, 3, 4,5,6 option\
-8.Select the option on the left in Windows Update 1.3
-9.Select the Privacy 1,2,3,4,5 option on the right
-10.Select the option on the right in Game 1, 2 and 3 if you don't use xbox live and gamebar
-11.Select right in touch all options
+8.Select The Option On The Left In Windows Update 1.3
+9.Select The Privacy 1,2,3,4,5 Option On The Right
+10.Select The Option On The Right In Game 1, 2 And 3 If You Don't Use Xbox Live And Gamebar
+11.Select Right In Touch All Options
 12.In the upper-right corner of the app, click Restart to apply the changes
