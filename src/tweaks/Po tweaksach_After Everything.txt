@@ -1,5 +1,5 @@
 English:
-Turn On and Off Computer
+Restart Computer
 
 Polski:
-Wyłącz i Włącz twój komputer
+Uruchom Ponownie Twój Komputer
