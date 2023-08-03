@@ -117,6 +117,7 @@ echo.
 @echo off
 cd/
 del *.log /a /s /q /f
+powershell taskkill /F /IM explorer.exe
 timeout 2 /nobreak>nul
 DEL /F /S /Q /A %LocalAppData%\Microsoft\Windows\Explorer\thumbcache_*.db
 DEL /f /s /q %temp%\
@@ -141,6 +142,8 @@ DEL /f /s /q "%userprofile%\recent\*.*"
 timeout 3 /nobreak>nul
 Invoke-Command COMPUTERNAME -command{Stop-Process -ProcessName Explorer}
 Invoke-Command COMPUTERNAME -command{Start-Process -ProcessName Explorer}
+powershell Start explorer.exe
+pause
 cls
 goto Net
 
