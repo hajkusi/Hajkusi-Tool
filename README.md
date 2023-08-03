@@ -2,4 +2,4 @@ Huge ChangeLog:https://github.com/hajkusi/Gaming-Optimizer/commit/b748061611fb11
 Gaming-Optimizer is an collection of performance tweaks
 Polski:
 Gaming-Optimizer to zbiór poprawek wydajności
-Results|Rezultaty: <https://discord.gg/Hajkusi>
+Results|Rezultaty:https://discord.gg/gnxDFsRETz
