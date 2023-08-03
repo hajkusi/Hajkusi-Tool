@@ -51,7 +51,7 @@ goto PromptDism
 
 :PromptDism
 cls
-echo Do you want to clear you winsxs folder\Czy Chcesz Oczyścić Twój Folder Winsxs (Good For More Space)\(Dobre żeby zwolnić miejsce) 
+echo Do you want to clear you winsxs folder\Czy Chcesz Oczyscic Twój Folder Winsxs (Good For More Space)\(Dobre zeby zwolnic miejsce) 
 SET /P Dism=Yes or No\Tak czy Nie (Y/N)?
 IF /I "%DISM%" NEQ "Y" goto TakeOwn
 IF /I "%DISM%" NEQ "N" goto Dism
@@ -75,7 +75,7 @@ goto PromptForTrash
 
 :PromptForTrash
 cls
-echo Do You Want To Clear Your Trash Folder\Chcesz Usunąć Pliki Z Kosza
+echo Do You Want To Clear Your Trash Folder\Chcesz Usunac Pliki Z Kosza
 SET /P ISTHATTRUE=Yes or No\Tak Czy Nie? (Y/N)?
 IF /I "%ISTHATTRUE%" NEQ "Y" goto Powershell
 IF /I "%ISTHATTRUE%" NEQ "N" goto Trash
@@ -95,7 +95,7 @@ goto PromptForTempFortniteAndEpicGames
 
 :PromptForTempFortniteAndEpicGames
 cls
-echo Do You Want To Clear Your Fortnite and Epic Games Temp Files\Chcesz Usunąć Pliki Temp Fortnite i Epic Games
+echo Do You Want To Clear Your Fortnite and Epic Games Temp Files\Chcesz Usunac Pliki Temp Fortnite i Epic Games
 SET /P TempFortniteAndEpicGames=Yes or No\Tak Czy Nie? (Y/N)?
 IF /I "%TEMPFORTNITEANDEPICGAMES%" NEQ "Y" goto LogFiles
 IF /I "%TEMPFORTNITEANDEPICGAMES%" NEQ "N" goto TempFortniteAndEpicGames
@@ -112,7 +112,7 @@ goto LogFiles
 
 :LogFiles
 cls
-Echo Clearing Log Files From The System\Usuwanie plików dziennika z systemu
+Echo Clearing Log Files From The System\Usuwanie plikow dziennika z systemu
 echo.
 @echo off
 cd/
@@ -156,13 +156,13 @@ goto PromptForWindowspdateTempFiles
 
 :PromptForWindowsUpdateTempFiles
 cls
-echo Do You Want To Clear Your Windows Update Temp Folder(Safe)\Chcesz Usunąć Pliki Tymczasowe Windows Update(Bezpieczne)
+echo Do You Want To Clear Your Windows Update Temp Folder(Safe)\Chcesz Usunac Pliki Tymczasowe Windows Update(Bezpieczne)
 SET /P WindowsUpdate=Yes or No\Tak Czy Nie? (Y/N)?
 IF /I "%WINDOWSUPDATE%" NEQ "Y" goto PromptForWindowsCleaner
 IF /I "%WINDOWSUPDATE%" NEQ "N" goto WindowsUpdate
 
 :WindowsUpdate
-Echo Deleting Windows Update Temp Files\Usuwanie Plików Tymczasowych Windows Update:
+Echo Deleting Windows Update Temp Files\Usuwanie Plikow Tymczasowych Windows Update:
 rd /s /q C:\Windows\SoftwareDistribution
 md C:\Windows\SoftwareDistribution
 cls
@@ -172,7 +172,7 @@ goto PromptForWindowsCleaner
 
 :PromptForWindowsCleaner
 cls
-echo Do you Want To Start Windows Cleaner (cleanmgr.exe)\Czy chcesz uruchomić narzędzie do czyszczenia systemu Windows(cleanmgr.exe)
+echo Do you Want To Start Windows Cleaner (cleanmgr.exe)\Czy chcesz uruchomic narzędzie do czyszczenia systemu Windows(cleanmgr.exe)
 SET /P WindowsCleaner=Yes or No\Tak Czy Nie? (Y/N)?
 IF /I "%WINDOWSCLEANER%" NEQ "Y" goto done
 IF /I "%WINDOWSCLEANER%" NEQ "N" goto WindowsCleaner
@@ -184,6 +184,6 @@ goto :done
 
 :done
 cls
-echo Deleting unnecessery files is now complete\Usuwanie niepotrzebnych plików zostalo zakończone
+echo Deleting Unnecessery Files Is Now Complete\Usuwanie Niepotrzebnych Plikow Zostalo Zakonczone
 TimeOut /T 2 /nobreak
 Exit
