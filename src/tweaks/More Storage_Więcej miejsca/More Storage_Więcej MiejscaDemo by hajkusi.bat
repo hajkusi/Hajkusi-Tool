@@ -51,7 +51,7 @@ goto PromptDism
 
 :PromptDism
 cls
-echo Do you want to clear you winsxs folder\Czy Chcesz Oczyscic Twój Folder Winsxs (Good For More Space)\(Dobre zeby zwolnic miejsce) 
+echo Do you want to clear you winsxs folder\Czy Chcesz Oczyscic Twoj Folder Winsxs (Good For More Space)\(Dobre zeby zwolnic miejsce) 
 SET /P Dism=Yes or No\Tak czy Nie (Y/N)?
 IF /I "%DISM%" NEQ "Y" goto TakeOwn
 IF /I "%DISM%" NEQ "N" goto Dism

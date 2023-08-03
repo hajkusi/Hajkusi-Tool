@@ -191,7 +191,7 @@ goto Services
 
 :Services
 cls
-Echo Disabling Unnecessary System Services For Less System Usage\Wyłączanie Niepotrzebnych Serwisow Dla Mniejszego Uzycia Systemu
+Echo Disabling Unnecessary System Services For Less System Usage\Wylaczanie Niepotrzebnych Serwisow Dla Mniejszego Uzycia Systemu
 echo.
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\TapiSrv" /v "Start" /t REG_DWORD /d "3" /f 
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\FontCache3.0.0.0" /v "Start" /t REG_DWORD /d "4" /f
@@ -457,7 +457,7 @@ reg add "HKCU\SOFTWARE\Microsoft\Office\16.0\Common" /v "QMEnable" /t REG_DWORD 
 reg add "HKCU\SOFTWARE\Microsoft\Office\15.0\Common\Feedback" /v "Enabled" /t REG_DWORD /d 0 /f
 reg add "HKCU\SOFTWARE\Microsoft\Office\16.0\Common\Feedback" /v "Enabled" /t REG_DWORD /d 0 /f
 
-Echo Disabling Data Collection Bloatwares\Wyłączanie Gromadzenie Danych Dla Oprogramowan Typu BloatWare
+Echo Disabling Data Collection Bloatwares\Wylaczanie Gromadzenie Danych Dla Oprogramowan Typu BloatWare
 
 @rem *** Disable Data Collection bloatwares ***
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata" /v PreventDeviceMetadataFromNetwork /t REG_DWORD /d 1 /f
@@ -534,7 +534,7 @@ goto Prompt
 
 :Prompt
 cls
-SET /P AREYOUSURE=Size of a HardwareDataQueueSize You Choosed Is %HardwareDataQueueSize% Continue?, Or Change Number\Rozmiar Wybranej Kolejki Sprzętu Komputerowego to %HardwareDataQueueSize % Kontynuuj? Czy Zmień Numer (Y/N)?
+SET /P AREYOUSURE=Size of a HardwareDataQueueSize You Choosed Is %HardwareDataQueueSize% Continue?, Or Change Number\Rozmiar Wybranej Kolejki Sprzętu Komputerowego to %HardwareDataQueueSize % Kontynuuj? Czy Zmien Numer (Y/N)?
 IF /I "%AREYOUSURE%" NEQ "Y" goto GetInput
 IF /I "%AREYOUSURE%" NEQ "N" goto HardwareDataQueueSize
 
@@ -557,7 +557,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management
 Echo Paging Executive Is Used To Load System Files Such As Kernel And Hardware Drivers To The Page File When Needed. Disable Will Force Run Into Not Virtual Memory\Paging Executive Sluzy Do ladowania Plikow Systemowych, Takich Jak Sterowniki Kernel I Sprzetu, Do Pliku Stronicowania W Razie Potrzeby. Wylaczenie Spowoduje Wymuszenie Uruchomienia Pamieci Nie Wirtualnej
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingExecutive" /t REG_DWORD /d "1" /f
 
-Echo Disabling Windows Attempt To Save As Much RAM As Possible, Such As Sharing Pages For Images, Copy-On-Write For Data Pages, And Compression\Wylaczanie Systemu Windows Próba Zaoszczedza Jak Najwiekszej Ilosci Pamieci RAM, Na Przyklad Udostepnianie Stron Obrazow, Kopiowanie Przy Zapisie Stron Danych I Kompresji
+Echo Disabling Windows Attempt To Save As Much RAM As Possible, Such As Sharing Pages For Images, Copy-On-Write For Data Pages, And Compression\Wylaczanie Systemu Windows Proba Zaoszczedza Jak Najwiekszej Ilosci Pamieci RAM, Na Przyklad Udostepnianie Stron Obrazow, Kopiowanie Przy Zapisie Stron Danych I Kompresji
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingCombining" /t REG_DWORD /d "1" /f
 
 reg add "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher" /t REG_DWORD /d "0" /f
@@ -657,7 +657,7 @@ Reg.exe add "HKLM\SYSTEM\ControlSet001\Control" /v "SvcHostSplitThresholdInKB" /
 goto PromptForTakeOwnerShipInContext
 
 :PromptForTakeOwnerShipInContext
-ET /P TakeOwnerShipInContext=Do You Want To Add Take OwnerShip In Context Menu\Czy Chcesz Dodać Take OwnerShip do Menu Kontekstowego(Y/N)?
+ET /P TakeOwnerShipInContext=Do You Want To Add Take OwnerShip In Context Menu\Czy Chcesz Dodac Take OwnerShip do Menu Kontekstowego(Y/N)?
 IF /I "%TAKEOWNERSHIPINCONTEXTMENU%" NEQ "Y" goto PromptForOptionalTweaks
 IF /I "%TAKEOWNERSHIPINCONTEXTMENU%" NEQ "N" goto TakeOwnerShipInContextMenu
 
@@ -849,6 +849,6 @@ IF /I "%SYSTEMTOOLS%" NEQ "N" goto SystemToolsEnabler
 
 :End
 Title Done\Zakonczone
-Echo   Tweaks Are Done\Tweaksy Są Zakonczone     
+Echo   Tweaks Are Done\Tweaksy Sa Zakonczone     
 TIMEOUT /T 2 /nobreak
 exit                                                                                                                                                                                                                                                                                                                                                                                                
