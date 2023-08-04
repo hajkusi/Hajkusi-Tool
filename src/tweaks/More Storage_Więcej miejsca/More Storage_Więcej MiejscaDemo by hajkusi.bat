@@ -175,7 +175,7 @@ goto PromptForWindowsCleaner
 
 :PromptForWindowsCleaner
 cls
-echo Do you Want To Start Windows Cleaner (cleanmgr.exe)\Czy chcesz uruchomic narzędzie do czyszczenia systemu Windows(cleanmgr.exe)
+echo Do you Want To Start Windows Cleaner (cleanmgr.exe)\Czy chcesz uruchomic narzedzie do czyszczenia systemu Windows(cleanmgr.exe)
 SET /P WindowsCleaner=Yes or No\Tak Czy Nie? (Y/N)?
 IF /I "%WINDOWSCLEANER%" NEQ "Y" goto done
 IF /I "%WINDOWSCLEANER%" NEQ "N" goto WindowsCleaner

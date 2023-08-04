@@ -478,15 +478,6 @@ REM - SmartScreen Filter for Store Apps: Disable
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" /v EnableWebContentEvaluation /t REG_DWORD /d 0 /f
 REM - Let websites provide locally...
 reg add "HKCU\Control Panel\International\User Profile" /v HttpAcceptLanguageOptOut /t REG_DWORD /d 1 /f
-goto NvProfile
-
-Echo Applying NV Profile\Zastosowywanie Profilu NV
-
-:NvProfile
-powershell -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/460788721789173760/836340936865742918/nvidiaProfileInspector.exe' -OutFile C:\Windows\nvidiaProfileInspector.exe
-powershell -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/460788721789173760/837315087907422228/nvprofile.nip' -OutFile C:\Windows\nvprofile.nip
-start "" /wait "C:\Windows\nvidiaProfileInspector.exe" "C:\Windows\nvprofile.nip"
-timeout 2 >nul
 goto FSE
 
 :FSE
@@ -525,7 +516,7 @@ goto Prompt
 
 :Prompt
 cls
-SET /P AREYOUSURE=Size of a HardwareDataQueueSize You Choosed Is %HardwareDataQueueSize% Continue?, Or Change Number\Rozmiar Wybranej Kolejki Sprzętu Komputerowego to %HardwareDataQueueSize % Kontynuuj? Czy Zmien Numer (Y/N)?
+SET /P AREYOUSURE=Size of a HardwareDataQueueSize You Choosed Is %HardwareDataQueueSize% Continue?, Or Change Number\Rozmiar Wybranej Kolejki Sprzetu Komputerowego to %HardwareDataQueueSize % Kontynuuj? Czy Zmien Numer (Y/N)?
 IF /I "%AREYOUSURE%" NEQ "Y" goto GetInput
 IF /I "%AREYOUSURE%" NEQ "N" goto HardwareDataQueueSize
 
@@ -542,7 +533,7 @@ goto MemoryTweaks
 
 :MemoryTweaks
 echo.
-Echo Adding more ram for applications in system memory caching to improve microstuttering\Dodanie wiekszej ilosci pamięci RAM dla aplikacji w buforowaniu pamieci systemowej w celu poprawy mikrozacinania
+Echo Adding more ram for applications in system memory caching to improve microstuttering\Dodanie wiekszej ilosci pamieci RAM dla aplikacji w buforowaniu pamieci systemowej w celu poprawy mikrozacinania
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "LargeSystemCache" /t REG_DWORD /d "1" /f
 
 Echo Paging Executive Is Used To Load System Files Such As Kernel And Hardware Drivers To The Page File When Needed. Disable Will Force Run Into Not Virtual Memory\Paging Executive Sluzy Do ladowania Plikow Systemowych, Takich Jak Sterowniki Kernel I Sprzetu, Do Pliku Stronicowania W Razie Potrzeby. Wylaczenie Spowoduje Wymuszenie Uruchomienia Pamieci Nie Wirtualnej
