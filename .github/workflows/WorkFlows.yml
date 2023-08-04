@@ -21,3 +21,9 @@ jobs:
     - run: npm --version
     - name: Checkout code
       uses: actions/checkout@v3                          
+    - name: Upload 
+      uses: actions/upload-artifact@v3
+      with:
+        name: Beta
+        path: /home/runner/work/Gaming-Optimizer/Gaming-Optimizer/src
+        if-no-files-found: error
