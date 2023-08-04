@@ -1,0 +1,53 @@
+Optymalizator Tcp
+1.Na Wybierz Optymalny Poniżej
+2..Aplikuj
+3.Tak.
+Hone:
+1.Install Hone (hone.gg)
+2. Kliknij Zaznacz Wszystko
+3.Jeśli Masz Atlas OS Lub Inny Niestandardowy System Operacyjny, Odznacz Opcję "Optimize Power Plan"
+4.Wybierz Kartę "Gry"
+5.Wybierz Grę I Kliknij "Apply Fixes"
+QuickBoost
+1. Kliknij "Ekskluzywny Pełny Ekran I Wyłącz Xbox GameBar"
+2. Kliknij "Wyłącz Telemetrię Startową"
+3. Kliknij "Wyłącz Przyspieszenie Myszy"
+4. Kliknij "Wyłącz Niepotrzebne Usługi Systemowe"
+5. Kliknij "Wyłącz Oszczędzanie Energii"
+6. Kliknij "Zastosuj Poprawki Profilu Systemowego"
+7.Wybierz Kartę Numer 2
+8. Kliknij "Wyłącz PowerThrottling"
+9.Jeśli Masz Kartę Graficzną Nvidia Kliknij "Nvidia Najwyższy Stan P "Kliknij " Włącz"
+10.Zamknij QuickBoost
+Ot-Optimizer
+1.Jeśli Jest Aktualizacja, Pobierz Ją
+2.Wpisz 1 i kliknij Enter
+3.Podążaj Za Wtargnięciami
+16. Kliknij "Zastosuj Poprawki Panelu Sterowania Nvidia"
+17. Kliknij"narzędzie MSI (opóźnienie)"
+18.Znajdź Swoją kartę graficzną lub zintegrowaną kartę graficzną i ustaw "High" Po Prawej Stronie
+19.Znajdź Swoją Kartę Sieciową Ethernet Lub Wifi I Ustaw "High" Po Prawej Stronie
+20.In W Prawym Górnym Rogu I Kliknij Zastosuj.
+Optimizer
+1.Wybierz Język Polski
+2.Po Lewej Stronie W Systemie Sprawdź Opcję 1,2,3,4,6,7,8, A Jeśli Nie Używasz Drukarki, To Też 5
+3.Po Lewej W Dyskach Zaznacz opcję 3 i 2, Jeśli Nie Masz Dysku twardego Zewnętrznego lub Żadnego dysku Twardego W Komputerze
+4.Wybierz Wszystkie Opcje Po Prawej Stronie W Aplikacjach Początkowych
+5.Wybierz Pierwszą Opcję Po Prawej Stronie W Prywatność
+6.Wybierz Kartę Windows 10 U Góry
+7.Wybierz Po Lewej Stronie W Systemie 2 Opcję, Jeśli Nie Używasz Opcji Kontakty, 3,4,5,6
+8.Wybierz Opcję Po Lewej Stronie W Windows Update 1,3
+9.Wybierz Opcję Prywatność 1,2,3,4,5 Po Prawej Stronie
+10.Wybierz Opcję Po Prawej Stronie W Grze 1, 2 I 3, Jeśli Nie Używasz Xbox Live I Gamebar
+11.Wybierz Bezpośrednio W Dotyku Wszystkie Opcje
+12.In w Prawym Górnym Rogu Aplikacji Kliknij Uruchom ponownie, Aby Zastosować Zmiany
+1.Zainstaluj QuickCpu
+2.Otwórz Go
+3.In W Prawym-Lewym Rogu Zaznacz Trzecią Opcję I Odznacz "Ustaw I Aktywuj Plan Zasilania QuickCpu"
+4.Kliknij Ok
+5.Na Dole Okna Kliknij "Configure" I "Configure C-State "
+6.Odznacz: "C1 State Auto Demotion","C3 State Auto Demotion","Enable C1 Undermotion","Enable C3 Undermotion"
+7.Kliknij Zastosuj
+8.Ustaw: "Core Parking" Na 100%,"Frequency Scaling" Na 100%,"Turbo Boost" Na 100%,"Performance" Na 100%
+9.Kliknij Zastosuj
+10.Zamknij Program

@@ -44,3 +44,14 @@ Optimizer
 10.Select The Option On The Right In Game 1, 2 And 3 If You Don't Use Xbox Live And Gamebar
 11.Select Right In Touch All Options
 12.In the upper-right corner of the app, click Restart to apply the changes
+QuickCpu:
+1.Install QuickCpu
+2.Open It
+3.In The Right-Left Corner Select Third Option And Unselect "Set And Activate QuickCpu Power Plan"
+4.Click Ok
+5.On Bottom Of Windows Click Configure And Configure C-State
+6.Uncheck: "C1 State Auto Demotion","C3 State Auto Demotion","Enable C1 Undermotion","Enable C3 Undermotion"
+7.Click Apply
+8.Set: "Core Parking" To 100%,"Frequency Scaling" To 100%,"Turbo Boost" To 100%,"Performance" To 100%
+9.Click Apply
+10.Close The Program
