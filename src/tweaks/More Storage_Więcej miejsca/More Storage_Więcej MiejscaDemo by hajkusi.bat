@@ -36,8 +36,8 @@ IF /I "%DISM%" NEQ "N" goto Dism
 cls
 :Dism
 cls
-Dism.exe /online /Cleanup-Image /StartComponentCleanup
-Dism.exe
+Dism.exe /Online /Cleanup-Image /StartComponentCleanup
+Dism.exe /Online /Cleanup-Image /StartComponentCleanup /ResetBase
 goto TakeOwn
 
 :TakeOwn
@@ -84,7 +84,89 @@ erase /F /S /Q "%SystemRoot%\TEMP*.*"
 for /D %%G in ("%SystemRoot%\TEMP*") do RD /S /Q "%%G"
 for /D %%G in ("%SystemDrive%\Users*") do erase /F /S /Q "%%G\AppData\Local\Temp*.*"
 for /D %%G in ("%SystemDrive%\Users*") do RD /S /Q "%%G\AppData\Local\Temp\" 
+del %localappdata%\EpicGamesLauncher\Saved\Logs /F /Q /S
+del %localappdata%\CrashReportClient\Saved\Logs /F /Q /S
 cls
+goto SteamTemp
+
+:SteamTemp
+del "%localappdata%\Steam\htmlcache\Code Cache" /F /Q /S
+del %localappdata%\Steam\htmlcache\GPUCache /F /Q /S
+del %localappdata%\Steam\htmlcache\Cache /F /Q /S
+goto OriginTempAndTelemetry
+
+:OriginTempAndTelemetry
+del %AppData%\Origin\Telemetry /F /Q /S
+del %AppData%\Origin\Logs /F /Q /S
+del %AppData%\Origin\NucleusCache /F /Q /S
+del %AppData%\Origin\ConsolidatedCache /F /Q /S
+del %AppData%\Origin\CatalogCache /F /Q /S
+del %localAppData%\Origin\ThinSetup /F /Q /S
+del %AppData%\Origin\Telemetry /F /Q /S
+del %localAppData%\Origin\Logs /F /Q /S
+goto Battle.netTemp
+
+:Battle.netTemp
+del %localAppData%\Battle.net\Cache /F /Q /S
+del %AppData%\Battle.net\Logs /F /Q /S
+del %AppData%\Battle.net\Errors /F /Q /s
+goto GoogleChromeTemp
+
+:GoogleChromeTemp
+del "%LocalAppData%\Google\Chrome\User Data\Default\Cache" /F /Q /S
+del "%LocalAppData%\Google\Chrome\User Data\Default\Media Cache" /F /Q /S
+del "%LocalAppData%\Google\Chrome\User Data\Default\GPUCache" /F /Q /S
+del "%LocalAppData%\Google\Chrome\User Data\Default\Storage\ext" /F /Q /S
+del "%LocalAppData%\Google\Chrome\User Data\Default\Service Worker" /F /Q /S
+del "%LocalAppData%\Google\Chrome\User Data\ShaderCache" /F /Q /S
+goto MicrosoftEdgeTemp
+
+:MicrosoftEdgeTemp
+del "%LocalAppData%\Microsoft\Edge\User Data\Default\Cache" /F /Q /S
+del "%LocalAppData%\Microsoft\Edge\User Data\Default\Media Cache" /F /Q /S
+del "%LocalAppData%\Microsoft\Edge\User Data\Default\GPUCache" /F /Q /S
+del "%LocalAppData%\Microsoft\Edge\User Data\Default\Storage\ext" /F /Q /S
+del "%LocalAppData%\Microsoft\Edge\User Data\Default\Service Worker" /F /Q /S
+del "%LocalAppData%\Microsoft\Edge\User Data\ShaderCache" /F /Q /S
+del "%LocalAppData%\Microsoft\Edge SxS\User Data\Default\Cache" /F /Q /S
+del "%LocalAppData%\Microsoft\Edge SxS\User Data\Default\Media Cache" /F /Q /S
+del "%LocalAppData%\Microsoft\Edge SxS\User Data\Default\GPUCache" /F /Q /S
+del "%LocalAppData%\Microsoft\Edge SxS\User Data\Default\Storage\ext" /F /Q /S
+del "%LocalAppData%\Microsoft\Edge SxS\User Data\Default\Service Worker" /F /Q /S
+del "%LocalAppData%\Microsoft\Edge SxS\User Data\ShaderCache" /F /Q /S
+goto OperaTemp
+
+:OperaTemp
+del "%LocalAppData%\Opera Software\Opera Stable\cache" /F /Q /S
+del "%AppData%\Opera Software\Opera Stable\GPUCache" /F /Q /S
+del "%AppData%\Opera Software\Opera Stable\ShaderCache" /F /Q /S
+del "%AppData%\Opera Software\Opera Stable\Jump List Icons" /F /Q /S
+del "%AppData%\Opera Software\Opera Stable\Jump List IconsOld\Jump List Icons" /F /Q /S
+goto VivaldiTemp
+
+:VivaldiTemp
+del "%LocalAppData%\Vivaldi\User Data\Default\Cache" /F /Q /S
+goto WindowsDefenderTemp
+
+:WindowsDefenderTemp
+del "%ProgramData%\Microsoft\Windows Defender\Network Inspection System\Support\*.log" /F /Q /S
+del "%ProgramData%\Microsoft\Windows Defender\Scans\History\CacheManager" /F /Q /S
+del "%ProgramData%\Microsoft\Windows Defender\Scans\History\ReportLatency\Latency" /F /Q /S
+del "%ProgramData%\Microsoft\Windows Defender\Scans\History\Service\*.log" /F /Q /S
+del "%ProgramData%\Microsoft\Windows Defender\Scans\MetaStore" /F /Q /S
+del "%ProgramData%\Microsoft\Windows Defender\Support" /F /Q /S
+del "%ProgramData%\Microsoft\Windows Defender\Scans\History\Results\Quick" /F /Q /S
+del "%ProgramData%\Microsoft\Windows Defender\Scans\History\Results\Resource" /F /Q /S
+goto FontCache
+
+:FontCache
+net stop FontCache
+net stop FontCache3.0.0.0
+del "%WinDir%\ServiceProfiles\LocalService\AppData\Local\FontCache\*.dat" /F /Q /S
+del "%WinDir%\SysNative\FNTCACHE.DAT" /F /Q /S
+del "%WinDir%\System32\FNTCACHE.DAT" /F /Q /S
+net start FontCache
+net start FontCache3.0.0.0
 goto LogFiles
 
 :LogFiles
