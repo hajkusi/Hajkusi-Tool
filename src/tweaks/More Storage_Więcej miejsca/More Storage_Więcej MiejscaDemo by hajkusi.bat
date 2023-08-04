@@ -4,35 +4,12 @@ goto Prompt1
 :PROMPT1
 SET /P AREYOUSURE= Do You Want To Delete Download Files? (You can choose which files are deleted)\Chcesz Usunac Pliki Z Folderu Pobrane (Mozesz wybierac,ktore)(Y/N)?
 IF /I "%AREYOUSURE%" NEQ "Y" goto home
-IF /I "%AREYOUSURE%" NEQ "N" goto GetInput
-
-:PROMPT2
-cls
-Echo Your User Download directory is %UserDownloadDir%\Twoj katalog pobierania uzytkownika to %UserDownloadDir%
-SET /P ISTHATTRUE=Is that true? (Y/N)?
-IF /I "%ISTHATTRUE%" NEQ "Y" goto GetInput
-IF /I "%ISTHATTRUE%" NEQ "N" goto Y
+IF /I "%AREYOUSURE%" NEQ "N" goto y
 :Y
+cd %userprofile%\Downloads
 del *.* /q /p /s
 for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q/p || del "%%i" /s/q)
 goto home
-
-:GetInput
-cls
-Set "UserDownloadDir="
-Rem Request input from the user. 
-Set /P "UserDownloadDir=Please enter the location of your User Download directory: "\
-cls
-Rem If input is not a directory ask again
-For %%G In ("%UserDownloadDir%") Do If "%%~aG" Lss "d" If "%%~aG" GEq "-" (
-    GoTo GetInput) Else GoTo GetInput
-Rem Valid directory detected so continuing
-Echo Your User Download directory is %UserDownloadDir%
-Pause
-Rem Make the User Download directory the current directory
-CD /D "%UserDownloadDir%"
-Echo Your current directory is %CD%
-goto PROMPT2
 
 :home
 cd C:\Windows\Temp
