@@ -148,13 +148,9 @@ cls
 goto Net
 
 :Net
-@echo
 net stop UsoSvc
-@echo
 net stop bits
-@echo
 net stop dosvc
-@echo
 goto PromptForWindowspdateTempFiles
 
 :PromptForWindowsUpdateTempFiles
