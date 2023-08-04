@@ -2,31 +2,27 @@ Chris ToolBox
 !Microsoft Edge Browser Will Be Removed! -----> 5.5
 1.Open WinUtil
 2.Wait.
-2.5.If it pops up: "Checking if Chocolatey is Installed... Seems Chocolatey is not installed, installing now? Are you Sure You Want to Proceed: (y/n): "type" Y " and click Enter
-3.Enter the Tweaks tab
+2.5.If It Pops Up: "Checking if Chocolatey is Installed... Seems Chocolatey is not installed, installing now? Are you Sure You Want to Proceed: (y/n): "type" Y " and click Enter
+3.Enter The Tweaks Tab
 4.Click "Import"
-5.Find The Chris ToolBox File.json and click on it twice
+5.Find The Chris ToolBox File.json And Click On It Twice
 5.5.(Important!!!)If You Are Using Microsoft Edge, In Misc. Tweaks Uncheck "Remove Microsoft Edge"
-6.Click "Run Tweaks" wait a minute it will take
-7.You'll need another Powershell to uninstall Microsoft Edge
-8.Turn your system off and on
+6.Click "Run Tweaks" Wait A Minute It Will Take Some Time
+7.You'll Need Another Powershell To Uninstall Microsoft Edge
+8.Restart Your System
 WindowsToolbox-1.0.4
-1.right-click on main. ps1 and click run with powershell
-2.If you want a system restore point then type y if not then n
-3.click enter when the message pops up
-4.Control down and up arrows and select enter and return Esc
-5.Enter the Debloat tab
-6.Launch: "Disable services", "Disable Windows Defender Cloud","Optimize Windows Updates","Remove OneDrive if not using","Remove Xbox bloat"
-7.Go to Privacy Settings
-7.2."Disable Advertising ID"
+1.Right-Click On Main.ps1 And Click Run With Powershell
+2.If You Want A System Restore Point Then Type "Y" If Not Then "N"
+3.Click Enter When The Message Pops Up
+4.Control: Down And Up Arrows And Select Enter And Return Esc
+5.Enter The Debloat Tab
+6.Launch: "Disable services", "Disable Windows Defender Cloud","Optimize Windows Updates","Remove OneDrive If Not using","Remove Xbox bloat"
+7.Go To Privacy Settings
+7.2.Disable "Advertising ID"
 7.4.Launch "App Suggestions"
-7.6.Launch "Location Services" if you don't use location services
-7.8."Tailored Expressions"
-8.Launch: "Disable Telemetry" and " Privacy Fixes (WIP)"
-9.Go to the Tweaks tab and select "Tweaks System"
-10.Launch: "Disable Edge prelaunch", "Disable Prefetch prelaunch", "Disable Superfetch if you have no or no external HDD on your system", "Improve SSD Lifespan if you have any SSD" and "Lower RAM usage"
-11.Go to the Options tab and select "Exit"
-ET-Optimizer
-1.right-click on main. ps1 and click run with powershell
-2.In Other (6) Select "Clean WinSxS Folder"
-3.In Expert Mode (4) check: "Disable Xbox Services if you do not use the Xbox app", " Enable Fast / Secure DNS (1.1.1.1)", " Disable Spectre / Meltdown Protection if you want to squeeze every fps from your computer/laptop(not recommended)"
+7.6.Launch "Location Services" If You Don't Use Any Location Services
+7.8.Disable "Tailored Expressions"
+8.Launch: "Disable Telemetry" And " Privacy Fixes (WIP)"
+9.Go To The Tweaks Tab And Select "Tweaks System"
+10.Launch: "Disable Edge Prelaunch","Disable Prefetch prelaunch","Disable Superfetch if you have no or no external HDD on your system","Improve SSD Lifespan if you have any SSD" and "Lower RAM usage"
+11.Go To The Options Tab And Select "Exit"

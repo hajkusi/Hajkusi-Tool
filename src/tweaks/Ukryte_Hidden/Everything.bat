@@ -527,7 +527,7 @@ Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters" /v "Key
 goto ImproveResponsiveness
 
 :ImproveResponsiveness
-Echo Making Menu More Responsive By scar#1301\Zwiekszenie responsywnosci menu dzieki Scar#1301
+Echo Making Menu More Responsive By scar#1301\Zwiekszenie responsywnosci menu dzieki scar#1301
 reg add "HKU\.DEFAULT\Control Panel\Desktop" /v "MenuShowDelay" /t REG_SZ /d "0" /f >NUL 2>&1
 goto MemoryTweaks
 
