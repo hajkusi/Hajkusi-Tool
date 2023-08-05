@@ -835,30 +835,30 @@ IF /I "%RAM%" NEQ "N" goto Y
 
 :4GBRam
 Reg.exe add "HKLM\SYSTEM\ControlSet001\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "68764420" /f
-goto PromptForTakeOwnerShipInContext
+goto PromptForAddTakeOwnerShipInContextv
 :6GBRam
 Reg.exe add "HKLM\SYSTEM\ControlSet001\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "103355478" /f
-goto PromptForTakeOwnerShipInContext
+goto PromptForAddTakeOwnerShipInContext
 :8GBRam
 Reg.exe add "HKLM\SYSTEM\ControlSet001\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "137922056" /f
-goto PromptForTakeOwnerShipInContext
+goto PromptForAddTakeOwnerShipInContext
 :16GBRam
 Reg.exe add "HKLM\SYSTEM\ControlSet001\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "376926742" /f
-goto PromptForTakeOwnerShipInContext
+goto PromptForAddTakeOwnerShipInContext
 :32GBRam
 Reg.exe add "HKLM\SYSTEM\ControlSet001\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "861226034" /f
-goto PromptForTakeOwnerShipInContext
+goto PromptForAddTakeOwnerShipInContext
 :64GB
 Reg.exe add "HKLM\SYSTEM\ControlSet001\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "1729136740" /f
-goto PromptForTakeOwnerShipInContext
+goto PromptForAddTakeOwnerShipInContext
 
-:PromptForTakeOwnerShipInContext
+:PromptForAddTakeOwnerShipInContext
 ET /P TakeOwnerShipInContext=Do You Want To Add Take OwnerShip In Context Menu\Czy Chcesz Dodac Take OwnerShip do Menu Kontekstowego?(Y/N)
 IF /I "%TAKEOWNERSHIPINCONTEXTMENU%" NEQ "Y" goto PromptForOptionalTweaks
-IF /I "%TAKEOWNERSHIPINCONTEXTMENU%" NEQ "N" goto TakeOwnerShipInContextMenu
+IF /I "%TAKEOWNERSHIPINCONTEXTMENU%" NEQ "N" goto AddTakeOwnerShipInContextMenu
 
-:TakeOwnerShipInContextMenu
-cd %cd%
+:AddTakeOwnerShipInContextMenu
+cd %~dp0
 reg import Show-Take-Ownership-Context-Menu.reg
 cls
 goto PromptForOptionalTweaks
