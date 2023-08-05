@@ -62,16 +62,16 @@ if errorlevel  2 goto:NV2
 if errorlevel  1 goto:NV1
 
 :NV1
-powershell -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/460788721789173760/836340936865742918/nvidiaProfileInspector.exe' -OutFile C:\Windows\nvidiaProfileInspector.exe
-powershell -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/460788721789173760/837315087907422228/nvprofile.nip' -OutFile C:\Windows\nvprofile.nip
-start "" /wait "C:\Windows\nvidiaProfileInspector.exe" "C:\Windows\nvprofile.nip"
+powershell -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1137465161242923008/nvidiaProfileInspector.exe' -OutFile C:\Windows\nvidiaProfileInspector.exe
+powershell -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1137465769744154634/Latency_and_Performances_Settings_by_Hone_Team3.nip' -OutFile C:\Windows\nvprofile.nip
+start "" /wait "C:\Windows\nvidiaProfileInspector.exe" "C:\Windows\Latency_and_Performances_Settings_by_Hone_Team3.nip"
 timeout 2 >nul
 goto :AMD
 
 :NV2
-powershell -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/460788721789173760/836340936865742918/nvidiaProfileInspector.exe' -OutFile C:\Windows\nvidiaProfileInspector.exe
-powershell -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/460788721789173760/836340587782996038/nvprofile.nip' -OutFile C:\Windows\nvprofile.nip
-start "" /wait "C:\Windows\nvidiaProfileInspector.exe" "C:\Windows\nvprofile.nip"
+powershell -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1137465161242923008/nvidiaProfileInspector.exe' -OutFile C:\Windows\nvidiaProfileInspector.exe
+powershell -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1137465769744154634/Latency_and_Performances_Settings_by_Hone_Team3.nip' -OutFile C:\Windows\nvprofile.nip
+start "" /wait "C:\Windows\nvidiaProfileInspector.exe" "C:\Windows\Latency_and_Performances_Settings_by_Hone_Team3.nip"
 timeout 2 >nul
 goto :AMD
 
