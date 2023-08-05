@@ -443,9 +443,11 @@ fsutil behavior set mftzone 2
 fsutil behavior set encryptpagingfile 0
 fsutil behavior set disablecompression 1
 fsutil behavior set disabledeletenotify 0
+cls
 goto PromptForAudio
 
 :Audio
+cls
 cd %SYSTEMDRIVE%\Gaming\Resources
 curl -g -L -# -o "%SYSTEMDRIVE%\Gaming\Resources\nssm.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/nssm.exe"
 curl -g -L -# -o "%SYSTEMDRIVE%\Gaming\Resources\REAL.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/REAL.exe"
@@ -458,7 +460,7 @@ nssm set GamingAudio start SERVICE_AUTO_START
 nssm start GamingAudio
 goto Telemetry
 
-:Telemetry
+cls
 Echo Disabling Telemetry
 schtasks /end /tn "\Microsoft\Windows\Customer Experience Improvement Program\Consolidator"
 schtasks /change /tn "\Microsoft\Windows\Customer Experience Improvement Program\Consolidator" /disable
