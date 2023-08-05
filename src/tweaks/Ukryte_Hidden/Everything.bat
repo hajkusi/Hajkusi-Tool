@@ -461,6 +461,7 @@ nssm set GamingAudio start SERVICE_AUTO_START
 nssm start GamingAudio
 goto Telemetry
 
+:Telemetry
 cls
 Echo Disabling Telemetry
 schtasks /end /tn "\Microsoft\Windows\Customer Experience Improvement Program\Consolidator"
