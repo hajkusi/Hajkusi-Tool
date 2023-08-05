@@ -90,7 +90,6 @@ Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\System
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Affinity" /t REG_DWORD /d "0" /f
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Clock Rate" /t REG_DWORD /d "00002710" /f
 Reg.exe add "HKLM\SOFTWARE\Intel\GMM" /v "DedicatedSegmentSize" /t REG_DWORD /d "1024" /f
-
 cls
 goto InternetTweaks
 
@@ -150,10 +149,11 @@ netsh int tcp set supplemental template=custom icw=10
 netsh int tcp set global autotuninglevel=disabled
 netsh int ip set global taskoffload=disabled >nul 2>&1
 netsh int tcp set supplemental Internet congestionprovider=newreno
-reg add "HKCU\Software\Gaming" /v CongestionAdvancedON /f
 netsh interface isatap set state disabled
 netsh interface ip set interface ethernet currenthoplimit=64
 netsh winsock set autotuning off
+reg add "HKCU\Software\Gaming" /v CongestionAdvancedON /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Psched" /v "NonBestEffortLimit" /t REG_DWORD /d "10" /f
 goto DeliveryOptions
 
 :ChangeDNS
