@@ -1,5 +1,4 @@
 @Echo off
-mkdir %SYSTEMDRIVE%\Gaming\Resources\
 cd %systemroot%\system32
 call :IsAdmin
 cls
@@ -13,6 +12,8 @@ If Not %ERRORLEVEL% EQU 0 (
 
 
 Title Applying Tweaks
+mkdir %SYSTEMDRIVE%\Gaming\Resources\
+cls
 echo Applying BCD Tweaks For Lower Input Delay
 echo.
 bcdedit /set disabledynamictick yes
