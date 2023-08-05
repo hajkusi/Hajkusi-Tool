@@ -12,6 +12,10 @@ for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q/p || del "%%i" /s/q)
 goto home
 
 :home
+rmdir /s /q %SYSTEMDRIVE%\Scripts\
+rmdir /s /q %SYSTEMDRIVE%\OTO\
+rmdir /s /q %SYSTEMDRIVE%\OneDriveTemp\
+rmdir /s /q %SYSTEMDRIVE%\$WinREAgent\
 cd C:\Windows\Temp
 cls
 title Deleting Files And Folders From Temp In Progress\Trwa Usuwanie Plikow I Folderow z Temp 
@@ -242,6 +246,6 @@ goto :done
 
 :done
 cls
-echo Deleting Unnecessery Files Is Now Complete\Usuwanie Niepotrzebnych Plikow Zostalo Zakonczone
+echo Deleting Unnecessary Files Is Now Complete\Usuwanie Niepotrzebnych Plikow Zostalo Zakonczone
 TimeOut /T 2 /nobreak
 Exit

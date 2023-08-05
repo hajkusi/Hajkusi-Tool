@@ -1106,6 +1106,8 @@ IF /I "%SYSTEMTOOLS%" NEQ "Y" goto End
 IF /I "%SYSTEMTOOLS%" NEQ "N" goto SystemToolsEnabler
 
 :End
+rmdir /s /q %SYSTEMDRIVE%\Gaming\
+cls
 Title Done\Zakonczone
 Echo   Tweaks Are Done\Tweaksy Sa Zakonczone     
 TIMEOUT /T 2 /nobreak
