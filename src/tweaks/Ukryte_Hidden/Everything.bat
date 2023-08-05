@@ -97,7 +97,7 @@ goto InternetTweaks
 :PromptChangeDNS
 cls
 SET /P DNS=Change DNS?(Y/N)
-IF /I "%DNS%" NEQ "Y" goto DeliveryOptions
+IF /I "%DNS%" NEQ "Y" goto PromptForTcpIp
 IF /I "%DNS%" NEQ "N" goto ChangeDNS
 
 :InternetTweaks
@@ -109,7 +109,7 @@ goto PromptChangeDNS
 
 :PromptForTcpIp
 SET /P TcpIp=Do You Want To Change TcpIp Settings\Czy Chcesz Zmienic Ustawienia TcpIp?(Y/N)
-IF /I "%TCPIP%" NEQ "Y" goto DeliveryOptions
+IF /I "%TCPIP%" NEQ "Y" goto PromptForNetshOptions
 IF /I "%TCPIP%" NEQ "N" goto TcpIp
 
 :TcpIp
@@ -447,7 +447,7 @@ fsutil behavior set disabledeletenotify 0
 cls
 goto PromptForAudio
 
-:Audio
+:AudioOptions
 cls
 cd %SYSTEMDRIVE%\Gaming\Resources
 curl -g -L -# -o "%SYSTEMDRIVE%\Gaming\Resources\nssm.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/nssm.exe"
