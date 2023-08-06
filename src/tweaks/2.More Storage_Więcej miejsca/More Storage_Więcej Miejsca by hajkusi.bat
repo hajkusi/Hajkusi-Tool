@@ -13,7 +13,7 @@ If Not %ERRORLEVEL% EQU 0 (
 :PROMPT1
 SET /P AREYOUSURE= Do You Want To Delete Download Files? (You can choose which files are deleted)\Chcesz Usunac Pliki Z Folderu Pobrane (Mozesz wybierac,ktore)(Y/N)?
 IF /I "%AREYOUSURE%" NEQ "Y" goto home
-IF /I "%AREYOUSURE%" NEQ "N" goto y
+IF /I "%AREYOUSURE%" NEQ "N" goto Y
 :Y
 cd %userprofile%\Downloads
 del *.* /q /p /s
@@ -25,6 +25,7 @@ rmdir /s /q %SYSTEMDRIVE%\Scripts\
 rmdir /s /q %SYSTEMDRIVE%\OTO\
 rmdir /s /q %SYSTEMDRIVE%\OneDriveTemp\
 rmdir /s /q %SYSTEMDRIVE%\$WinREAgent\
+rmdir /s /q %SYSTEMDRIVE%\PerfLogs\
 cd C:\Windows\Temp
 cls
 title Deleting Files And Folders From Temp In Progress\Trwa Usuwanie Plikow I Folderow z Temp 
@@ -92,8 +93,8 @@ IF /I "%TEMPFORTNITEANDEPICGAMES%" NEQ "N" goto TempFortniteAndEpicGames
 
 :TempFortniteAndEpicGames
 cls
-Echo Clearing Epic Games and Fortnite Temporary Files\Czyszczenie plikow tymczasowych Epic Games i Fortnite:
-erase /F /S /Q "%SystemRoot%\TEMP*.*"
+Echo Clearing Epic Games and Fortnite Temporary Files\Czyszczenie Plikow Tymczasowych Epic Games I Fortnite:
+del /F /S /Q "%SystemRoot%\TEMP*.*"
 for /D %%G in ("%SystemRoot%\TEMP*") do RD /S /Q "%%G"
 for /D %%G in ("%SystemDrive%\Users*") do erase /F /S /Q "%%G\AppData\Local\Temp*.*"
 for /D %%G in ("%SystemDrive%\Users*") do RD /S /Q "%%G\AppData\Local\Temp\" 
@@ -241,7 +242,7 @@ goto PromptForWindowsCleaner
 
 :PromptForWindowsCleaner
 cls
-echo Do you Want To Start Windows Cleaner (cleanmgr.exe)\Czy chcesz uruchomic narzedzie do czyszczenia systemu Windows(cleanmgr.exe)
+echo Do you Want To Start Windows Cleaner (cleanmgr.exe)\Czy Chcesz Uruchomic Narzedzie Do Czyszczenia Systemu Windows(cleanmgr.exe)
 SET /P WindowsCleaner=Yes or No\Tak Czy Nie? (Y/N)?
 IF /I "%WINDOWSCLEANER%" NEQ "Y" goto done
 IF /I "%WINDOWSCLEANER%" NEQ "N" goto WindowsCleaner
