@@ -51,6 +51,7 @@ reg add "HKCU\Software\NVIDIA Corporation\Global\NVTweak\Devices\509901423-0\Col
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "PlatformSupportMiracast" /t Reg_DWORD /d "0" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\NVTweak" /v "DisplayPowerSaving" /t Reg_DWORD /d "0" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\FTS" /v "EnableRID61684" /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\FTS" /v "EnableRID61684" /t REG_DWORD /d "1" /f
 cls
 Echo Choosing Type Of Drivers\Wybieranie Typu Sterownikow
 echo.
@@ -101,9 +102,30 @@ Reg.exe add "HKLM\SOFTWARE\Intel\GMM" /v "DedicatedSegmentSize" /t REG_DWORD /d 
 cls
 goto InternetTweaks
 
+:EthernetOptions
+reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}" /v "MIMOPowerSaveMode" /t REG_SZ /d "3" /f
+reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}" /v "PowerSavingMode" /t REG_SZ /d "0" /f
+reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}" /v "EnableGreenEthernet" /t REG_SZ /d "0" /f
+reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}" /v "*EEE" /t REG_SZ /d "0" /f
+reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}" /v "EnableConnectedPowerGating" /t REG_DWORD /d "0" /f
+reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}" /v "EnableDynamicPowerGating" /t REG_SZ /d "0" /f
+reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}" /v "EnableSavePowerNow" /t REG_SZ /d "0" /f
+reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}" /v "PnPCapabilities" /t REG_SZ /d "24" /f
+REM more powersaving optionn
+reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}" /v "*NicAutoPowerSaver" /t REG_SZ /d "0" /f
+reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}" /v "ULPMode" /t REG_SZ /d "0" /f
+reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}" /v "EnablePME" /t REG_SZ /d "0" /f
+reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}" /v "AlternateSemaphoreDelay" /t REG_SZ /d "0" /f
+reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}" /v "AutoPowerSaveModeEnabled" /t REG_SZ /d "0" /f
+reg add "HKLM\System\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /v "PowerMizerEnable" /t REG_DWORD /d "1" /f
+reg add "HKLM\System\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /v "PowerMizerLevel" /t REG_DWORD /d "1" /f
+reg add "HKLM\System\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /v "PowerMizerLevelAC" /t REG_DWORD /d "1" /f
+reg add "HKLM\System\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /v "PerfLevelSrc" /t REG_DWORD /d "8738" /f
+goto PromptChangeDNS
+
 :PromptChangeDNS
 cls
-SET /P DNS=Change DNS?(Y/N)
+SET /P DNS=Change DNS To Faster One?(Y/N)
 IF /I "%DNS%" NEQ "Y" goto PromptForTcpIp
 IF /I "%DNS%" NEQ "N" goto ChangeDNS
 
@@ -112,7 +134,7 @@ ipconfig /flushdns
 ipconfig /release
 ipconfig /renew
 ipconfig /renew6
-goto PromptChangeDNS
+goto EthernetOptions
 
 :PromptForTcpIp
 SET /P TcpIp=Do You Want To Change TcpIp Settings\Czy Chcesz Zmienic Ustawienia TcpIp?(Y/N)
@@ -144,6 +166,9 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "NonBlockingS
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "IgnorePushBitOnReceives" /t REG_DWORD /d "1" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DynamicSendBufferDisable" /t REG_DWORD /d "0" /f
 reg add "HKLM\Software\Microsoft\MSMQ\Parameters" /v "TCPNoDelay" /t REG_DWORD /d "1" /f
+reg add "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i" /v "TcpAckFrequency" /t Reg_DWORD /d "1" /f
+reg add "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i" /v "TcpDelAckTicks" /t Reg_DWORD /d "0" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i" /v "TcpInitialRTT" /d "300" /t REG_DWORD /f
 goto PromptForNetshOptions
 
 :NetshOptions
@@ -1115,10 +1140,39 @@ Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStor
 goto End
 
 :PromptForSystemTools
-Echo Do You Want To Enable GPedit\Chcesz Wlaczyc GPedit?
+Echo Do You Want To Enable System Tools\Chcesz Wlaczyc Narzedzia Systemu?
+SET /P System=Yes or No? (Y/N)
+IF /I "%SYSTEMTOOLS%" NEQ "Y" goto PromptForSoftRestart
+IF /I "%SYSTEMTOOLS%" NEQ "N" goto SystemToolsEnabler
+
+:PromptForSoftRestart
+Echo Do You Want To Perform Computer SoftRestart(It's Safe,And It Gives You More Performance)\Czy Chcesz Wykonać Lekkie Uruchomienie Ponownie Komputera(Jest Bezpieczne,I Zapewnia To Większą Wydajność)?
 SET /P System=Yes or No? (Y/N)
 IF /I "%SYSTEMTOOLS%" NEQ "Y" goto End
-IF /I "%SYSTEMTOOLS%" NEQ "N" goto SystemToolsEnabler
+IF /I "%SYSTEMTOOLS%" NEQ "N" goto SoftRestart
+
+:SoftRestart
+cd %TEMP%
+if not exist "%TEMP%\NSudo.exe" curl -g -L -# -o "%TEMP%\NSudo.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/NSudo.exe"
+NSudo.exe -U:S -ShowWindowMode:Hide cmd /c "reg add "HKLM\SYSTEM\CurrentControlSet\Services\TrustedInstaller" /v "Start" /t Reg_DWORD /d "3" /f" >nul 2>&1
+NSudo.exe -U:S -ShowWindowMode:Hide cmd /c "sc start "TrustedInstaller"" >nul 2>&1
+if not exist "%TEMP%\restart64.exe" curl -g -L -# -o "%TEMP%\Restart64.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/restart64.exe"
+if not exist "%TEMP%\EmptyStandbyList.exe" curl -g -L -# -o "%TEMP%\EmptyStandbyList.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/EmptyStandbyList.exe"
+taskkill /f /im explorer.exe >nul 2>&1
+cd %SYSTEMROOT% >nul 2>&1
+start explorer.exe >nul 2>&1
+cd %TEMP%
+echo netsh advfirewall reset >RefreshNet.bat
+echo ipconfig /release >>RefreshNet.bat
+echo ipconfig /renew >>RefreshNet.bat
+echo nbtstat -R >>RefreshNet.bat
+echo nbtstat -RR >>RefreshNet.bat
+echo ipconfig /flushdns >>RefreshNet.bat
+echo ipconfig /registerdns >>RefreshNet.bat
+NSudo -U:T -P:E -M:S -ShowWindowMode:Hide -wait cmd /c "%TEMP%\RefreshNet.bat"
+Restart64.exe
+EmptyStandbyList.exe standbylist
+goto End
 
 :End
 rmdir /s /q %SYSTEMDRIVE%\Gaming_Pack\
