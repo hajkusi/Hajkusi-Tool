@@ -473,10 +473,13 @@ IF /I "%AUDIO%" NEQ "N" goto AudioOptions
 :fsutil
 fsutil behavior set memoryusage 2
 fsutil behavior set mftzone 2
-fsutil behavior set mftzone 2
+fsutil behavior set disablelastaccess 1
 fsutil behavior set encryptpagingfile 0
 fsutil behavior set disablecompression 1
 fsutil behavior set disabledeletenotify 0
+fsutil 8dot3name set 1
+fsutil resource setavailable C:\
+fsutil resource setlog shrink 10 C:\
 cls
 goto PromptForAudio
 
@@ -766,11 +769,6 @@ IF /I "%AREYOUSURE%" NEQ "N" goto HardwareDataQueueSize
 Echo Setting HardwareDataQueueSize\Ustawianie Rozmiaru Sprzetowej Kolejki Komputerowej
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\mouclass\Parameters" /v "MouseDataQueueSize" /t REG_DWORD /d "%HardwareDataQueueSize%" /f
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters" /v "KeyboardDataQueueSize" /t REG_DWORD /d "%HardwareDataQueueSize%" /f
-goto ImproveResponsiveness
-
-:ImproveResponsiveness
-Echo Making Menu More Responsive By scar#1301\Zwiekszenie responsywnosci menu dzieki scar#1301
-reg add "HKU\.DEFAULT\Control Panel\Desktop" /v "MenuShowDelay" /t REG_SZ /d "0" /f >NUL 2>&1
 goto MemoryTweaks
 
 :MemoryTweaks
@@ -794,7 +792,7 @@ goto OptimalWin32Priority
 
 :OptimalWin32Priority
 Echo Applying Optimal Win32Priority For Balanced FPS And Latency\Zastosowywanie Optymalnych Ustawien Dla Win32Priority Dla Zbalansowanych Fps i Mniejszego Opoznienia Systemu
-reg add "HKLM\SYSTEM\ControlSet001\Control\PriorityControl" /v "Win32PrioritySeparation" /t REG_DWORD /d "38" /f
+reg add "HKLM\SYSTEM\ControlSet001\Control\PriorityControl" /v "Win32PrioritySeparation" /t REG_DWORD /d "26" /f
 
 Echo
 timeout 2 >nul
@@ -925,7 +923,7 @@ Reg.exe add "HKCU\Control Panel\Desktop" /v "HungAppTimeout" /t REG_SZ /d "1000"
 Reg.exe add "HKCU\Control Panel\Desktop" /v "MenuShowDelay" /t REG_SZ /d "0" /f
 Reg.exe add "HKCU\Control Panel\Desktop" /v "WaitToKillAppTimeout" /t REG_SZ /d "1000" /f
 Reg.exe add "HKCU\Control Panel\Desktop" /v "LowLevelHooksTimeout" /t REG_SZ /d "1000" /f
-Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control" /v "WaitToKillServiceTimeout" /t REG_SZ /d "1000" /f
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control" /v "WaitToKillServiceTimeout" /t REG_SZ /d "5000" /f
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v "DisableAntiSpyware" /t REG_DWORD /d "1" /f
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization" /f
 Reg.exe add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Serialize" /v "StartupDelayInMSec" /t REG_DWORD /d "0" /f
@@ -1006,6 +1004,7 @@ reg add "HKLM\SYSTEM\ControlSet001\Control\Class\{4D36E968-E325-11CE-BFC1-08002B
 for /f %%i in ('reg query "HKLM\System\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /t REG_SZ /s /e /f "NVIDIA" ^| findstr "HKEY"') do (
 reg add "%%i" /v "DisableDynamicPstate" /t REG_DWORD /d "1" /f
 )
+reg add "HKCU\Control Panel\Desktop" /v ForegroundLockTimeout /t REG_DWORD /d 0 /f
 reg delete "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePriority" /f
 reg delete "HKLM\System\CurrentControlSet\Enum\%%g\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePriority" /f
 reg delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "NvBackend" /f
