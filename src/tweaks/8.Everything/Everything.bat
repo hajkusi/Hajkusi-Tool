@@ -869,21 +869,27 @@ IF /I "%RAM%" NEQ "N" goto Y
 
 :4GBRam
 Reg.exe add "HKLM\SYSTEM\ControlSet001\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "68764420" /f
+bcdedit /set increaseuserva 2000
 goto PromptForAddTakeOwnerShipInContextMenu
 :6GBRam
 Reg.exe add "HKLM\SYSTEM\ControlSet001\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "103355478" /f
+bcdedit /set increaseuserva 3000
 goto PromptForAddTakeOwnerShipInContextMenu
 :8GBRam
 Reg.exe add "HKLM\SYSTEM\ControlSet001\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "137922056" /f
+bcdedit /set increaseuserva 4000
 goto PromptForAddTakeOwnerShipInContextMenu
 :16GBRam
 Reg.exe add "HKLM\SYSTEM\ControlSet001\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "376926742" /f
+bcdedit /set increaseuserva 8000
 goto PromptForAddTakeOwnerShipInContextMenu
 :32GBRam
 Reg.exe add "HKLM\SYSTEM\ControlSet001\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "861226034" /f
+bcdedit /set increaseuserva 16000
 goto PromptForAddTakeOwnerShipInContextMenu
 :64GB
 Reg.exe add "HKLM\SYSTEM\ControlSet001\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "1729136740" /f
+bcdedit /set increaseuserva 32000
 goto PromptForAddTakeOwnerShipInContextMenu
 
 :PromptForAddTakeOwnerShipInContextMenu
