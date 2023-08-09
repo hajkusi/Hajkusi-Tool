@@ -60,9 +60,9 @@ echo 2. Quality\Jakosc (Average Computer\Przecietny Komputer)
 echo 3. Max FPS (for show-off\Dla Pokazu)
 echo.   
 choice /C:123 /M "> Enter The Choice On The Keyboard: "	
-if errorlevel  3 goto NV1
+if errorlevel  3 goto NV3
 if errorlevel  2 goto NV2
-if errorlevel  1 goto NV3
+if errorlevel  1 goto NV1
 
 :NV1
 powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1137695847094698054/NvidiaProfileInspector.exe' -OutFile %SYSTEMDRIVE%\Gaming_Pack\Resources\NvidiaProfileInspector.exe
