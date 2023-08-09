@@ -179,16 +179,22 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i"
 goto PromptForNetshOptions
 
 :NetshOptions
+netsh int tcp set heuristics disabled
+netsh int tcp set global rsc=disabled
+netsh int tcp set global chimney=disabled
 netsh int tcp set global dca=enabled
 netsh int tcp set global netdma=enabled
+netsh int tcp set global ecncapability=enabled
 netsh int tcp set global timestamps=disabled
+netsh int tcp set global nonsackrttresiliency=disabled
 netsh int tcp set global rss=enabled
 netsh int tcp set global nonsackrttresiliency=disabled
 netsh int tcp set global initialRto=2000
+netsh interface tcp set global MaxSynRetransmissions=2
 netsh int tcp set supplemental template=custom icw=10
-netsh int tcp set global autotuninglevel=disabled
+netsh int tcp set global autotuninglevel=normal
 netsh int ip set global taskoffload=disabled >nul 2>&1
-netsh int tcp set supplemental Internet congestionprovider=newreno
+netsh int tcp set supplemental Internet congestionprovider=CUBIC
 netsh interface isatap set state disabled
 netsh interface ip set interface ethernet currenthoplimit=64
 netsh winsock set autotuning off
@@ -747,6 +753,8 @@ reg add "HKCU\System\GameConfigStore" /v "GameDVR_EFSEFeatureFlags" /t REG_DWORD
 reg add "HKCU\System\GameConfigStore" /v "GameDVR_DSEBehavior" /t REG_DWORD /d "2" /f
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /v "AllowGameDVR" /t REG_DWORD /d "0" /f
 Reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR" /v /t REG_DWORD /d "0" /f
+Reg.exe add "HKCU\System\GameConfigStore" /v "Win32_AutoGameModeDefaultProfile" /t REG_BINARY /d "020001000000c4200000000000000000000000000000000000000000000000000000000000000000" /f
+Reg.exe add "HKCU\System\GameConfigStore" /v "Win32_GameModeRelatedProcesses" /t REG_BINARY /d "010001000100670061006d006500700061006e0065006c002e006500780065000000ee001e8af974e0553503201136031e000000e05535031e0000000f000000a0e8000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" /f
 goto GpuTweaks
 
 :GpuTweaks
