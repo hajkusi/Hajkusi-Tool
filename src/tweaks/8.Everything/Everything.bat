@@ -1164,7 +1164,7 @@ IF /I "%SYSTEMTOOLS%" NEQ "Y" goto PromptForSoftRestart
 IF /I "%SYSTEMTOOLS%" NEQ "N" goto SystemToolsEnabler
 
 :PromptForSoftRestart
-Echo Do You Want To Perform Computer SoftRestart(It's Safe,And It Gives You More Performance)\Czy Chcesz Wykonać Lekkie Uruchomienie Ponownie Komputera(Jest Bezpieczne,I Zapewnia To Większą Wydajność)?
+Echo Do You Want To Perform Computer SoftRestart(It's Safe,And It Gives You More Performance)\Czy Chcesz Wykonać Lekkie Uruchomienie Ponownie Komputera(Jest Bezpieczne,I Zapewnia To Wieksza Wydajnosc)?
 SET /P System=Yes or No? (Y/N)
 IF /I "%SYSTEMTOOLS%" NEQ "Y" goto End
 IF /I "%SYSTEMTOOLS%" NEQ "N" goto SoftRestart
