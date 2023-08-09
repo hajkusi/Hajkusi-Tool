@@ -222,7 +222,7 @@ goto Net
 net stop UsoSvc
 net stop bits
 net stop dosvc
-goto PromptForWindowspdateTempFiles
+goto PromptForWindowsUpdateTempFiles
 
 :PromptForWindowsUpdateTempFiles
 cls
