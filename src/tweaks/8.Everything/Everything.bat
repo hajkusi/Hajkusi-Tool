@@ -467,7 +467,7 @@ goto fsutil
 
 :PromptForAudio
 SET /P Audio=Do You Want To Change Audio Settings\Czy Chcesz Zmienic Ustawienia Audio?(Y/N)
-IF /I "%AUDIO%" NEQ "Y" goto Telemtry
+IF /I "%AUDIO%" NEQ "Y" goto Telemetry
 IF /I "%AUDIO%" NEQ "N" goto AudioOptions
 
 :fsutil
