@@ -2,13 +2,13 @@
 goto Prompt1
 
 :PROMPT1
-SET /P AREYOUSURE= Do You Want To Delete Download Files? (You can choose which files are deleted)\Chcesz Usunac Pliki Z Folderu Pobrane (Mozesz wybierac,ktore)(Y/N)?
+SET /P AREYOUSURE= Do You Want To Delete Download Files?(You can choose which files are deleted)\Chcesz Usunac Pliki Z Folderu Pobrane (Mozesz wybierac,ktore)(Y/N)?
 IF /I "%AREYOUSURE%" NEQ "Y" goto home
-IF /I "%AREYOUSURE%" NEQ "N" goto y
+IF /I "%AREYOUSURE%" NEQ "N" goto Y
 :Y
 cd %userprofile%\Downloads
 del *.* /q /p /s
-for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q/p || del "%%i" /s/q)
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q)
 goto home
 
 :home
@@ -93,6 +93,7 @@ goto SteamTemp
 del "%localappdata%\Steam\htmlcache\Code Cache" /F /Q /S
 del %localappdata%\Steam\htmlcache\GPUCache /F /Q /S
 del %localappdata%\Steam\htmlcache\Cache /F /Q /S
+cls
 goto OriginTempAndTelemetry
 
 :OriginTempAndTelemetry
@@ -104,12 +105,14 @@ del %AppData%\Origin\CatalogCache /F /Q /S
 del %localAppData%\Origin\ThinSetup /F /Q /S
 del %AppData%\Origin\Telemetry /F /Q /S
 del %localAppData%\Origin\Logs /F /Q /S
+cls
 goto Battle.netTemp
 
 :Battle.netTemp
 del %localAppData%\Battle.net\Cache /F /Q /S
 del %AppData%\Battle.net\Logs /F /Q /S
 del %AppData%\Battle.net\Errors /F /Q /s
+cls
 goto GoogleChromeTemp
 
 :GoogleChromeTemp
@@ -119,6 +122,7 @@ del "%LocalAppData%\Google\Chrome\User Data\Default\GPUCache" /F /Q /S
 del "%LocalAppData%\Google\Chrome\User Data\Default\Storage\ext" /F /Q /S
 del "%LocalAppData%\Google\Chrome\User Data\Default\Service Worker" /F /Q /S
 del "%LocalAppData%\Google\Chrome\User Data\ShaderCache" /F /Q /S
+cls
 goto MicrosoftEdgeTemp
 
 :MicrosoftEdgeTemp
@@ -134,6 +138,7 @@ del "%LocalAppData%\Microsoft\Edge SxS\User Data\Default\GPUCache" /F /Q /S
 del "%LocalAppData%\Microsoft\Edge SxS\User Data\Default\Storage\ext" /F /Q /S
 del "%LocalAppData%\Microsoft\Edge SxS\User Data\Default\Service Worker" /F /Q /S
 del "%LocalAppData%\Microsoft\Edge SxS\User Data\ShaderCache" /F /Q /S
+cls
 goto OperaTemp
 
 :OperaTemp
@@ -142,10 +147,26 @@ del "%AppData%\Opera Software\Opera Stable\GPUCache" /F /Q /S
 del "%AppData%\Opera Software\Opera Stable\ShaderCache" /F /Q /S
 del "%AppData%\Opera Software\Opera Stable\Jump List Icons" /F /Q /S
 del "%AppData%\Opera Software\Opera Stable\Jump List IconsOld\Jump List Icons" /F /Q /S
+cls
+goto OperaGXTemp
+
+:OperaGXTemp
+del "%LocalAppData%\Opera Software\Opera GX Stable\Cache" /F /Q /S
+del "%AppData%\Opera Software\Opera GX Stable\GPUCache" /F /Q /S
+del "%AppData%\Opera Software\Opera GX Stable\ShaderCache" /F /Q /S
+del "%AppData%\Opera Software\Opera GX Stable\Jump List Icons" /F /Q /S
+del "%AppData%\Opera Software\Opera GX Stable\Jump List IconsOld\Jump List Icons" /F /Q /S
+del "%AppData%\Opera Software\Opera GX Stable\Crash Reports" /F /Q /S
+del "%AppData%\Opera Software\Opera GX Stable\GrShaderCache" /F /Q /S
+del "%AppData%\Opera Software\Opera GX Stable\old_ShaderCache_000" /F /Q /S
+del "%AppData%\Opera Software\Opera GX Stable\Code Cache\js\" /F /Q /S
+cd %AppData%\Opera Software\Opera GX Stable\File System\
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q)
 goto VivaldiTemp
 
 :VivaldiTemp
 del "%LocalAppData%\Vivaldi\User Data\Default\Cache" /F /Q /S
+cls
 goto WindowsDefenderTemp
 
 :WindowsDefenderTemp
@@ -157,6 +178,7 @@ del "%ProgramData%\Microsoft\Windows Defender\Scans\MetaStore" /F /Q /S
 del "%ProgramData%\Microsoft\Windows Defender\Support" /F /Q /S
 del "%ProgramData%\Microsoft\Windows Defender\Scans\History\Results\Quick" /F /Q /S
 del "%ProgramData%\Microsoft\Windows Defender\Scans\History\Results\Resource" /F /Q /S
+cls
 goto FontCache
 
 :FontCache
@@ -167,10 +189,10 @@ del "%WinDir%\SysNative\FNTCACHE.DAT" /F /Q /S
 del "%WinDir%\System32\FNTCACHE.DAT" /F /Q /S
 net start FontCache
 net start FontCache3.0.0.0
+cls
 goto LogFiles
 
 :LogFiles
-cls
 Echo Clearing Log Files From The System\Usuwanie plikow dziennika z systemu
 echo.
 @echo off
@@ -210,10 +232,10 @@ goto Net
 net stop UsoSvc
 net stop bits
 net stop dosvc
+cls
 goto PromptForWindowspdateTempFiles
 
 :PromptForWindowsUpdateTempFiles
-cls
 echo Do You Want To Clear Your Windows Update Temp Folder(Safe)\Chcesz Usunac Pliki Tymczasowe Windows Update(Bezpieczne)
 SET /P WindowsUpdate=Yes or No\Tak Czy Nie? (Y/N)?
 IF /I "%WINDOWSUPDATE%" NEQ "Y" goto PromptForWindowsCleaner
@@ -229,7 +251,6 @@ cls
 goto PromptForWindowsCleaner
 
 :PromptForWindowsCleaner
-cls
 echo Do you Want To Start Windows Cleaner (cleanmgr.exe)\Czy chcesz uruchomic narzedzie do czyszczenia systemu Windows(cleanmgr.exe)
 SET /P WindowsCleaner=Yes or No\Tak Czy Nie? (Y/N)?
 IF /I "%WINDOWSCLEANER%" NEQ "Y" goto done
@@ -238,6 +259,7 @@ IF /I "%WINDOWSCLEANER%" NEQ "N" goto WindowsCleaner
 :WindowsCleaner
 Echo Running Windows Cleaner\Uruchamianie programu Windows Cleaner (cleanmgr.exe)
 start "" /wait "C:\Windows\System32\cleanmgr.exe" /sagerun:50 
+cls
 goto :Cache
 
 :Cache
