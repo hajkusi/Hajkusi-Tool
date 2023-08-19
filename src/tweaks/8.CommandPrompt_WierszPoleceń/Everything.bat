@@ -710,7 +710,7 @@ reg add "HKCU\SOFTWARE\Microsoft\Tracing\WPPMediaPerApp\Skype" /v "EnableTracing
 reg add "HKCU\SOFTWARE\Microsoft\Tracing\WPPMediaPerApp\Skype\ETW" /v "EnableTracing" /t REG_DWORD /d "0" /f
 reg add "HKCEnableRID44231EU\SOFTWARE\Microsoft\Tracing\WPPMediaPerApp\Skype" /v "WPPFilePath" /t REG_SZ /d "%%SYSTEMDRIVE%%\TEMP\Tracing\WPPMedia" /f
 reg add "HKCU\SOFTWARE\Microsoft\Tracing\WPPMediaPerApp\Skype\ETW" /v "WPPFilePath" /t REG_SZ /d "%%SYSTEMDRIVE%%\TEMP\WPPMedia" /f
-reg add HKLM\SOFTWARE\Policies\Mozilla\Firefox /v "DisableTelemetry" /t REG_DWORD /d "2" /f
+reg add "HKLM\SOFTWARE\Policies\Mozilla\Firefox" /v "DisableTelemetry" /t REG_DWORD /d "2" /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\CPSS\Store\AdvertisingInfo" /v "Value" /t REG_DWORD /d "0" /f
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appDiagnostics" /v /t REG_SZ /d "Deny" /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appDiagnostics" /v /t REG_SZ /d "Deny" /f
@@ -1108,7 +1108,9 @@ endlocal
 taskkill /IM iexplore.exe /T /F 2>nul
 
 :: Uninstall the IE Update Packages
-rd /s /q C:\Users\hajku\AppData\LocalLow\Microsoft\Internet Explorer
+rd "%userprofile%\Appdata\LocalLow\Microsoft\Internet Explorer\" /s /q
+rd %appdata%\Microsoft\Internet Explorer\ /s /q
+rd %userprofile%\Appdata\Local\Microsoft\Edge\ /s /q
 pushd "%SystemRoot%\servicing\Packages"
 for /f "delims=" %%A in ('dir /a-d /b /o-d Microsoft-Windows-InternetExplorer-*~%Version%.*.mum 2^>nul') do (
 	echo Uninstalling package %%~nA

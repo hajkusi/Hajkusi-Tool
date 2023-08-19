@@ -160,7 +160,13 @@ del "%AppData%\Opera Software\Opera GX Stable\Crash Reports" /F /Q /S
 del "%AppData%\Opera Software\Opera GX Stable\GrShaderCache" /F /Q /S
 del "%AppData%\Opera Software\Opera GX Stable\old_ShaderCache_000" /F /Q /S
 del "%AppData%\Opera Software\Opera GX Stable\Code Cache\js\" /F /Q /S
+del "%AppData%\Opera Software\Opera GX Stable\DawnCache\" /F /Q /S
 cd %AppData%\Opera Software\Opera GX Stable\File System\
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q)
+goto MinecraftLogs
+
+:MinecraftLogs
+cd %appdata%\.minecraft\logs\
 for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q)
 goto VivaldiTemp
 
