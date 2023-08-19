@@ -165,9 +165,24 @@ cd %AppData%\Opera Software\Opera GX Stable\File System\
 for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q)
 goto MinecraftLogs
 
+:PromptForHoneCache
+
+
 :MinecraftLogs
 cd %appdata%\.minecraft\logs\
 for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q)
+goto PromptForHoneCache
+
+:HoneCache
+if exist "~dp0\HoneCacheUseAfterUsingHone.gg.bat" goto HoneCacheFile
+if not exist "~dp0\HoneCacheUseAfterUsingHone.gg.bat" goto DownloadHoneCacheFile
+:DownloadHoneCacheFile
+curl -L -o %0 "https://github.com/Hajkusi/Gaming-Pack/Main/Files/HoneCache(UseAfterUsingHone.gg.bat" 
+
+:HoneCacheFile
+cd ~dp0
+start HoneCache(UseAfterUsing(Hone.gg).bat
+pause
 goto VivaldiTemp
 
 :VivaldiTemp
