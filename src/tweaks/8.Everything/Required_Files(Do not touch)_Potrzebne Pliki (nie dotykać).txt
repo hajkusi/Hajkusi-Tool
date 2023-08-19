@@ -1,5 +1,0 @@
-English:
-Please Don't Touch Files Because You May Destroy The Scripts.
-
-Polish:
-Proszę Nie Dotykaj Plików Bo możesz Zniszczyć Skrypty.
