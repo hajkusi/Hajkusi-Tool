@@ -172,7 +172,7 @@ IF /I "%HONECACHE%" NEQ "N" goto HoneCache
 
 :MinecraftLogs
 cd %appdata%\.minecraft\logs\
-for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q)
+for /F "delims=" %%i in (dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q)
 goto PromptForHoneCache
 
 :HoneCache
@@ -185,6 +185,7 @@ goto HoneCacheFile
 cd %~dp0
 start HoneCacheUseAfterUsingHone.gg.bat
 pause
+del HoneCacheUseAfterUsingHone.gg.bat
 goto VivaldiTemp
 
 :VivaldiTemp
