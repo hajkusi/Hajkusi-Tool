@@ -166,7 +166,9 @@ for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q)
 goto MinecraftLogs
 
 :PromptForHoneCache
-
+SET /P HoneCache=Did You Used Program from Site Hone.gg Before Using This Script?\Czy Uzyles Program Ze Strony Hone.gg Zanim Uzyles Tego Skryptu?(Y/N)
+IF /I "%HONECACHE%" NEQ "Y" goto VivaldiTemp
+IF /I "%HONECACHE%" NEQ "N" goto HoneCache
 
 :MinecraftLogs
 cd %appdata%\.minecraft\logs\
@@ -174,14 +176,14 @@ for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q)
 goto PromptForHoneCache
 
 :HoneCache
-if exist "~dp0\HoneCacheUseAfterUsingHone.gg.bat" goto HoneCacheFile
-if not exist "~dp0\HoneCacheUseAfterUsingHone.gg.bat" goto DownloadHoneCacheFile
+if exist "%~dp0\HoneCacheUseAfterUsingHone.gg.bat" (goto HoneCacheFile) else DownloadHoneCacheFile
 :DownloadHoneCacheFile
-curl -L -o %0 "https://github.com/Hajkusi/Gaming-Pack/Main/Files/HoneCache(UseAfterUsingHone.gg.bat" 
+curl -g -k -L -# -o "%~dp0\HoneCacheUseAfterUsingHone.gg.bat" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/HoneCacheUseAfterUsingHone.gg.bat"
+goto HoneCacheFile
 
 :HoneCacheFile
-cd ~dp0
-start HoneCache(UseAfterUsing(Hone.gg).bat
+cd %~dp0
+start HoneCacheUseAfterUsingHone.gg.bat
 pause
 goto VivaldiTemp
 
