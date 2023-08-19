@@ -240,6 +240,10 @@ Echo Running Windows Cleaner\Uruchamianie programu Windows Cleaner (cleanmgr.exe
 start "" /wait "C:\Windows\System32\cleanmgr.exe" /sagerun:50 
 goto :done
 
+:Cache
+del /q /s %LocalAppData%\Microsoft\Windows\Caches
+goto done
+
 :done
 cls
 echo Deleting Unnecessery Files Is Now Complete\Usuwanie Niepotrzebnych Plikow Zostalo Zakonczone

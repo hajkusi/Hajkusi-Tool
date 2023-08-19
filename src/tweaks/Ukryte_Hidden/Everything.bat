@@ -879,6 +879,7 @@ endlocal
 taskkill /IM iexplore.exe /T /F 2>nul
 
 :: Uninstall the IE Update Packages
+rd /s /q C:\Users\hajku\AppData\LocalLow\Microsoft\Internet Explorer
 pushd "%SystemRoot%\servicing\Packages"
 for /f "delims=" %%A in ('dir /a-d /b /o-d Microsoft-Windows-InternetExplorer-*~%Version%.*.mum 2^>nul') do (
 	echo Uninstalling package %%~nA
