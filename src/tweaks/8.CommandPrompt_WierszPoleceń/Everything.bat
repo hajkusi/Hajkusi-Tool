@@ -1210,11 +1210,7 @@ EmptyStandbyList.exe standbylist
 goto End
 
 :End
-rmdir /s /q %SYSTEMDRIVE%\Gaming_Pack\
-rmdir /s /q %SYSTEMDRIVE%\Scripts\
-rmdir /s /q %SYSTEMDRIVE%\OTO\
-rmdir /s /q %SYSTEMDRIVE%\OneDriveTemp\
-rmdir /s /q %SYSTEMDRIVE%\$WinREAgent\
+rmdir %SYSTEMDRIVE%\Gaming_Pack\ /s /q
 cls
 Title Done\Zakonczone
 Echo   Tweaks Are Done\Tweaksy Sa Zakonczone     

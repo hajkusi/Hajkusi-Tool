@@ -12,6 +12,12 @@ for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q)
 goto home
 
 :home
+rmdir %SYSTEMDRIVE%\Scripts\ /s /q
+rmdir %SYSTEMDRIVE%\OTO\ /s /q
+rmdir %SYSTEMDRIVE%\OneDriveTemp\ /s /q
+rmdir %SYSTEMDRIVE%\$WinREAgent\ /s /q
+rmdir %SYSTEMDRIVE%\PerfLogs\ /s /q
+cls
 cd C:\Windows\Temp
 cls
 title Deleting Files And Folders From Temp In Progress\Trwa Usuwanie Plikow I Folderow z Temp 
