@@ -184,6 +184,7 @@ goto HoneCacheFile
 :HoneCacheFile
 cd %~dp0
 start HoneCacheUseAfterUsingHone.gg.bat
+pause
 del HoneCacheUseAfterUsingHone.gg.bat /F /Q /S
 goto VivaldiTemp
 
