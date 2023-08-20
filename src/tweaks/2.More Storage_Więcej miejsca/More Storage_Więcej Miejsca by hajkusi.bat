@@ -178,7 +178,7 @@ goto PromptForHoneCache
 :HoneCache
 if exist "%~dp0\HoneCacheUseAfterUsingHone.gg.bat" (goto HoneCacheFile) else DownloadHoneCacheFile
 :DownloadHoneCacheFile
-curl -g -k -L -# -o "%~dp0\HoneCacheUseAfterUsingHone.gg.bat" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/HoneCacheUseAfterUsingHone.gg.bat"
+curl -g -k -L -# -o "%SYSTEMDRIVE%\Gaming_Pack\Resources\HoneCacheUseAfterUsingHone.gg.bat" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/HoneCacheUseAfterUsingHone.gg.bat"
 goto HoneCacheFile
 
 :HoneCacheFile
