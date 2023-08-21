@@ -283,7 +283,7 @@ Reg add "HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\CloudExperienceHos
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\DataMarket" /v "Start" /t Reg_DWORD /d "0" /f 
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\DefenderApiLogger" /v "Start" /t Reg_DWORD /d "0" /f 
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\DefenderAuditLogger" /v "Start" /t Reg_DWORD /d "0" /f 
-Reg add "HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\DiagLog" /v "Start" /t Reg_DWORD /d "1" /f 
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\DiagLog" /v "Start" /t Reg_DWORD /d "0" /f 
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\HolographicDevice" /v "Start" /t Reg_DWORD /d "0" /f 
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\iclsClient" /v "Start" /t Reg_DWORD /d "0" /f 
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\iclsProxy" /v "Start" /t Reg_DWORD /d "0" /f 
@@ -305,7 +305,7 @@ Reg add "HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\TileStore" /v "Sta
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\Tpm" /v "Start" /t Reg_DWORD /d "0" /f 
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\TPMProvisioningService" /v "Start" /t Reg_DWORD /d "0" /f 
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\UBPM" /v "Start" /t Reg_DWORD /d "0" /f 
-Reg add "HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\WdiContextLog" /v "Start" /t Reg_DWORD /d "1" /f 
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\WdiContextLog" /v "Start" /t Reg_DWORD /d "0" /f 
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\WFP-IPsec Trace" /v "Start" /t Reg_DWORD /d "0" /f 
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\WiFiDriverIHVSession" /v "Start" /t Reg_DWORD /d "0" /f 
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\WiFiDriverIHVSessionRepro" /v "Start" /t Reg_DWORD /d "0" /f 
@@ -358,37 +358,38 @@ goto Services
 cls
 Echo Disabling Unnecessary System Services For Less System Usage\Wylaczanie Niepotrzebnych Serwisow Dla Mniejszego Uzycia Systemu
 echo.
-Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\TapiSrv" /v "Start" /t Reg_DWORD /d "3" /f 
+Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\TapiSrv" /v "Start" /t Reg_DWORD /d "4" /f 
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\FontCache3.0.0.0" /v "Start" /t Reg_DWORD /d "4" /f
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\WpcMonSvc" /v "Start" /t Reg_DWORD /d "4" /f
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\SEMgrSvc" /v "Start" /t Reg_DWORD /d "4" /f
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\PNRPsvc" /v "Start" /t Reg_DWORD /d "4" /f
-Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\LanmanWorkstation" /v "Start" /t Reg_DWORD /d "3" /f
-Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\WEPHOSTSVC" /v "Start" /t Reg_DWORD /d "3" /f
+Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\LanmanWorkstation" /v "Start" /t Reg_DWORD /d "4" /f
+Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\WEPHOSTSVC" /v "Start" /t Reg_DWORD /d "4" /f
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\p2psvc" /v "Start" /t Reg_DWORD /d "4" /f
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\p2pimsvc" /v "Start" /t Reg_DWORD /d "4" /f
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\PhoneSvc" /v "Start" /t Reg_DWORD /d "4" /f
-Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\wuauserv" /v "Start" /t Reg_DWORD /d "3" /f
+Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\wuauserv" /v "Start" /t Reg_DWORD /d "4" /f
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\Wecsvc" /v "Start" /t Reg_DWORD /d "4" /f
+Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\RmSvc" /v "Start" /t REG_DWORD /d "4" /f
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\SensorDataService" /v "Start" /t Reg_DWORD /d "4" /f
-Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\SensrSvc" /v "Start" /t Reg_DWORD /d "3" /f
+Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\SensrSvc" /v "Start" /t Reg_DWORD /d "4" /f
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\perceptionsimulation" /v "Start" /t Reg_DWORD /d "4" /f
-Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\StiSvc" /v "Start" /t Reg_DWORD /d "3" /f
+Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\StiSvc" /v "Start" /t Reg_DWORD /d "4" /f
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\OneSyncSvc" /v "Start" /t Reg_DWORD /d "4" /f
-Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ConsentUxUserSvc" /v Start /t Reg_DWORD /d "3" /f
-Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DevicePickerUserSvc" /v Start /t Reg_DWORD /d "3" /f
-Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\UnistoreSvc" /v Start /t Reg_DWORD /d "4" /f
-Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DevicesFlowUserSvc" /v Start /t Reg_DWORD /d "3" /f
+Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ConsentUxUserSvc" /v "Start" /t Reg_DWORD /d "3" /f
+Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DevicePickerUserSvc" /v "Start" /t Reg_DWORD /d "3" /f
+Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\UnistoreSvc" /v "Start" /t Reg_DWORD /d "4" /f
+Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DevicesFlowUserSvc" /v "Start" /t Reg_DWORD /d "4" /f
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\WMPNetworkSvc" /v "Start" /t Reg_DWORD /d "4" /f
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\autotimesvc" /v "Start" /t Reg_DWORD /d "4" /f
-Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CaptureService" /v Start /t Reg_DWORD /d "4" /f
-Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MessagingService" /v Start /t Reg_DWORD /d "3" /f
-Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CDPUserSvc" /v Start /t Reg_DWORD /d "4" /f
-Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PimIndexMaintenanceSvc" /v Start /t Reg_DWORD /d "4" /f
-Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BcastDVRUserService" /v Start /t Reg_DWORD /d "3" /f
-Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\UserDataSvc" /v Start /t Reg_DWORD /d "4" /f
-Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DeviceAssociationBrokerSvc" /v Start /t Reg_DWORD /d "3" /f
-Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\cbdhsvc" /v Start /t Reg_DWORD /d "3" /f
+Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CaptureService" /v "Start" /t Reg_DWORD /d "4" /f
+Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MessagingService" /v "Start" /t Reg_DWORD /d "4" /f
+Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CDPUserSvc" /v "Start" /t Reg_DWORD /d "4" /f
+Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PimIndexMaintenanceSvc" /v "Start" /t Reg_DWORD /d "4" /f
+Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BcastDVRUserService" /v "Start" /t Reg_DWORD /d "4" /f
+Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\UserDataSvc" /v "Start" /t Reg_DWORD /d "4" /f
+Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DeviceAssociationBrokerSvc" /v "Start" /t Reg_DWORD /d "4" /f
+Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\cbdhsvc" /v "Start" /t Reg_DWORD /d "4" /f
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\edgeupdatem" /v "Start" /t Reg_DWORD /d "4" /f
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\MicrosoftEdgeElevationService" /v "Start" /t Reg_DWORD /d "4" /f
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\ALG" /v "Start" /t Reg_DWORD /d "4" /f
@@ -561,9 +562,6 @@ schtasks /end /tn "\Microsoft\Windows\NetTrace\GatherNetworkInfo"
 schtasks /change /tn "\Microsoft\Windows\NetTrace\GatherNetworkInfo" /disable
 schtasks /end /tn "\Microsoft\Windows\AppID\SmartScreenSpecific"
 schtasks /change /tn "\Microsoft\Windows\AppID\SmartScreenSpecific" /disable
-schtasks /Change /TN "\Microsoft\Windows\WindowsUpdate\Automatic App Update" /Disable
-schtasks /Change /TN "\Microsoft\Windows\Time Synchronization\ForceSynchronizeTime" /Disable
-schtasks /Change /TN "\Microsoft\Windows\Time Synchronization\SynchronizeTime" /Disable
 schtasks /end /tn "\Microsoft\Windows\HelloFace\FODCleanupTask"
 schtasks /change /tn "\Microsoft\Windows\HelloFace\FODCleanupTask" /disable
 schtasks /end /tn "\Microsoft\Windows\Feedback\Siuf\DmClient"
@@ -920,7 +918,7 @@ IF /I "%TAKEOWNERSHIPINCONTEXTMENU%" NEQ "Y" goto PromptForOptionalTweaks
 IF /I "%TAKEOWNERSHIPINCONTEXTMENU%" NEQ "N" goto AddTakeOwnerShipInContextMenu
 
 :AddTakeOwnerShipInContextMenu
-curl -g -k -L -# -o "%SYSTEMDRIVE%\Gaming_Pack\Resources\Show-Take-Ownership-Context-Menu.Reg" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/Show-Take-Ownership-Context-Menu.Reg"
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming_Pack\Resources\Show-Take-Ownership-Context-Menu.Reg" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/Show-Take-Ownership-Context-Menu.Reg"
 cd %SYSTEMDRIVE%\Gaming_Pack\Resources\
 Reg import Show-Take-Ownership-Context-Menu.Reg
 cls
@@ -942,7 +940,7 @@ Reg add "HKLM\Software\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWi
 @REM Optional Tweaks"
 Reg Add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge" /v WebWidgetAllowed /t Reg_DWORD /d 0 /f
 Reg add "HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings" /v UxOption /t Reg_DWORD /d 1 /f
-Reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance" /v "MaintenanceDisabled" /t Reg_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance" /v "MaintenanceDisabled" /t Reg_DWORD /d "0" /f
 Reg add "HKCU\Control Panel\Desktop" /v "AutoEndTasks" /t Reg_SZ /d "1" /f
 Reg add "HKCU\Control Panel\Desktop" /v "HungAppTimeout" /t Reg_SZ /d "1000" /f
 Reg add "HKCU\Control Panel\Desktop" /v "MenuShowDelay" /t Reg_SZ /d "0" /f
@@ -1032,7 +1030,8 @@ Reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Perflib" /v "DisableP
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\WSearch" /v "Start" /t Reg_DWORD /d "4" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Remote Assistance" /v "fAllowToGetHelp" /t Reg_DWORD /d "0" /f
 )
-Reg add "HKCU\Control Panel\Desktop" /v FoRegroundLockTimeout /t Reg_DWORD /d 0 /f
+Reg add "HKCU\Control Panel\Desktop" /v ForegroundLockTimeout /t Reg_DWORD /d 0 /f
+Reg add "HKCU\AppEvents\Schemes" /f reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "DelayedDesktopSwitchTimeout" /t REG_DWORD /d "0" /f
 Reg delete "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePriority" /f
 Reg delete "HKLM\System\CurrentControlSet\Enum\%%g\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePriority" /f
 Reg delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "NvBackend" /f
@@ -1188,12 +1187,12 @@ IF /I "%SOFTRESTART%" NEQ "Y" goto End
 IF /I "%SOFTRESTART%" NEQ "N" goto SoftRestart
 
 :SoftRestart
-cd %TEMP%
-if not exist "%TEMP%\NSudo.exe" curl -g -L -# -o "%TEMP%\NSudo.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/NSudo.exe"
+cd %SystemDrive%\Gaming_Pack\Resources\
+curl -g -L -# -o "%SystemDrive%\Gaming_Pack\Resources\NSudo.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/NSudo.exe"
 NSudo.exe -U:S -ShowWindowMode:Hide cmd /c "Reg add "HKLM\SYSTEM\CurrentControlSet\Services\TrustedInstaller" /v "Start" /t Reg_DWORD /d "3" /f" >nul 2>&1
 NSudo.exe -U:S -ShowWindowMode:Hide cmd /c "sc start "TrustedInstaller"" >nul 2>&1
-if not exist "%TEMP%\restart64.exe" curl -g -L -# -o "%TEMP%\Restart64.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/restart64.exe"
-if not exist "%TEMP%\EmptyStandbyList.exe" curl -g -L -# -o "%TEMP%\EmptyStandbyList.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/EmptyStandbyList.exe"
+curl -g -L -# -o "%SystemDrive%\Gaming_Pack\Resources\Restart64.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/restart64.exe"
+curl -g -L -# -o "%SystemDrive%\Gaming_Pack\Resources\EmptyStandbyList.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/EmptyStandbyList.exe"
 taskkill /f /im explorer.exe >nul 2>&1
 cd %SYSTEMROOT% >nul 2>&1
 start explorer.exe >nul 2>&1
