@@ -8,7 +8,7 @@ IF /I "%AREYOUSURE%" NEQ "N" goto Y
 :Y
 cd %userprofile%\Downloads
 del *.* /q /p /s
-for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q)
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
 goto home
 
 :home
@@ -18,18 +18,34 @@ rmdir %SYSTEMDRIVE%\OneDriveTemp\ /s /q
 rmdir %SYSTEMDRIVE%\$WinREAgent\ /s /q
 rmdir %SYSTEMDRIVE%\PerfLogs\ /s /q
 cls
-cd C:\Windows\Temp
-cls
 title Deleting Files And Folders From Temp In Progress\Trwa Usuwanie Plikow I Folderow z Temp 
 echo deleting.../usuwanie...
-for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q)
-del *.* /q 
-cd C:\Windows\Prefetch
-del *.* /q
-for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q)
-rd %temp%
-md %temp%
-mkdir %temp%
+goto AllTempAndLogs
+
+:AllTempAndLogs
+cd "C:\Windows\Temp"
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
+cd "C:\Windows\Prefetch"
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
+cd "%temp%""
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
+cd "%LocalAppData%\Temp\"
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
+cd "%systemdrive%\Program Data\Microsoft\Windows\Wer\Temp\"
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
+cd "%LocalAppData%\Packages\Microsoft.Windows.Search_cw5n1h2txyewy"
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
+cd "%LocalAppData%\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy"
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
+cd "%WindDir%\Logs"
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
+cd "%WindDir%\Containers\serviced"
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
+goto RobloxDownloads
+
+:RobloxDownloads
+cd %LocalAppData%\Roblox\Downloads\
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
 goto PromptDism
 
 :PromptDism
@@ -87,9 +103,6 @@ IF /I "%TEMPFORTNITEANDEPICGAMES%" NEQ "N" goto TempFortniteAndEpicGames
 cls
 Echo Clearing Epic Games and Fortnite Temporary Files\Czyszczenie plikow tymczasowych Epic Games i Fortnite:
 erase /F /S /Q "%SystemRoot%\TEMP*.*"
-for /D %%G in ("%SystemRoot%\TEMP*") do RD /S /Q "%%G"
-for /D %%G in ("%SystemDrive%\Users*") do erase /F /S /Q "%%G\AppData\Local\Temp*.*"
-for /D %%G in ("%SystemDrive%\Users*") do RD /S /Q "%%G\AppData\Local\Temp\" 
 del %localappdata%\EpicGamesLauncher\Saved\Logs /F /Q /S
 del %localappdata%\CrashReportClient\Saved\Logs /F /Q /S
 cls
@@ -162,13 +175,17 @@ del "%AppData%\Opera Software\Opera GX Stable\GPUCache" /F /Q /S
 del "%AppData%\Opera Software\Opera GX Stable\ShaderCache" /F /Q /S
 del "%AppData%\Opera Software\Opera GX Stable\Jump List Icons" /F /Q /S
 del "%AppData%\Opera Software\Opera GX Stable\Jump List IconsOld\Jump List Icons" /F /Q /S
-del "%AppData%\Opera Software\Opera GX Stable\Crash Reports" /F /Q /S
+cd "%AppData%\Opera Software\Opera GX Stable\Crash Reports"
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
 del "%AppData%\Opera Software\Opera GX Stable\GrShaderCache" /F /Q /S
 del "%AppData%\Opera Software\Opera GX Stable\old_ShaderCache_000" /F /Q /S
-del "%AppData%\Opera Software\Opera GX Stable\Code Cache\js\" /F /Q /S
+cd "%AppData%\Opera Software\Opera GX Stable\Code Cache\js\"
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
 del "%AppData%\Opera Software\Opera GX Stable\DawnCache\" /F /Q /S
-cd %AppData%\Opera Software\Opera GX Stable\File System\
-for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q)
+cd "%AppData%\Opera Software\Opera GX Stable\File System\"
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
+cd "%AppData%\Opera Software\Opera GX Stable\Network\""
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
 goto MinecraftLogs
 
 :PromptForHoneCache
@@ -295,6 +312,8 @@ goto :Cache
 :Cache
 cd /d%userprofile%/Appdata/local/microsoft/windows/explorer
 del thumbcache _ *. Db
+cd %WinDir%\rescache
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
 goto done
 
 :done
