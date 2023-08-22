@@ -42,6 +42,8 @@ for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
 cd "%WindDir%\Containers\serviced"
 for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
 del c:\WIN386.SWP
+cd %LocalAppData%\Microsoft\Windows\INetCache\
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
 goto RobloxDownloads
 
 :RobloxDownloads
