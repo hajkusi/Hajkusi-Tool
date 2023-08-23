@@ -1,0 +1,33 @@
+English:
+Free Memory Is Lower Than:
+2GB=1024
+4GB=2048
+8GB=4096
+12GB=6144
+16GB=8192
+24GB=12288
+32GB=16384
+64GB=32768
+Wanted Time Resolution:
+0.50
+✅Enable Custom Timer Resolution
+✅Use GlobalTimerResolutionRequests
+Click "Start".
+Click In Up-Right Corner Click Minimize.
+
+Polish:
+Free Memory Is Lower Than:
+2GB=1024
+4GB=2048
+8GB=4096
+12GB=6144
+16GB=8192
+24GB=12288
+32GB=16384
+64GB=32768
+Wanted Time Resolution:
+0.50
+✅Enable Custom Timer Resolution
+✅Use GlobalTimerResolutionRequests
+Kliknij "Start”.
+kliknij W Prawym Górnym Rogu Zminimalizuj.
