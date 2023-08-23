@@ -8,7 +8,7 @@ IF /I "%AREYOUSURE%" NEQ "N" goto Y
 :Y
 cd %userprofile%\Downloads
 del *.* /q /p /s
-for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f/P)
 goto home
 
 :home
@@ -41,9 +41,21 @@ cd "%WindDir%\Logs"
 for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
 cd "%WindDir%\Containers\serviced"
 for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
-del c:\WIN386.SWP
-cd %LocalAppData%\Microsoft\Windows\INetCache\
+del c:\WIN386.SWP /s /q /f
+cd %LocalAppData%\SquirrelTemp\
 for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
+cd %LocalAppData%\Programs\Hone\
+del d3dcompiler_47.dll /s /q /f
+del libEGL.dll /s /q /f
+del libGLESv2.dll /s /q /f
+del owutility.dll /s /q /f
+del vulkan-1.dll /s /q /f
+del snapshot_blob.bin /s /q /f
+del Start /s /q /f
+cd resources
+del app.asar /s /q /f
+cd logs
+del *.log* /s /q /f
 goto RobloxDownloads
 
 :RobloxDownloads
@@ -312,14 +324,30 @@ start "" /wait "C:\Windows\System32\cleanmgr.exe" /sagerun:50
 cls
 goto :Cache
 
+:PromptForOneDrive
+Do You Want Use OneDrive?\Czy Uzywasz OneDrive?
+SET /P OneDrive=Yes or No\Tak czy Nie?(Y/N)
+IF /I "%ONEDRIVE%" NEQ "Y" goto Continue
+IF /I "%ONEDRIVE%" NEQ "N" goto Done
+
 :Cache
 cd /d%userprofile%/Appdata/local/microsoft/windows/explorer
 del thumbcache _ *. Db
 cd %WinDir%\rescache
 for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
-goto done
+cd %LocalAppData%\Microsoft\Windows\INetCache\
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
+cd %LocalAppdata%\D3DSCache\
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
+goto PromptForOneDrive
+:Continue
+cd %LocalAppData%
+rd OneDrive /s /q
+cd %LocalAppData%\Programs\Opera GX\
+del *.old* /s /q /f
+goto Done
 
-:done
+:Done
 cls
 echo Deleting Unnecessery Files Is Now Complete\Usuwanie Niepotrzebnych Plikow Zostalo Zakonczone
 TimeOut /T 2 /nobreak
