@@ -1196,7 +1196,7 @@ curl -g -L -# -o "%SystemDrive%\Gaming_Pack\Resources\EmptyStandbyList.exe" "htt
 taskkill /f /im explorer.exe >nul 2>&1
 cd %SYSTEMROOT% >nul 2>&1
 start explorer.exe >nul 2>&1
-cd %TEMP%
+cd %SystemDrive%\Gaming_Pack\Resources\
 echo netsh advfirewall reset >RefreshNet.bat
 echo ipconfig /release >>RefreshNet.bat
 echo ipconfig /renew >>RefreshNet.bat
