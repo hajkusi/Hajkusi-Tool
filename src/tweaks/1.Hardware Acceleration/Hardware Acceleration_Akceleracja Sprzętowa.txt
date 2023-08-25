@@ -27,7 +27,7 @@ Google Chrome:
 3.Wyłącz opcję" Użyj Akceleracji Sprzętowej,Gdy Jest Dostępna " I Kliknij Uruchom Ponownie.
 
 Discord:
-1.Idź Do Ustawień.
+1.Wejdź W Ustawienia.
 2.Wybierz "Zaawansowane".
 3.Wyłącz Opcję: "Akceleracja Sprzętowa" I Kliknij Ok.
 4.Discord Uruchomi Się Ponownie.
