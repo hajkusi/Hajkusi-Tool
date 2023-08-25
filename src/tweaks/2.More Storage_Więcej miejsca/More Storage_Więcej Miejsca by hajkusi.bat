@@ -202,7 +202,7 @@ cd "%AppData%\Opera Software\Opera GX Stable\File System\"
 for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
 cd "%AppData%\Opera Software\Opera GX Stable\Network\""
 for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
-goto DiscordTempAndCache
+goto PromptForDiscordTempAndCache
 
 :DiscordTempAndCache
 taskkill /im discord.exe /f
@@ -220,6 +220,11 @@ for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
 start Discord.exe /f
 goto MinecraftLogs
 
+:PromptForDiscordTempAndCache
+SET /P DiscordTempAndCache=Did You Used Discord Before Using This Script\Czy Uzyles Discorda Zanim Uzyles Tego Skryptu?(Y/N)
+IF /I "%DISCORDTEMPANDCACHE%" NEQ "Y" goto MinecraftLogs
+IF /I "%DISCORDTEMPANDCACHE%" NEQ "N" goto DiscordTempAndCache
+
 :PromptForHoneCache
 SET /P HoneCache=Did You Used Program from Site Hone.gg Before Using This Script?\Czy Uzyles Program Ze Strony Hone.gg Zanim Uzyles Tego Skryptu?(Y/N)
 IF /I "%HONECACHE%" NEQ "Y" goto VivaldiTemp
@@ -231,7 +236,7 @@ for /F "delims=" %%i in (dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q)
 goto PromptForHoneCache
 
 :HoneCache
-if exist "%~dp0\HoneCacheUseAfterUsingHone.gg.bat" (goto HoneCacheFile) else DownloadHoneCacheFile
+if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\HoneCacheUseAfterUsingHone.gg.bat" (goto HoneCacheFile) else DownloadHoneCacheFile
 :DownloadHoneCacheFile
 curl -g -L -# -o "%SYSTEMDRIVE%\Gaming_Pack\Resources\HoneCacheUseAfterUsingHone.gg.bat" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/HoneCacheUseAfterUsingHone.gg.bat"
 goto HoneCacheFile
