@@ -2,7 +2,8 @@
 if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\RunAsTI.cmd" ( goto Exist ) else ( goto DownloadRunAsTI )
 :DownloadRunAsTI
 mkdir %SYSTEMDRIVE%\Gaming_Pack\Resources\
-curl -g -L -# -o "%SYSTEMDRIVE%\Gaming_Pack\Resources\RunAsTI.cmd" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/RunAsTi.cmd"
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming_Pack\Resources\RunAsTI.cmd" "github.com/hajkusi/Gaming-Pack/raw/main/Files/RunAsTI.cmd"
+cls
 goto Exist
 
 :Exist
@@ -15,6 +16,7 @@ whoami /user | find /i "S-1-5-18" > nul 2>&1 || (
 if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\FilePicker.exe" ( goto Again ) else ( goto DownloadFilePicker )
 :DownloadFilePicker
 curl -g -L -# -o "%SYSTEMDRIVE%\Gaming_Pack\Resources\FilePicker.exe" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/FilePicker.exe"
+cls
 goto Again
 
 :Again

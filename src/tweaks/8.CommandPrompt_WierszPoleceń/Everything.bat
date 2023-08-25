@@ -1435,9 +1435,6 @@ if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\EmptyStandbyList.exe" ( goto Conti
 curl -g -L -# -o "%SystemDrive%\Gaming_Pack\Resources\EmptyStandbyList.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/EmptyStandbyList.exe"
 goto ContinueSoftRestart
 :ContinueSoftRestart
-taskkill /f /im explorer.exe >nul 2>&1
-cd %SYSTEMROOT% >nul 2>&1
-start explorer.exe >nul 2>&1
 cd %SystemDrive%\Gaming_Pack\Resources\
 echo netsh advfirewall reset >RefreshNet.bat
 echo ipconfig /release >>RefreshNet.bat
