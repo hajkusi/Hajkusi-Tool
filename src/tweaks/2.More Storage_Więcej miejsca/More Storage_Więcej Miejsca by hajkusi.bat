@@ -236,7 +236,7 @@ for /F "delims=" %%i in (dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q)
 goto PromptForHoneCache
 
 :HoneCache
-if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\HoneCacheUseAfterUsingHone.gg.bat" (goto HoneCacheFile) else DownloadHoneCacheFile
+if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\HoneCacheUseAfterUsingHone.gg.bat" ( goto HoneCacheFile ) else ( goto DownloadHoneCacheFile )
 :DownloadHoneCacheFile
 curl -g -L -# -o "%SYSTEMDRIVE%\Gaming_Pack\Resources\HoneCacheUseAfterUsingHone.gg.bat" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/HoneCacheUseAfterUsingHone.gg.bat"
 goto HoneCacheFile

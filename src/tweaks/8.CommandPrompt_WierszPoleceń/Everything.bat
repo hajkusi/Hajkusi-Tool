@@ -562,10 +562,17 @@ cls
 goto PromptForAudio
 
 :AudioOptions
-cls
-cd %SYSTEMDRIVE%\Gaming\Resources
+cd "%SYSTEMDRIVE%\Gaming\Resources\"
+if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\nssm.exe" ( goto Real ) else ( goto Downloadnssm )
+:Downloadnssm
 curl -g -L -# -o "%SYSTEMDRIVE%\Gaming\Resources\nssm.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/nssm.exe"
+goto Real
+:Real
+if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\REAL.exe" ( goto ContinueAudioOptions ) else ( goto DownloadREAL )
+:DownloadREAL
 curl -g -L -# -o "%SYSTEMDRIVE%\Gaming\Resources\REAL.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/REAL.exe"
+goto ContinueAudioOptions
+:ContinueAudioOptions
 nssm install GamingAudio "%SYSTEMDRIVE%\Gaming\Resources\REAL.exe"
 nssm set GamingAudio DisplayName Gaming Audio Latency Reducer Service
 nssm set GamingAudio Description Reduces Audio Latency
@@ -1078,15 +1085,20 @@ bcdedit /set increaseuserva 32000
 wmic computersystem where name="%computername%" set AutomaticManagedPagefile=False
 wmic pagefileset where name="%SystemDrive%\\pagefile.sys" set InitialSize=0,MaximumSize=0
 wmic pagefileset where name="%SystemDrive%\\pagefile.sys" delete
-goto PromptForaddTakeOwnerShipInContextMenu
+goto PromptForAddTakeOwnerShipInContextMenu
 
-:PromptForaddTakeOwnerShipInContextMenu
+:PromptForAddTakeOwnerShipInContextMenu
 ET /P TakeOwnerShipInContext=Do You Want To add Take OwnerShip In Context Menu\Czy Chcesz Dodac Take OwnerShip do Menu Kontekstowego?(Y/N)
 IF /I "%TAKEOWNERSHIPINCONTEXTMENU%" NEQ "Y" goto PromptForOptionalTweaks
-IF /I "%TAKEOWNERSHIPINCONTEXTMENU%" NEQ "N" goto addTakeOwnerShipInContextMenu
+IF /I "%TAKEOWNERSHIPINCONTEXTMENU%" NEQ "N" goto AddTakeOwnerShipInContextMenu
 
-:addTakeOwnerShipInContextMenu
+:AddTakeOwnerShipInContextMenu
+if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\Show-Take-Ownership-Context-Menu.Reg" ( goto RegImportContext ) else ( goto Show-Take-Ownership-Context-Menu.Reg )
+:DownloadShow-Take-Ownership-Context-Menu.Reg
 curl -g -L -# -o "%SYSTEMDRIVE%\Gaming_Pack\Resources\Show-Take-Ownership-Context-Menu.Reg" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/Show-Take-Ownership-Context-Menu.Reg"
+goto RegImportContext
+
+:RegImportContext
 cd %SYSTEMDRIVE%\Gaming_Pack\Resources\
 Reg import Show-Take-Ownership-Context-Menu.Reg
 cls
@@ -1406,12 +1418,23 @@ IF /I "%SOFTRESTART%" NEQ "Y" goto End
 IF /I "%SOFTRESTART%" NEQ "N" goto SoftRestart
 
 :SoftRestart
-cd %SystemDrive%\Gaming_Pack\Resources\
+if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\NSudo.exe" ( goto NSudo ) else ( goto DownloadNSudo )
+:DownloadNSudo
 curl -g -L -# -o "%SystemDrive%\Gaming_Pack\Resources\NSudo.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/NSudo.exe"
+cd "%SYSTEMDRIVE%\Gaming_Pack\Resources\"
+:Nsudo
 NSudo.exe -U:S -ShowWindowMode:Hide cmd /c "Reg add "HKLM\SYSTEM\CurrentControlSet\Services\TrustedInstaller" /v "Start" /t REG_DWORD /d "3" /f" >nul 2>&1
 NSudo.exe -U:S -ShowWindowMode:Hide cmd /c "sc start "TrustedInstaller"" >nul 2>&1
+if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\Restart" ( goto EmptyStandbyList ) else ( goto DownloadRestart64 )
+:DownloadRestart64
 curl -g -L -# -o "%SystemDrive%\Gaming_Pack\Resources\Restart64.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/restart64.exe"
+goto EmptyStandbyList
+:EmptyStandbyList
+if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\EmptyStandbyList.exe" ( goto ContinueSoftRestart ) else ( goto DownloadEmptyStandbyList )
+:DownloadEmptyStandbyList
 curl -g -L -# -o "%SystemDrive%\Gaming_Pack\Resources\EmptyStandbyList.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/EmptyStandbyList.exe"
+goto ContinueSoftRestart
+:ContinueSoftRestart
 taskkill /f /im explorer.exe >nul 2>&1
 cd %SYSTEMROOT% >nul 2>&1
 start explorer.exe >nul 2>&1
