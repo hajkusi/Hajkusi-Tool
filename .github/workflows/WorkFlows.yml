@@ -21,9 +21,3 @@ jobs:
     - run: npm --version
     - name: Checkout code
       uses: actions/checkout@v3
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: Tweaks
-        path: /home/runner/work/Gaming-Pack/Gaming-Pack/src/tweaks
-        if-no-files-found: error
