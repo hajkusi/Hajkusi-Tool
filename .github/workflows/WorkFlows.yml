@@ -24,6 +24,6 @@ jobs:
     - name: Upload Artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: Beta
+        name: Tweaks
         path: /home/runner/work/Gaming-Pack/Gaming-Pack/src/tweaks
         if-no-files-found: error
