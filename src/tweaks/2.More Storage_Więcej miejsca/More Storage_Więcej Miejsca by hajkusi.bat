@@ -73,6 +73,7 @@ IF /I "%DISM%" NEQ "N" goto Dism
 cls
 :Dism
 cls
+Dism.exe /Online /Set-ReservedStorageState /State:Disabled
 Dism.exe /Online /Cleanup-Image /StartComponentCleanup
 Dism.exe /Online /Cleanup-Image /StartComponentCleanup /ResetBase
 goto TakeOwn
@@ -201,6 +202,22 @@ cd "%AppData%\Opera Software\Opera GX Stable\File System\"
 for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
 cd "%AppData%\Opera Software\Opera GX Stable\Network\""
 for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
+goto DiscordTempAndCache
+
+:DiscordTempAndCache
+taskkill /im discord.exe /f
+del "%AppData%\Discord\DawnCache\" /F /Q /S
+cd "%AppData%\Discord\Code Cache\js\"
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
+cd "%AppData%\Discord\Cache\"
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
+cd "%AppData%\Discord\Crashpad\"
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
+cd "%AppData%\Discord\GpuCache\"
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
+cd "%AppData%\Discord\Dictionaries\"
+for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
+start Discord.exe /f
 goto MinecraftLogs
 
 :PromptForHoneCache
