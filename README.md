@@ -3,3 +3,4 @@ Gaming-Optimizer is an collection of performance tweaks
 Polski:
 Gaming-Optimizer to zbiór poprawek wydajności
 Results|Rezultaty:https://discord.gg/gnxDFsRETz
+https://github.com/Atlas-OS/Atlas/blob/main/LICENSE
