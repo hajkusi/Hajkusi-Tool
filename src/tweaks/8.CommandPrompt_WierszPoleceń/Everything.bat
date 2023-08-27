@@ -252,9 +252,16 @@ netsh int ip set global taskoffload=disabled
 netsh int ip set global neighborcachelimit=4096
 netsh int ipv6 set state disabled
 netsh int isatap set state disabled
-netsh int tcp set supplemental Internet congestionprovider=ctcp
-netsh int tcp set supplemental Custom congestionprovider=ctcp
-netsh int tcp set supplemental InternetCustom congestionprovider=ctcp
+netsh int tcp set supplemental Internet CongestionProvider=Ctcp
+netsh int tcp set supplemental Custom CongestionProvider=Ctcp
+netsh int tcp set supplemental InternetCustom CongestionProvider=Ctcp
+netsh int tcp set supplemental Datacenter CongestionProvider=Ctcp
+netsh int tcp set supplemental Compat CongestionProvider=Ctcp
+netsh int tcp set supplemental Template=Internet CongestionProvider=Ctcp
+netsh int tcp set supplemental Template=Datacenter CongestionProvider=Ctcp
+netsh int tcp set supplemental Template=Compat CongestionProvider=Ctcp
+netsh int tcp set supplemental Template=DatacenterCustom CongestionProvider=Ctcp
+netsh int tcp set supplemental Template=InternetCustom CongestionProvider=Ctcp
 netsh interface isatap set state disabled
 netsh interface ip set interface ethernet currenthoplimit=64
 netsh int tcp set security profiles=disabled
