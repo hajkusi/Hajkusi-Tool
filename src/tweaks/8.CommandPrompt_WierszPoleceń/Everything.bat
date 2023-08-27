@@ -1279,9 +1279,8 @@ schtasks /change /disable /tn "NvTmRep_CrashReport2_{B2FE1952-0186-46C3-BAEC-A80
 schtasks /change /disable /tn "NvTmRep_CrashReport3_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}"
 schtasks /change /disable /tn "NvTmRep_CrashReport4_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}"
 SET DEVMGR_SHOW_NONPRESENT_DEVICES=1
-Powershell -Command "%programdata%\NagleAlg.ps1"
-powershell -NoProfile -Command "Disable-MMAgent -PagingCombining -mc"
-defrag.exe
+Powershell -NoProfile -Command "Disable-MMAgent -PagingCombining -mc"
+Defrag.exe
 cls
 goto PromptforGPeditEnabler
 
