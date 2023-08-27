@@ -1,0 +1,4 @@
+kill_dwm = false
+kill_explorer = false
+disable_idle = true
+timer_resolution = 0.1

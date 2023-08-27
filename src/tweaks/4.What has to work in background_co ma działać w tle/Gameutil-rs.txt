@@ -1,0 +1,12 @@
+English:
+Everything Is Seted Up Unless You Delete gameutil-rs.toml
+1.Turn On Application Gameutil-rs.exe
+2.Click Start
+3.Sometimes Click Clear Memory (Cleans Alot Of Ram)
+4.Don't Turn Off This App
+
+Polish:
+Wszystko Jest Ustawione Chyba Że Usuniesz gameutil-rs.toml
+1.Włącz Aplikację Gameutil-rs.exe
+2.Kliknij Start
+3.Czasami Klikaj "Clear Memory" (Cleans Alot Of Ram)
