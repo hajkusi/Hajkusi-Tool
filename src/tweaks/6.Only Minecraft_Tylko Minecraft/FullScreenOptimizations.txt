@@ -1,0 +1,4 @@
+You Can Disable FullScreen Optimizations This Will Give You Couple FPS
+1.Find Your Game.exe And Right Click On It
+2.Goto Compatibility Tab And Check Disable FullScreen Optimizations
+3.Click Apply And Ok
