@@ -966,11 +966,6 @@ Echo Disabling Windows Attempt To Save As Much RAM As Possible, Such As Sharing 
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingCombining" /t REG_DWORD /d "1" /f
 
 Reg add "HKLM\System\CurrentControlSet\Control\Session Manager" /v "HeapDeCommitFreeBlockThreshold" /t REG_DWORD /d "262144" /f
-goto NormalFortnitePriority
-
-:NormalFortnitePriority
-Echo Enabling Normal Priority For Fortnite\Wlaczanie Normalnego Piorytetu Dla Fortnite
-Reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\FortniteClient-Win64-Shipping.exe\PerfOptions" /v "CpuPriorityClass" /t REG_DWORD /d "2" /f
 goto OptimalWin32Priority
 
 :OptimalWin32Priority
