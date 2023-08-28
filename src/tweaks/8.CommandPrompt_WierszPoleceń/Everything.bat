@@ -169,10 +169,10 @@ Reg add "HKLM\System\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002b
 Reg add "HKLM\System\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /v "PowerMizerLevel" /t REG_DWORD /d "1" /f
 Reg add "HKLM\System\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /v "PowerMizerLevelAC" /t REG_DWORD /d "1" /f
 Reg add "HKLM\System\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /v "PerfLevelSrc" /t REG_DWORD /d "8738" /f
+cls
 goto PromptChangeDNS
 
 :PromptChangeDNS
-cls
 SET /P DNS=Change DNS To Faster One?(Y/N)
 IF /I "%DNS%" NEQ "Y" goto PromptForTcpIp
 IF /I "%DNS%" NEQ "N" goto ChangeDNS
