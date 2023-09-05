@@ -17,31 +17,36 @@ for /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & echo on & for %%b in (1)
 REM Add ANSI escape sequences
 reg add HKCU\CONSOLE /v VirtualTerminalLevel /t REG_DWORD /d 1 /f >nul 2>&1
 reg add "HKLM\System\CurrentControlSet\Control\CrashControl" /v "DisplayParameters" /t REG_DWORD /d "1" /f >nul 2>&1
-:TweaksPG1
+
+:TweaksPG1English
 cls
 echo.
 echo                                                                                                     %COL%[36mPage 1/2
 echo                                                               %COL%[1;4;34mTweaks%COL%[0m
 echo.
 echo              %COL%[33m[%COL%[37m 1 %COL%[33m]%COL%[37m Power Plan                 %COL%[33m[%COL%[37m 2 %COL%[33m]%COL%[37m OptimizeMemory             %COL%[33m[%COL%[37m 3 %COL%[33m]%COL%[37m MSI Mode
-echo              %COL%[90mDesktop Power Plan, Good         %COL%[90mOptimizes Ram,SvcHost, And More   %COL%[90mEnable MSI Mode For Gpu And
-echo              %COL%[90mTo Use With A Laptop Battery.    %COL%[90mService Host To Your RAM          %COL%[90mNetwork Adapters
+echo              %COL%[90mDesktop Power Plan, Good         %COL%[90mOptimizes Ram,SvcHost, And More  %COL%[90mEnable MSI Mode For Gpu And
+echo              %COL%[90mTo Use With A Laptop Battery.    %COL%[90mService Host To Your RAM         %COL%[90mNetwork Adapters
 echo.
 echo              %COL%[33m[%COL%[37m 4 %COL%[33m]%COL%[37m Affinity                   %COL%[33m[%COL%[37m 5 %COL%[33m]%COL%[37m W32 Priority Seperation    %COL%[33m[%COL%[37m 6 %COL%[33m]%COL%[37m Mouse Fix
-echo              %COL%[90mThis Tweak Will Spread Devices   %COL%[90mOptimizes The Usage Priority Of   %COL%[90mOptimizes The Usage Priority Of
-echo              %COL%[90mOn Multiple Cpu Cores            %COL%[90mYour Running Services             %COL%[90mYour Running Services
+echo              %COL%[90mThis Tweak Will Spread Devices   %COL%[90mOptimizes The Usage Priority     %COL%[90mOptimizes The Usage Of
+echo              %COL%[90mOn Multiple Cpu Cores            %COL%[90mOf Your Running Services         %COL%[90mYour Mouse
 echo.
-echo              %COL%[33m[%COL%[37m 7 %COL%[33m]%COL%[37m Telemetry          
-echo              %COL%[90mDisabled\Deletes Telemetry
-echo              %COL%[90mServices
+echo              %COL%[33m[%COL%[37m 7 %COL%[33m]%COL%[37m Telemetry                  %COL%[33m[%COL%[37m 8 %COL%[33m]%COL%[37m Sc                         %COL%[33m[%COL%[37m 9 %COL%[33m]%COL%[37m Fse
+echo              %COL%[90mDisabled\Deletes Telemetry       %COL%[90mConfigures Sc                    %COL%[90mEnables FullScreen
+echo              %COL%[90mServices                         %COL%[90mCommand                          %COL%[90mOptimalizations
+echo.             
+echo              %COL%[33m[%COL%[37m 10 %COL%[33m]%COL%[37m Diagnostics               %COL%[33m[%COL%[37m 11 %COL%[33m]%COL%[37m SMB1                      %COL%[33m[%COL%[37m 12 %COL%[33m]%COL%[37m HardWareDataQueueSize
+echo              %COL%[90mDisable Diagnostics              %COL%[90mDisables And Removes             %COL%[90mThis Will Increase\Decre
+echo              %COL%[90mServices For Better Perf         %COL%[90mOld SMB1 Protocol                %COL%[90mase HardWareDataQueueSize
 echo.
 echo                                                            %COL%[1;4;34mNvidia Tweaks%COL%[0m"
 echo.
-echo              %COL%[33m[%COL%[37m 8 %COL%[33m]%COL%[37m Disable HDCP               %COL%[33m[%COL%[37m 9 %COL%[33m]%COL%[37m Disable Preemption         %COL%[33m[%COL%[37m 10 %COL%[33m]%COL%[37m ProfileInspector
-echo              %COL%[90mDisable Copy Protection Technology   %COL%[90mDisable Preemption Requests  %COL%[90mWill Edit Your Nvidia Control Panel
-echo              %COL%[90mOf Illegal High Definition Content   %COL%[90mFrom The GPU Scheduler       %COL%[90mAnd Add Various Tweaks
+echo              %COL%[33m[%COL%[37m 13 %COL%[33m]%COL%[37m Disable HDCP               %COL%[33m[%COL%[37m 14 %COL%[33m]%COL%[37m Disable Preemption         %COL%[33m[%COL%[37m 15 %COL%[33m]%COL%[37m ProfileInspector
+echo              %COL%[90mDisable Copy Protection Technology   %COL%[90mDisable Preemption Requests    %COL%[90mWill Edit Your Nvidia Control Panel
+echo              %COL%[90mOf Illegal High Definition Content   %COL%[90mFrom The GPU Scheduler         %COL%[90mAnd Add Various Tweaks
 echo.
-echo              %COL%[33m[%COL%[37m 11 %COL%[33m]%COL%[37m Disable Write Combining
+echo              %COL%[33m[%COL%[37m 16 %COL%[33m]%COL%[37m Disable Write Combining
 echo              %COL%[90mStops Data From Being Combined
 echo              %COL%[90mAnd Temporarily Stored
 echo.
@@ -50,68 +55,88 @@ echo.
 echo                                     %COL%[90m[ B for back ]         %COL%[31m[ X to close ]         %COL%[36m[ N page two ]
 echo.
 set /p choice="%DEL%                                        %COL%[37mSelect a corresponding number to the options above > "
-if /i "%choice%"=="1" goto PowerCfg
-if /i "%choice%"=="2" goto SvcHost
-if /i "%choice%"=="3" goto MsiMode
-if /i "%choice%"=="4" goto Affinity
-if /i "%choice%"=="5" goto Win32Priority
-if /i "%choice%"=="6" goto MouseOptimize
-if /i "%choice%"=="7" goto Telemetry
-if /i "%choice%"=="8" goto DisableHDCP
-if /i "%choice%"=="9" goto DisablePreemption
-if /i "%choice%"=="10" goto Nvidia
-if /i "%choice%"=="11" goto DisableWriteCombining
+if /i "%choice%"=="1" goto:PowerCfg
+if /i "%choice%"=="2" goto:SvcHost
+if /i "%choice%"=="3" goto:MsiMode
+if /i "%choice%"=="4" goto:Affinity
+if /i "%choice%"=="5" goto:Win32Priority
+if /i "%choice%"=="6" goto:MouseOptimize
+if /i "%choice%"=="7" goto:Telemetry
+if /i "%choice%"=="8" goto:Sc
+if /i "%choice%"=="9" goto:Fse
+if /i "%choice%"=="10" goto:DisableDiagnostics 
+if /i "%choice%"=="11" goto:SMB1
+if /i "%choice%"=="12" goto:GetInput
+if /i "%choice%"=="13" goto:DisableHDCP
+if /i "%choice%"=="14" goto:DisablePreemption
+if /i "%choice%"=="15" goto:Nvidia
+if /i "%choice%"=="16" goto:DisableWriteCombining
 if /i "%choice%"=="X" exit /b
 if /i "%choice%"=="B" goto TitleEnglish
-if /i "%choice%"=="N" (set "PG=TweaksPG2") & goto TweaksPG2
+if /i "%choice%"=="N" (set "PG=TweaksPG2") & goto TweaksPG2English
 
-:TweaksPG2
+:TweaksPG2English
 cls
 echo.
 echo                                                                                                              %COL%[36mPage 2/2
 echo                                                           %COL%[1;4;34mNetwork Tweaks%COL%[0m
 echo.
 echo              %COL%[33m[%COL%[37m 1 %COL%[33m]%COL%[37m Optimize TCP/IP             %COL%[33m[%COL%[37m 2 %COL%[33m]%COL%[37m Optimize NIC               %COL%[33m[%COL%[37m 3 %COL%[33m]%COL%[37m Optimize Netsh
-echo              %COL%[90mTweaks your Internet Protocol       %COL%[90mOptimize your Network Card settings  %COL%[90mThis Tweak Will Optimize Your
-echo              %COL%[91mDon't use if you are using Wi-Fi    %COL%[91mDon't use if you are using Wi-Fi     %COL%[90mComputer Network Configuration
+echo              %COL%[90mTweaks your Internet Protocol     %COL%[90mOptimize your Network Card settings  %COL%[90mThis Tweak Will Optimize Your
+echo              %COL%[91mDon't use if you are using Wi-Fi  %COL%[91mDon't use if you are using Wi-Fi     %COL%[90mComputer Network Configuration
 echo.
 echo                                                             %COL%[1;4;34mGPU ^& CPU%COL%[0m
 echo.
-echo              %COL%[33m[%COL%[37m 4 %COL%[33m]%COL%[37m All GPU Tweaks %ALLOF%             %COL%[33m[%COL%[37m 5 %COL%[33m]%COL%[37m Optimize Intel iGPU        %COL%[33m[%COL%[37m 6 %COL%[33m]%COL%[37m AMD GPU Tweaks
-echo              %COL%[90mVarious essential tweaks for all  %COL%[90mIncrease dedicated video Vram On   %COL%[90mConfigure AMD GPU To Optimized
-echo              %COL%[90mGPU Brands And Manufacturers      %COL%[90ma Intel iGPU                       %COL%[90mSettings
+echo              %COL%[33m[%COL%[37m 4 %COL%[33m]%COL%[37m All GPU Tweaks              %COL%[33m[%COL%[37m 5 %COL%[33m]%COL%[37m Optimize Intel iGPU        %COL%[33m[%COL%[37m 6 %COL%[33m]%COL%[37m AMD GPU Tweaks
+echo              %COL%[90mVarious essential tweaks for all  %COL%[90mIncrease dedicated video Vram On %COL%[90mConfigure AMD GPU To Optimized
+echo              %COL%[90mGPU Brands And Manufacturers      %COL%[90ma Intel iGPU                     %COL%[91mComingSoon
 echo.
 echo                                                        %COL%[1;4;34mMiscellaneous Tweaks%COL%[0m
 echo.
 echo              %COL%[33m[%COL%[37m 7 %COL%[33m]%COL%[37m Reduce Audio Latency        %COL%[33m[%COL%[37m 8 %COL%[33m]%COL%[37m Debloat                    %COL%[33m[%COL%[37m 9 %COL%[33m]%COL%[37m Bluetooth Fix
-echo              %COL%[90mReduces Audio Latency  	       %COL%[90mDelete Preinstalled	       %COL%[90mFixes Bluetooth If It
+echo              %COL%[90mReduces Audio Latency  	       %COL%[90mDelete Preinstalled	        %COL%[90mFixes Bluetooth If It
 echo              %COL%[91mDon't Use On Slow Or Old CPU's    %COL%[90mPrograms                         %COL%[90mWon't Connect To Device
 echo.
-echo              %COL%[33m[%COL%[37m 10 %COL%[33m]%COL%[37m BCD Tweaks                 %COL%[33m[%COL%[37m 11 %COL%[33m]%COL%[37m System Tools Enabler      %COL%[33m[%COL%[37m 12 %COL%[33m]%COL%[37m Soft Restart
-echo              %COL%[90mApply BCD Tweaks For              %COL%[90mSystem Tools Is An Utility Added %COL%[90mIf You PC Has Been Running A While
-echo              %COL%[90mLess Boot Time                    %COL%[90mTo Right Click Context Menu      %COL%[90mUse This For A Quick Boost
+echo              %COL%[33m[%COL%[37m 10 %COL%[33m]%COL%[37m BCD Tweaks                 %COL%[33m[%COL%[37m 11 %COL%[33m]%COL%[37m System Tools Enabler      %COL%[33m[%COL%[37m 12 %COL%[33m]%COL%[37m AddTakeOwnerShip
+echo              %COL%[90mApply BCD Tweaks For              %COL%[90mSystem Tools Is An Utility Added %COL%[90mAdds TakeOwnerShip In
+echo              %COL%[90mLess Boot Time                    %COL%[90mTo Right Click Context Menu      %COL%[90mThe Context Menu
+echo.
+echo              %COL%[33m[%COL%[37m 13 %COL%[33m]%COL%[37m GPEditEnabler              %COL%[33m[%COL%[37m 14 %COL%[33m]%COL%[37m Soft Restart              %COL%[33m[%COL%[37m 15 %COL%[33m]%COL%[37m Optional Tweaks
+echo              %COL%[90mEnables Gpedit For                %COL%[90mIf You PC Has Been Running A     %COL%[90mApplies Optional Tweaks
+echo              %COL%[90mWindows Home Version              %COL%[90mA Use This For A Quick Boost     %COL%[90mA Lot Of Tweaks
+echo.
+echo                                                        %COL%[1;4;34mPower Saving And Services%COL%[0m
+echo.
+echo              %COL%[33m[%COL%[37m 16 %COL%[33m]%COL%[37m Usb Power Saving           %COL%[33m[%COL%[37m 17 %COL%[33m]%COL%[37m Power Throttling          %COL%[33m[%COL%[37m 18 %COL%[33m]%COL%[37m Services  
+echo              %COL%[90mDisabler Power Saving For         %COL%[90mDisables Power Throttling For    %COL%[90mDisables: Services,Windows
+echo              %COL%[90mAll USB                           %COL%[90mAll Applications                 %COL%[90mServices And More
 echo.
 echo.
 echo.
 echo                                     %COL%[90m[ B for back ]         %COL%[31m[ X to close ]         %COL%[36m[ N page one ]
 echo.
 set /p choice="%DEL%                                        %COL%[37mSelect a corresponding number to the options above > "
-if /i "%choice%"=="1" goto TcpIp
-if /i "%choice%"=="2" goto NIC
-if /i "%choice%"=="3" goto NetshOptions
-if /i "%choice%"=="4" goto AllGPU
-if /i "%choice%"=="5" goto Intel
-if /i "%choice%"=="6" goto AMD
+if /i "%choice%"=="1" goto:TcpIp
+if /i "%choice%"=="2" goto:NIC
+if /i "%choice%"=="3" goto:NetshOptions
+if /i "%choice%"=="4" goto:AllGPU
+if /i "%choice%"=="5" goto:Intel
+if /i "%choice%"=="6" goto:AMD
 if /i "%choice%"=="7" goto:AudioOptions
 if /i "%choice%"=="8" goto:Debloat
 if /i "%choice%"=="9" goto:BluetoothFix
 if /i "%choice%"=="10" goto:BCDTweaks
 if /i "%choice%"=="11" goto:SystemToolsEnabler
-if /i "%choice%"=="12" call:SoftRestart
+if /i "%choice%"=="12" goto:AddTakeOwnerShip
+if /i "%choice%"=="13" goto:GPeditEnablerInHome
+if /i "%choice%"=="14" call:SoftRestart
+if /i "%choice%"=="15" goto:OptionalTweaks
+if /i "%choice%"=="16" goto:USBPowerSaving
+if /i "%choice%"=="17" goto:PowerThrottling
+if /i "%choice%"=="18" goto:Services
 if /i "%choice%"=="X" exit /b
 if /i "%choice%"=="B" goto TitleEnglish
-if /i "%choice%"=="N" (set "PG=TweaksPG1") & goto TweaksPG1
-
+if /i "%choice%"=="N" (set "PG=TweaksPG1") & goto TweaksPG1English
 
 Title Applying Tweaks
 setlocal EnableDelayedExpansion
@@ -125,7 +150,7 @@ bcdedit /deletevalue useplatformclock
 bcdedit /set useplatformtick yes
 bcdedit /set tscsyncpolicy enhanced
 echo.
-goto TweaksPG2
+goto TweaksPG2English
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 echo Fixing Bluetooth
   
@@ -133,21 +158,9 @@ echo Fixing Bluetooth
 echo Fix Bluetooth By scar#1000
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DevicesFlowUserSvc" /v Start /t REG_DWORD /d "3" /f
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DevicePickerUserSvc" /v Start /t REG_DWORD /d "3" /f
-goto TweaksPG2
+goto TweaksPG2English
 
 echo Tweaking Your Gpu\Tweakowanie Twojej Karty Graficznej
-
-:GPU
-cls
-cls
-echo What Brand is Your GPU?(If You Don't Have one Just type 2 or 3)\Jakiej Marki Jest Twoja Karta Graficzna (Jesli Nie Masz To Wybierz 2 lub 3)
-echo 1. Nvidia
-echo 2. AMD
-echo 3. Intel
-choice /C:123 /N /M "> Enter Your Choice on the Keyboard [1,2,3..] : "	
-if errorlevel  3 goto:AllGPU
-if errorlevel  2 goto:AMD
-if errorlevel  1 goto:Nvidia
 
 :Nvidia
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "RmGpsPsEnablePerCpuCoreDpc" /t REG_DWORD /d "1" /f
@@ -248,7 +261,7 @@ Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "PP_ThermalAutoThrottlingEnable" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "DisableDrmdmaPowerGating" /t REG_DWORD /d "1" /f
 cls
-goto TweaksPG1
+goto TweaksPG1English
 
 :AMD
 
@@ -258,23 +271,15 @@ Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "DisablePreemptionO
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "EnableCEPreemption" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "ComputePreemption" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "DisableCudaContextPreemption" /t REG_DWORD /d "1" /f
-goto TweaksPG1
+goto TweaksPG1English
 
-:InternetTweaks
+:TcpIp
 ipconfig /flushdns
 ipconfig /release
 ipconfig /renew
 ipconfig /renew6
 Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNsclient" /v "EnableMulticast" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNsclient" /v "DisableSmartNameResolution" /t REG_DWORD /d "1" /f
-goto EthernetOptions
-
-:PromptForTcpIp
-SET /P TcpIp=Do You Want To Change TcpIp Settings\Czy Chcesz Zmienic Ustawienia TcpIp?(Y/N)
-IF /I "%TCPIP%" NEQ "Y" goto PromptForNetshOptions
-IF /I "%TCPIP%" NEQ "N" goto TcpIp
-
-:TcpIp
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "TcpMaxConnectRetransmissions" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "Tcp1323Opts" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "TcpTimedWaitDelay" /t REG_DWORD /d "32" /f
@@ -304,7 +309,7 @@ Reg add "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i"
 Reg add "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i" /v "TcpAckFrequency" /t REG_DWORD /d "1" /f
 Reg add "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i" /v "TcpDelAckTicks" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i" /v "TcpInitialRTT" /d "300" /t REG_DWORD /f
-goto TweaksPG2
+goto TweaksPG2English
 
 :NetshOptions
 netsh int ip reset
@@ -356,7 +361,7 @@ netsh int tcp set global maxsynretransmissions=2
 netsh winsock set autotuning onv
 Reg add "HKCU\Software\Gaming" /v "NetshOptimize" /f
 Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Psched" /v "NonBestEffortLimit" /t REG_DWORD /d "0" /f
-goto TweaksPG2
+goto TweaksPG2English
 
 :Nic
 Reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}" /v "MIMOPowerSaveMode" /t REG_SZ /d "3" /f
@@ -377,26 +382,12 @@ Reg add "HKLM\System\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002b
 Reg add "HKLM\System\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /v "PowerMizerLevel" /t REG_DWORD /d "1" /f
 Reg add "HKLM\System\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /v "PowerMizerLevelAC" /t REG_DWORD /d "1" /f
 Reg add "HKLM\System\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /v "PerfLevelSrc" /t REG_DWORD /d "8738" /f
-cls
-goto TweaksPG2
-
-:ChangeDNS
 netsh interface ipv4 add dnsservers "Ethernet" address=1.1.1.1 index=1
 netsh interface ipv4 add dnsservers "Ethernet" address=8.8.8.8 index=2
-
 netsh interface ipv4 add dnsservers "Wi-Fi" address=1.1.1.1 index=1
 netsh interface ipv4 add dnsservers "Wi-Fi" address=8.8.8.8 index=2
-goto TweaksPG2
-
-:DeliveryOptions
 cls
-Echo Optimizing Delivery Options
-@REM Disable Delivery Optimization P2P Update downlods outside of local network
-Reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" /v "DODownloadMode" /t REG_DWORD /d "0" /f
-reg add "HKLM\Software\Policies\Microsoft\Windows\DeliveryOptimization" /v "DODownloadMode" /t REG_DWORD /d "0" /f
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Settings" /v "DownloadMode" /t REG_DWORD /d "0" /f
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization" /v "SystemSettingsDownloadMode" /t REG_DWORD /d "0" /f
-goto TweaksPG2
+goto TweaksPG2English
 
 :DistributeTimers
 cls
@@ -404,7 +395,7 @@ Echo Distributing Timers
 echo Disable DistributeTimers
 Reg delete "HKLM\SYSTEM\ControlSet001\Control\Session Manager\kernel" /v "DistributeTimers" /f
 Reg add "HKLM\SYSTEM\ControlSet001\Control\Session Manager\kernel" /f
-goto TweaksPG2
+goto TweaksPG2English
 
 :MouseOptimize
 Reg add "HKU\.DEFAULT\Control Panel\Mouse" /v "MouseSpeed" /t REG_SZ /d "0" /f
@@ -444,7 +435,7 @@ goto ChooseScale
 Reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseYCurve" /t Reg_BINARY /d "0000000000000000fd11010000000000002404000000000000fc12000000000000c0bb0100000000" /f
 Reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csrss.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d "4" /f
 Reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csrss.exe\PerfOptions" /v IoPriority /t REG_DWORD /d "3" /f
-goto TweaksPG1
+goto TweaksPG1English
 
 Echo Disabling System Auto-Loggers
 
@@ -531,7 +522,7 @@ goto PowerThrottling
 :PowerThrottling
 Echo Disabling PowerThrottling 
 Reg add "HKLM\SYSTEM\ControlSet001\Control\Power\PowerThrottling" /v "PowerThrottlingOff" /t REG_DWORD /d "1" /f
-goto Services
+goto 
 
 :Services
 cls
@@ -646,20 +637,6 @@ set toDisable=DiagTrack diagnosticshub.standardcollector.service dmwappushservic
    sc config %%a start= disabled 
 ))
 cls
-goto
-
-:fsutil
-fsutil behavior set memoryusage 2
-fsutil behavior set mftzone 2
-fsutil behavior set disablelastaccess 1
-fsutil behavior set encryptpagingfile 0
-fsutil behavior set disablecompression 1
-fsutil behavior set disabledeletenotify 0
-fsutil 8dot3name set 1
-fsutil resource setavailable C:\
-fsutil resource setlog shrink 10 C:\
-fsutil behavior set disable8dot3 1
-cls
 goto 
 
 :AudioOptions
@@ -681,7 +658,7 @@ nssm set GamingAudio Start SERVICE_AUTO_START
 nssm set GamingAudio AppAffinity 1
 nssm set GamingAudio start SERVICE_AUTO_START
 nssm start GamingAudio
-goto TweaksPG2
+goto TweaksPG2English
 
 :Telemetry
 cls
@@ -932,7 +909,7 @@ Echo Disabling Settings App Unnecessary And Telemetry Options\Wylaczanie Niepotr
 Reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" /v EnableWebContentEvaluation /t REG_DWORD /d "0" /f
 REM - Let websites provide locally...
 Reg add "HKCU\Control Panel\International\User Profile" /v HttpAcceptLanguageOptOut /t REG_DWORD /d "1" /f
-goto TweaksPG1
+goto TweaksPG1English
 
 :PowerCfg
 PowerCfg -duplicatescheme 44444444-4444-4444-4444-444444444451 77777777-7777-7777-7777-777777777799
@@ -954,9 +931,9 @@ PowerCfg -change -standby-timeout-dc 0
 PowerCfg -setacvalueindex scheme_current sub_processor PROCTHROTTLEMAX 100
 PowerCfg -setacvalueindex scheme_current sub_processor PROCTHROTTLEMIN 100
 cls
-goto TweaksPG1
+goto TweaksPG1English
 
-:sc
+:Sc
 Sc config dmwappushservice start= disabled
 Sc config diagnosticshub.standardcollector.service start= disabled
 Sc config DcpSvc start=disabled
@@ -998,7 +975,7 @@ Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /v "AllowGameDVR" /t 
 Reg add "HKLM\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR" /v /t REG_DWORD /d "0" /f
 Reg add "HKCU\System\GameConfigStore" /v "Win32_AutoGameModeDefaultProfile" /t Reg_BINARY /d "020001000000c4200000000000000000000000000000000000000000000000000000000000000000" /f
 Reg add "HKCU\System\GameConfigStore" /v "Win32_GameModeRelatedProcesses" /t Reg_BINARY /d "010001000100670061006d006500700061006e0065006c002e006500780065000000ee001e8af974e0553503201136031e000000e05535031e0000000f000000a0e8000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" /f
-goto DisableDiagnostics
+goto TweaksPG1English
 
 :DisableDiagnostics
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\DPS" /v "Start" /t REG_dWORD /d "4" /f
@@ -1007,20 +984,14 @@ Reg add "HKLM\SOFTWARE\Microsoft\WindowsSelfHost\UI\Strings" /v "DiagnosticError
 Reg add "HKLM\SOFTWARE\Microsoft\WindowsSelfHost\UI\Strings" /v "DiagnosticLinkText" /t REG_SZ /d "" /f
 Reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "DisableTailoredExperiencesWithDiagnosticData" /t REG_DWORD /d "1" /f
 Reg add "HKLM\Software\Policies\Microsoft\Windows\CloudContent" /v "DisableWindowsconsumerFeatures" /t REG_DWORD /d "1" /f
-goto SMB1
+goto TweaksPG1English
 
 :SMB1
 Powershell -Command "Disable-WindowsOptionalFeature -Online -FeatureName 'SMB1Protocol' -NoRestart"
 Powershell -Command "Disable-WindowsOptionalFeature -Online -FeatureName 'SmbDirect' -NoRestart"
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\mrxsmb10" /v "Start" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" /v "SMB1" /t REG_DWORD /d "0" /f
-goto GpuTweaks
-
-:GpuTweaks
-echo Enabling Hardware Accelerated GPU scheduling\Wlaczanie Przyspieszonego Sprzetowo Planowania Karty Graficznej
-Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /f /v "HwschMode" /t REG_DWORD /d "2"
-cls
-goto GetInput
+goto TweaksPG1English
 
 :GetInput
 cls
@@ -1033,9 +1004,9 @@ Rem Valid number detected so continuing
 Echo Your size of HardwareDataQueueSize is %HardwareDataQueueSize%
 Pause
 Rem Make the HardwareDataQueueSize the current choosed number
-goto Prompt
+goto PromptForHardWare
 
-:Prompt
+:PromptForHardWare
 cls
 SET /P AREYOUSURE=Size of a HardwareDataQueueSize You Choosed Is %HardwareDataQueueSize% Continue?, Or Change Number\Rozmiar Wybranej Kolejki Sprzetu Komputerowego to %HardwareDataQueueSize % Kontynuuj? Czy Zmien Numer(Y/N)
 IF /I "%AREYOUSURE%" NEQ "Y" goto GetInput
@@ -1045,21 +1016,7 @@ IF /I "%AREYOUSURE%" NEQ "N" goto HardwareDataQueueSize
 Echo Setting HardwareDataQueueSize\Ustawianie Rozmiaru Sprzetowej Kolejki Komputerowej
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\mouclass\Parameters" /v "MouseDataQueueSize" /t REG_DWORD /d "%HardwareDataQueueSize%" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters" /v "KeyboardDataQueueSize" /t REG_DWORD /d "%HardwareDataQueueSize%" /f
-goto MemoryTweaks
-
-:MemoryTweaks
-echo.
-Echo adding more ram for applications in system memory caching to improve microstuttering\Dodanie wiekszej ilosci pamieci RAM dla aplikacji w buforowaniu pamieci systemowej w celu poprawy mikrozacinania
-Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "LargeSystemCache" /t REG_DWORD /d "1" /f
-
-Echo Paging Executive Is Used To Load System Files Such As Kernel And Hardware Drivers To The Page File When Needed. Disable Will Force Run Into Not Virtual Memory\Paging Executive Sluzy Do ladowania Plikow Systemowych, Takich Jak Sterowniki Kernel I Sprzetu, Do Pliku Stronicowania W Razie Potrzeby. Wylaczenie Spowoduje Wymuszenie Uruchomienia Pamieci Nie Wirtualnej
-Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingExecutive" /t REG_DWORD /d "1" /f
-
-Echo Disabling Windows Attempt To Save As Much RAM As Possible, Such As Sharing Pages For Images, Copy-On-Write For Data Pages, And Compression\Wylaczanie Systemu Windows Proba Zaoszczedza Jak Najwiekszej Ilosci Pamieci RAM, Na Przyklad Udostepnianie Stron Obrazow, Kopiowanie Przy Zapisie Stron Danych I Kompresji
-Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingCombining" /t REG_DWORD /d "1" /f
-
-Reg add "HKLM\System\CurrentControlSet\Control\Session Manager" /v "HeapDeCommitFreeBlockThreshold" /t REG_DWORD /d "262144" /f
-goto 
+goto TweaksPG1English 
 
 :Win32Priority
 Echo Applying Optimal Win32Priority For Balanced FPS And Latency\Zastosowywanie Optymalnych Ustawien Dla Win32Priority Dla Zbalansowanych Fps i Mniejszego Opoznienia Systemu
@@ -1070,7 +1027,7 @@ Reg add "HKLM\SYSTEM\ControlSet001\Control\PriorityControl" /v "IRQ0Priority" /t
 Reg add "HKLM\SYSTEM\ControlSet001\Control\PriorityControl" /v "IRQ4294967286Priority" /t REG_DWORD /d "00000002" /f
 Reg add "HKLM\SYSTEM\ControlSet001\Control\PriorityControl" /v "IRQ4294967287Priority" /t REG_DWORD /d "00000003" /f
 Reg add "HKLM\SYSTEM\ControlSet001\Control\PriorityControl" /v "ConvertibleSlateMode" /t REG_DWORD /d "00000000" /f
-goto TweaksPG1
+goto TweaksPG1English
 
 :Programs
 Echo
@@ -1117,9 +1074,22 @@ set listofbloatware=Automate Appconnector Microsoft3DViewer MicrosoftPowerBIForW
 cls
 ))
 @Echo off
-goto SvcHost
+goto TweaksPG2English
 
 :SvcHost
+Echo.
+Echo adding more ram for applications in system memory caching to improve microstuttering\Dodanie wiekszej ilosci pamieci RAM dla aplikacji w buforowaniu pamieci systemowej w celu poprawy mikrozacinania
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "LargeSystemCache" /t REG_DWORD /d "1" /f
+
+Echo Paging Executive Is Used To Load System Files Such As Kernel And Hardware Drivers To The Page File When Needed. Disable Will Force Run Into Not Virtual Memory\Paging Executive Sluzy Do ladowania Plikow Systemowych, Takich Jak Sterowniki Kernel I Sprzetu, Do Pliku Stronicowania W Razie Potrzeby. Wylaczenie Spowoduje Wymuszenie Uruchomienia Pamieci Nie Wirtualnej
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingExecutive" /t REG_DWORD /d "1" /f
+
+Echo Disabling Windows Attempt To Save As Much RAM As Possible, Such As Sharing Pages For Images, Copy-On-Write For Data Pages, And Compression\Wylaczanie Systemu Windows Proba Zaoszczedza Jak Najwiekszej Ilosci Pamieci RAM, Na Przyklad Udostepnianie Stron Obrazow, Kopiowanie Przy Zapisie Stron Danych I Kompresji
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingCombining" /t REG_DWORD /d "1" /f
+
+Reg add "HKLM\System\CurrentControlSet\Control\Session Manager" /v "HeapDeCommitFreeBlockThreshold" /t REG_DWORD /d "262144" /f
+cls
+:N
 Echo Enter The Amount Of RAM That You Have\Wpisz Ilosc Ramu Ktory Posiadasz. (Example\Np.: 4GB, 6GB, 8GB, 16GB, 32GB, 64GB)
 echo.
 echo.
@@ -1140,7 +1110,7 @@ goto SvcHost
 :PromptRam
 cls
 SET /P RAM=Size Of Ram Which Was Chosen Is %Choice% Continue?, Or Change?\Wielkosc Ramu, Ktora Zostala Wybrana To %Choice% Kontynuuj, Lub Zmienic?(Y/N)
-IF /I "%RAM%" NEQ "Y" goto SvcHost
+IF /I "%RAM%" NEQ "Y" goto N
 IF /I "%RAM%" NEQ "N" goto Y
 
 :4GBRam
@@ -1148,56 +1118,51 @@ Reg add "HKLM\SYSTEM\ControlSet001\Control" /v "SvcHostSplitThresholdInKB" /t RE
 bcdedit /set increaseuserva 2000
 wmic computersystem where name=”%computername%” set AutomaticManagedPagefile=False
 wmic pagefileset where name="C:\\pagefile.sys" set InitialSize=400,MaximumSize=16384
-goto TweaksPG1
+goto TweaksPG1English
 :6GBRam
 Reg add "HKLM\SYSTEM\ControlSet001\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "103355478" /f
 bcdedit /set increaseuserva 3000
 wmic computersystem where name=”%computername%” set AutomaticManagedPagefile=False
 wmic pagefileset where name="C:\\pagefile.sys" set InitialSize=400,MaximumSize=16384
-goto TweaksPG1
+goto TweaksPG1English
 :8GBRam
 Reg add "HKLM\SYSTEM\ControlSet001\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "137922056" /f
 bcdedit /set increaseuserva 4000
 wmic computersystem where name=”%computername%” set AutomaticManagedPagefile=False
 wmic pagefileset where name="C:\\pagefile.sys" set InitialSize=400,MaximumSize=16384
-goto TweaksPG1
+goto TweaksPG1English
 :16GBRam
 Reg add "HKLM\SYSTEM\ControlSet001\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "376926742" /f
 bcdedit /set increaseuserva 8000
 wmic computersystem where name="%computername%" set AutomaticManagedPagefile=False
 wmic pagefileset where name="%SystemDrive%\\pagefile.sys" set InitialSize=0,MaximumSize=0
 wmic pagefileset where name="%SystemDrive%\\pagefile.sys" delete
-goto TweaksPG1
+goto TweaksPG1English
 :32GBRam
 Reg add "HKLM\SYSTEM\ControlSet001\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "861226034" /f
 bcdedit /set increaseuserva 16000
 wmic computersystem where name="%computername%" set AutomaticManagedPagefile=False
 wmic pagefileset where name="%SystemDrive%\\pagefile.sys" set InitialSize=0,MaximumSize=0
 wmic pagefileset where name="%SystemDrive%\\pagefile.sys" delete
-goto TweaksPG1
+goto TweaksPG1English
 :64GB
 Reg add "HKLM\SYSTEM\ControlSet001\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "1729136740" /f
 bcdedit /set increaseuserva 32000
 wmic computersystem where name="%computername%" set AutomaticManagedPagefile=False
 wmic pagefileset where name="%SystemDrive%\\pagefile.sys" set InitialSize=0,MaximumSize=0
 wmic pagefileset where name="%SystemDrive%\\pagefile.sys" delete
-goto TweaksPG1
+goto TweaksPG1English
 
-:PromptForAddTakeOwnerShipInContextMenu
-ET /P TakeOwnerShipInContext=Do You Want To add Take OwnerShip In Context Menu\Czy Chcesz Dodac Take OwnerShip do Menu Kontekstowego?(Y/N)
-IF /I "%TAKEOWNERSHIPINCONTEXTMENU%" NEQ "Y" goto PromptForOptionalTweaks
-IF /I "%TAKEOWNERSHIPINCONTEXTMENU%" NEQ "N" goto AddTakeOwnerShipInContextMenu
-
-:AddTakeOwnerShipInContextMenu
-if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\Show-Take-Ownership-Context-Menu.Reg" ( goto RegImportContext ) else ( goto Show-Take-Ownership-Context-Menu.Reg )
+:AddTakeOwnerShip
+if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\Show-Take-Ownership-Context-Menu.Reg" ( goto RegImportContext ) else ( goto DownloadShow-Take-Ownership-Context-Menu.Reg )
 :DownloadShow-Take-Ownership-Context-Menu.Reg
 curl -g -L -# -o "%SYSTEMDRIVE%\Gaming_Pack\Resources\Show-Take-Ownership-Context-Menu.Reg" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/Show-Take-Ownership-Context-Menu.Reg"
-goto 
+goto RegImportContext
 
 :MsiMode
 Reg add "HKLM\SYSTEM\CurrentControlSet\Enum\%%g\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties" /v "MSISupported" /t REG_DWORD /d "0x00000001" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties" /v "MSISupported" /t REG_DWORD /d "1" /f
-goto TweaksPG1
+goto TweaksPG1English
 
 :Affinity
 if !NumberOfCores! gtr 4 (
@@ -1210,22 +1175,22 @@ if !NumberOfCores! gtr 4 (
 		reg delete "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "AssignmentSetOverride" /f
 	)
 )
-goto TweaksPG1
+goto TweaksPG1English
 
 :DisableWriteCombining
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "DisableWriteCombining" /t Reg_DWORD /d "1" /f
-goto TweaksPG1
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "DisableWriteCombining" /t Reg_DWORD /d "1" /f
+goto TweaksPG1English
 
 :DisableHDCP
-reg add "HKCU\Software\Gaming" /v "HDCPTweaks" /t REG_DWORD /d "1" /f
-reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /v "RMHdcpKeyglobZero" /t REG_DWORD /d "1" /f
-goto TweaksPG1
+Reg add "HKCU\Software\Gaming" /v "HDCPTweaks" /t REG_DWORD /d "1" /f
+Reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /v "RMHdcpKeyglobZero" /t REG_DWORD /d "1" /f
+goto TweaksPG1English
 
 :RegImportContext
 cd %SYSTEMDRIVE%\Gaming_Pack\Resources\
 Reg import Show-Take-Ownership-Context-Menu.Reg
 cls
-goto PromptForOptionalTweaks
+goto TweaksPG2English
 
 :PromptForOptionalTweaks
 SET /P Optional=Do You Want To Go To The Optional Tweaks\Czy Chcesz Zastosowac Opcjonalne Tweaki?(Y/N)
@@ -1384,6 +1349,20 @@ Reg add "HKLM\SOFTWARE\Policies\Microsoft\PCHealth\ErrorReporting\DW" /v "DWNoEx
 Reg add "HKLM\Software\Policies\Microsoft\DeviceHealthAttestationService" /v "EnableDeviceHealthAttestationService" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager" /v "ProtectionMode" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power\" /v "HyperBootEnabled" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" /v "DODownloadMode" /t REG_DWORD /d "0" /f
+Reg add "HKLM\Software\Policies\Microsoft\Windows\DeliveryOptimization" /v "DODownloadMode" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Settings" /v "DownloadMode" /t REG_DWORD /d "0" /f
+Reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization" /v "SystemSettingsDownloadMode" /t REG_DWORD /d "0" /f
+Fsutil behavior set memoryusage 2
+Fsutil behavior set mftzone 2
+Fsutil behavior set disablelastaccess 1
+Fsutil behavior set encryptpagingfile 0
+Fsutil behavior set disablecompression 1
+Fsutil behavior set disabledeletenotify 0
+Fsutil 8dot3name set 1
+Fsutil resource setavailable C:\
+Fsutil resource setlog shrink 10 C:\
+Fsutil behavior set disable8dot3 1
 schtasks /Change /TN "Microsoft\Windows\ExploitGuard\ExploitGuard MDM policy Refresh" /Disable
 schtasks /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Cache Maintenance"
 schtasks /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Cleanup" /Disable
@@ -1408,12 +1387,6 @@ for /f %%i in ('findstr /i . List.txt 2^>nul') do dism /online /norestart /add-p
 del /s /q List.txt
 cls
 goto PromptforIEUnintaller
-
-:PromptforGPeditEnabler
-Echo Do You Want To Enable GPedit\Chcesz Wlaczyc GPedit?
-SET /P GPEDIT=Yes or No?(Y/N)
-IF /I "%GPEDIT%" NEQ "Y" goto PromptforIEUnintaller
-IF /I "%GPEDIT%" NEQ "N" goto GPeditEnablerInHome
 
 :PromptforIEUnintaller
 Echo Do You Want to Unintall Internet Explorer version 8,9,10,11\Odinstalowac Internet Explorer Wersje 8,9,10,11?
@@ -1519,7 +1492,7 @@ Reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\sh
 Reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\wu" /ve /t REG_SZ /d "Windows Update" /f
 Reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\wu" /v "icon" /t REG_SZ /d "wucltux.dll" /f
 Reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\wu\command" /ve /t REG_SZ /d "wuapp.exe" /f
-goto TweaksPG2
+goto TweaksPG2English
 
 :SoftRestart
 if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\NSudo.exe" ( goto NSudo ) else ( goto DownloadNSudo )
@@ -1550,4 +1523,4 @@ echo ipconfig /Registerdns >>RefreshNet.bat
 NSudo -U:T -P:E -M:S -ShowWindowMode:Hide -wait cmd /c "%TEMP%\RefreshNet.bat"
 Restart64.exe
 EmptyStandbyList.exe standbylist
-goto TweaksPG2
+goto TweaksPG2English
