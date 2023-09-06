@@ -1,7 +1,9 @@
-Huge Update:https://github.com/hajkusi/Gaming-Pack/commit/c7dc4ce07dc82059f5adfa799dfa0801f24fd07c
 English:
 Gaming-Pack Is An Collection Of Performance Tweaks
-Rezults:https://discord.gg/gnxDFsRETz
+Rezults:https://discord.gg/YQT6PsjZeQ
+
+Huge Update:https://github.com/hajkusi/Gaming-Pack/commit/ebf2fcf7dbfcfc3774f08c1f487620059e3eb4a6
+
 Polski:
-Gaming-Pack To Zbiór Poprawek Wydajności
-Rezultaty:https://discord.gg/gnxDFsRETz
+Gaming-Pack To Zbiór Popvrawek Wydajności
+Rezultaty:https://discord.gg/YQT6PsjZeQ
