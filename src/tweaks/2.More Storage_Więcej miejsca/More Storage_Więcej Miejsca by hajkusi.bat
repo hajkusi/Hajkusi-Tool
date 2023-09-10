@@ -161,6 +161,10 @@ cls
 goto MicrosoftEdgeTemp
 
 :MicrosoftEdgeTemp
+tasklist /fi "imagename eq MicrosoftEdge.exe" |find ":" > nul
+if errorlevel 1 taskkill /f /im "MicrosoftEdge.exe"&cls&goto MicrosoftEdgeTempContinue
+if errorlevel 0 goto MicrosoftEdgeTempContinue
+:MicrosoftEdgeTempContinue
 del "%LocalAppData%\Microsoft\Edge\User Data\Default\Cache" /F /Q /S
 del "%LocalAppData%\Microsoft\Edge\User Data\Default\Media Cache" /F /Q /S
 del "%LocalAppData%\Microsoft\Edge\User Data\Default\GPUCache" /F /Q /S
@@ -173,10 +177,15 @@ del "%LocalAppData%\Microsoft\Edge SxS\User Data\Default\GPUCache" /F /Q /S
 del "%LocalAppData%\Microsoft\Edge SxS\User Data\Default\Storage\ext" /F /Q /S
 del "%LocalAppData%\Microsoft\Edge SxS\User Data\Default\Service Worker" /F /Q /S
 del "%LocalAppData%\Microsoft\Edge SxS\User Data\ShaderCache" /F /Q /S
+start MicrosoftEdge.exe /f
 cls
 goto OperaTemp
 
 :OperaTemp
+tasklist /fi "imagename eq opera.exe" |find ":" > nul
+if errorlevel 1 taskkill /f /im "opera.exe"&cls&goto OperaTempContinue
+if errorlevel 0 goto OperaTempContinue
+:OperaTempContinue
 del "%LocalAppData%\Opera Software\Opera Stable\cache" /F /Q /S
 del "%AppData%\Opera Software\Opera Stable\GPUCache" /F /Q /S
 del "%AppData%\Opera Software\Opera Stable\ShaderCache" /F /Q /S
@@ -186,6 +195,10 @@ cls
 goto OperaGXTemp
 
 :OperaGXTemp
+tasklist /fi "imagename eq opera.exe" |find ":" > nul
+if errorlevel 1 taskkill /f /im "opera.exe"&cls&goto OperaGXTempContinue
+if errorlevel 0 goto OperaGXTempContinue
+:OperaGXTempContinue
 del "%LocalAppData%\Opera Software\Opera GX Stable\Cache" /F /Q /S
 del "%AppData%\Opera Software\Opera GX Stable\GPUCache" /F /Q /S
 del "%AppData%\Opera Software\Opera GX Stable\ShaderCache" /F /Q /S
@@ -202,10 +215,14 @@ cd "%AppData%\Opera Software\Opera GX Stable\File System\"
 for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
 cd "%AppData%\Opera Software\Opera GX Stable\Network\""
 for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
+start Opera.exe /f
 goto PromptForDiscordTempAndCache
 
 :DiscordTempAndCache
-taskkill /im discord.exe /f
+tasklist /fi "imagename eq opera.exe" |find ":" > nul
+if errorlevel 1 taskkill /f /im "opera.exe"&cls&goto DiscordTempAndCacheContinue
+if errorlevel 0 goto DiscordTempAndCacheContinue
+:DiscordTempAndCacheContinue
 del "%AppData%\Discord\DawnCache\" /F /Q /S
 cd "%AppData%\Discord\Code Cache\js\"
 for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
@@ -242,14 +259,36 @@ curl -g -L -# -o "%SYSTEMDRIVE%\Gaming_Pack\Resources\HoneCacheUseAfterUsingHone
 goto HoneCacheFile
 
 :HoneCacheFile
+tasklist /fi "imagename eq Hone.exe" |find ":" > nul
+if errorlevel 1 taskkill /f /im "Hone.exe"&cls&goto HoneCacheContinue
+if errorlevel 0 goto HoneCacheContinue
+:HoneCacheContinue
 cd %~dp0
 start HoneCacheUseAfterUsingHone.gg.bat
 pause
 del HoneCacheUseAfterUsingHone.gg.bat /F /Q /S
+start Hone.exe /f
 goto VivaldiTemp
 
 :VivaldiTemp
+tasklist /fi "imagename eq Vivaldi.exe" |find ":" > nul
+if errorlevel 1 taskkill /f /im "Vivaldi.exe"&cls&goto VivaldiTempContinue
+if errorlevel 0 goto VivaldiTempContinue
+:VivaldiTempContinue
 del "%LocalAppData%\Vivaldi\User Data\Default\Cache" /F /Q /S
+del "%LocalAppData%\Vivaldi\User Data\ShaderCache" /F /Q /S
+del "%LocalAppData%\Vivaldi\User Data\GrShaderCache" /F /Q /S
+del "%LocalAppData%\Vivaldi\User Data\GraphiteDawnCache"
+del "%LocalAppData%\Vivaldi\User Data\Default\Cache" /F /Q /S
+del "%LocalAppData%\Vivaldi\User Data\Default\DawnCache" /F /Q /S
+del "%LocalAppData%\Vivaldi\User Data\Default\GPUCache" /F /Q /S
+del "%LocalAppData%\Vivaldi\User Data\Default\Code Cache\js" /F /Q /S
+del "%LocalAppData%\Vivaldi\User Data\Default\optimization_guide_hint_cache_store" /F /Q /S
+del "%LocalAppData%\Vivaldi\User Data\Default\optimization_guide_model_metadata_store" /F /Q /S
+del "%LocalAppData%\Vivaldi\User Data\Default\*.old" /F /Q /S
+del "%LocalAppData%\Vivaldi\User Data\Default\AdBlockState" /F /Q /S
+del "%LocalAppData%\Vivaldi\User Data\Default\AdBlockState.bak" /F /Q /S
+del "%LocalAppData%\Vivaldi\User Data\Default\LOG" /F /Q /S
 cls
 goto WindowsDefenderTemp
 
@@ -365,8 +404,7 @@ goto PromptForOneDrive
 :Continue
 cd %LocalAppData%
 rd OneDrive /s /q
-cd %LocalAppData%\Programs\Opera GX\
-del *.old* /s /q /f
+del %LocalAppData%\Programs\Opera GX\*.old /S /Q /F
 goto Done
 
 :Done
