@@ -166,8 +166,8 @@ echo.
 echo                                                             %COL%[1;4;34mGPU ^& CPU%COL%[0m
 echo.
 echo              %COL%[33m[%COL%[37m 4 %COL%[33m]%COL%[37m All GPU Tweaks              %COL%[33m[%COL%[37m 5 %COL%[33m]%COL%[37m Optimize Intel iGPU        %COL%[33m[%COL%[37m 6 %COL%[33m]%COL%[37m AMD GPU Tweaks
-echo              %COL%[90mVarious Essential Tweaks For All  %COL%[90mIncrease Dedicated Video Vram On %COL%[90mConfigure AMD GPU To Optimized Settings
-echo              %COL%[90mGPU Brands And Manufacturers      %COL%[90mA Intel iGPU                     %COL%[91mComingSoon
+echo              %COL%[90mVarious Essential Tweaks For All  %COL%[90mIncrease Dedicated Video Vram On %COL%[90mConfigure AMD Graphics Card
+echo              %COL%[90mGPU Brands And Manufacturers      %COL%[90mA Intel iGPU                     %COL%[90mTo Optimized Settings
 echo.
 echo                                                        %COL%[1;4;34mMiscellaneous Tweaks%COL%[0m
 echo.
@@ -236,7 +236,7 @@ goto TweaksPG2English
 echo Fix Bluetooth By scar#1000
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DevicesFlowUserSvc" /v Start /t REG_DWORD /d "3" /f
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DevicePickerUserSvc" /v Start /t REG_DWORD /d "3" /f
-Reg add "HKCU\Software\Gaming" /v "BluetoothFixes" REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming" /v "BluetoothFixes" REG_DWORD /d "1" /f
 goto TweaksPG2English
 
 echo Tweaking Your Gpu\Tweakowanie Twojej Karty Graficznej
@@ -272,6 +272,7 @@ Reg add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v OptInOrOutP
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup" /v "SendTelemetryData" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SOFTWARE\NVIDIA Corporation\Global\Startup\SendTelemetryData" /v "0" /t REG_DWORD /d "0" /f
 Reg add "HKCU\Software\Gaming" /v "NvidiaGPUOptimized" REG_DWORD "1" /f
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming\Resources\NVIDIA GPU Tweaks.reg" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/NVIDIA GPU Tweaks.reg"
 cls
 goto NVEnglish
 
@@ -340,11 +341,639 @@ Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "PP_sclkDeepSleepDisable" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "PP_ThermalAutoThrottlingEnable" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "DisableDrmdmaPowerGating" /t REG_DWORD /d "1" /f
+Reg delete "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows Media Foundation" /v "EnableFrameServerMode" /f
+Reg add "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows Media Foundation" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows Media Foundation" /v "EnableFrameServerMode" /f
+Reg add "HKLM\SOFTWARE\Microsoft\Windows Media Foundation" /f
+Reg add "HKCU\Software\Microsoft\DirectX\GraphicsSettings" /v "SwapEffectUpgradeCache" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Microsoft\DirectX\GraphicsSettings" /v "SpecificGPUOptionApplicable" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Microsoft\Avalon.Graphics" /v "DisableHWAcceleration" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SOFTWARE\Microsoft\Avalon.Graphics" /v "MaxMultisampleSize" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SOFTWARE\Microsoft\Avalon.Graphics" /v "UseReferenceRasterizer" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl" /v "MonitorLatencyTolerance" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl" /v "MonitorRefreshLatencyTolerance" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\WOW6432Node\Microsoft\Avalon.Graphics" /v "DisableHWAcceleration" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SOFTWARE\WOW6432Node\Microsoft\Avalon.Graphics" /v "MaxMultisampleSize" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SOFTWARE\WOW6432Node\Microsoft\Avalon.Graphics" /v "UseReferenceRasterizer" /t REG_DWORD /d "1" /f
+Reg add "HKU\.DEFAULT\SOFTWARE\Microsoft\Avalon.Graphics" /v "DisableHWAcceleration" /t REG_DWORD /d "0" /f
+Reg add "HKU\.DEFAULT\SOFTWARE\Microsoft\Avalon.Graphics" /v "MaxMultisampleSize" /t REG_DWORD /d "0" /f
+Reg add "HKU\.DEFAULT\SOFTWARE\Microsoft\Avalon.Graphics" /v "UseReferenceRasterizer" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Microsoft\Direct3D" /v "DisableVidMemVBs" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Microsoft\Direct3D" /v "MMX Fast Path" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Microsoft\Direct3D" /v "FlipNoVsync" /t REG_DWORD /d "1" /f
+Reg add "HKU\.DEFAULT\SOFTWARE\Microsoft\Direct3D" /v "DisableVidMemVBs" /t REG_DWORD /d "1" /f
+Reg add "HKU\.DEFAULT\SOFTWARE\Microsoft\Direct3D" /v "MMX Fast Path" /t REG_DWORD /d "1" /f
+Reg add "HKU\.DEFAULT\SOFTWARE\Microsoft\Direct3D" /v "FlipNoVsync" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Microsoft\Direct3D\Drivers" /v "SoftwareOnly" /t REG_DWORD /d "0" /f
+Reg add "HKU\.DEFAULT\SOFTWARE\Microsoft\Direct3D\Drivers" /v "SoftwareOnly" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SOFTWARE\WOW6432Node\Microsoft\Direct3D" /v "DisableVidMemVBs" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SOFTWARE\WOW6432Node\Microsoft\Direct3D" /v "MMX Fast Path" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\WOW6432Node\Microsoft\Direct3D" /v "FlipNoVsync" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\WOW6432Node\Microsoft\Direct3D\Drivers" /v "SoftwareOnly" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\SubSystems" /v "Optional" /t REG_SZ /d "" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Scheduler" /v "EnablePreemption" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "TdrLevel" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "UseGpuTimer" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "RmGpsPsEnablePerCpuCoreDpc" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "PowerSavingTweaks" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "DisableWriteCombining" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "EnableRuntimePowerManagement" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "PrimaryPushBufferSize" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "FlTransitionLatency" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "D3PCLatency" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "RMDeepLlEntryLatencyUsec" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "PciLatencyTimerControl" /t REG_DWORD /d "20" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "Node3DLowLatency" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "LOWLATENCY" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "RmDisableRegistryCaching" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "RMDisablePostL2Compression" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "PlatformSupportMiracast" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "RmGpsPsEnablePerCpuCoreDpc" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "DpiMapIommuContiguous" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" /t REG_SZ /d "AutoHDREnable=0;GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rundll32.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\bdeunlock.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\bdechangepin.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ClipDLS.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ScriptRunner.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ApplySettingsTemplateCatalog.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Microsoft.Uev.CscUnpinTool.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\UevAppMonitor.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Microsoft.Uev.SyncController.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\chgport.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\chgusr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\query.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\logoff.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\qappsrv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\qprocess.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\reset.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rwinsta.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tscon.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tsdiscon.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tskill.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\msg.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\quser.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\qwinsta.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\baaupdate.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\logagent.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\mfpmp.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PackageInspector.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\manage-bde.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PresentationSettings.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\AgentService.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\repair-bde.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ClipRenew.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\gpscript.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CustomShellHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\AssignedAccessGuard.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\mavinject.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\BitLockerDeviceEncryption.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rdpinit.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rdpshell.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\AppVClient.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\BdeHdCfg.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CameraSettingsUIHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RemoteAppLifetimeManager.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rdpsign.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\fveprompt.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\iotstartup.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\fvenotify.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WPDShextAutoplay.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\BdeUISrv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wbadmin.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wbengine.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\bootim.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WinBioDataModelOOBE.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PresentationHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rstrui.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\srdelayed.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SrTasks.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SpaceAgent.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\provlaunch.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\EduPrintProv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\UNP\UNPUXHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\UNP\UNPUXLauncher.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\UNP\UpdateNotificationMgr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Spectrum.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SIHClient.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\xwizard.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\takeown.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\vssadmin.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\where.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\cacls.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\eventcreate.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\fsavailux.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ftp.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\grpconv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\runas.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\systeminfo.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\taskkill.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tasklist.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\timeout.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\waitfor.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\whoami.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\mstsc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\TSTheme.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wkspbroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\TSWbPrxy.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RdpSa.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RdpSaProxy.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RdpSaUacHelper.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\sessionmsg.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\TieringEngineService.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rdpclip.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rdpinput.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\TapiUnattend.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dialer.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tcmsetup.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MultiDigiMon.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tabcal.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\FsIso.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dvdplay.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\calc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\charmap.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\credwiz.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\certreq.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\certutil.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\klist.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ksetup.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\nltest.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\regini.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\regsvr32.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\setspn.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\regedt32.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ResetEngine.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SysResetErr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\systemreset.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemResetPlatform\SystemResetPlatform.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\migwiz\mighost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\pwlauncher.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\fodhelper.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Fondue.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\OptionalFeatures.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CheckNetIsolation.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\msiexec.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\mblctr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\msconfig.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\mmc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WindowsActionDialog.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\cliconfg.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\odbcad32.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\odbcconf.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\iscsicpl.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\iscsicli.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\IESettingSync.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ie4uinit.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ie4ushowIE.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\F12\IEChooser.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ieUnatt.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\iexpress.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wextract.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\mshta.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wiaacmgr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wiawow64.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\bridgeunattend.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\eventvwr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\gpresult.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\gpupdate.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\esentutl.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\eudcedit.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wecutil.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\easinvoker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\EhStorAuthn.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DpiScaling.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Dxpserver.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DeviceProperties.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DisplaySwitch.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemSettingsRemoveDevice.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SyncHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DevicePairingWizard.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ComputerDefaults.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DataExchangeHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CompMgmtLauncher.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\convert.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\find.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ktmutil.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\label.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\openfiles.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\replace.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Robocopy.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\stordiag.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\choice.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\clip.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\doskey.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\forfiles.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\print.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\subst.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\cttune.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\cttunesvr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\help.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\msdtc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CastSrv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\UserDataSource.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\curl.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tar.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\spaceman.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\spaceutil.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\EDPCleanup.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MDMAppInstaller.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ARP.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\finger.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\HOSTNAME.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MRINFO.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\NETSTAT.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ROUTE.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\sort.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\TCPSVCS.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\xcopy.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\auditpol.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\mountvol.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\net.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\net1.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\netsh.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PATHPING.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PING.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Reg" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\sc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\setx.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\TRACERT.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\attrib.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ClipUp.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\diskusage.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\findstr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\icacls.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ipconfig.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CIDiag.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\comp.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\fc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\fsutil.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\recover.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\sdclt.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PerceptionSimulation\PerceptionSimulationService.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tcblaunch.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\securekernel.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SgrmBroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SgrmLpac.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\upnpcont.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\BioIso.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\NgcIso.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dusmtask.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WinBioPlugIns\FaceFodUninstaller.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\oobe\oobeldr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\oobe\windeploy.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\oobe\audit.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\oobe\AuditShD.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MBR2GPT.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\oobe\Setup.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\poqexec.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PkgMgr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Dism\DismHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\cmdkey.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dpapimig.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\LsaIso.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\cscript.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RmClient.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SecEdit.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wscript.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\icsunattend.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\NetHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\cmmon32.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\cmstp.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\cmdl32.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rasautou.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rasdial.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rasphone.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ntprint.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\printui.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DeviceEject.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\powercfg.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\sigverif.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\drvinst.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\hdwwiz.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\pnputil.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wowreg32.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\InfDefault-" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ndadmin.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\newdev.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\driverquery.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PnPUnattend.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\oobe\FirstLogonAnim.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\oobe\msoobe.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\oobe\UserOOBEBroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\netbtugc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\netiougc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\nbtstat.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\NetCfgNotifyObjectHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\djoin.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\getmac.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\shrpubw.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemPropertiesAdvanced.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemPropertiesComputerName.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemPropertiesDataExecutionPrevention.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemPropertiesHardware.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemPropertiesPerformance.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemPropertiesProtection.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemPropertiesRemote.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\winver.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\sxstrace.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Sysprep\sysprep.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WSCollect.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WSReset.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\changepk.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\LicensingUI.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\phoneactivate.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\UpgradeResultsUI.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\GenValObj.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\slui.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SppExtComObj.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\sppsvc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Speech\SpeechUX\SpeechUXWiz.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\snmptrap.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\immersivetpmvscmgrsvr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rmttpmvscmgrsvr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tpmvscmgr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tpmvscmgrsvr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\OpenWith.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ThumbnailExtractionHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\verclsid.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WallpaperHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\prevhost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rundll32.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\mcbuilder.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MSchedExe.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WUDFCompanionHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WUDFHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\AxInstUI.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\consent.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\LanguageComponentsInstallerComHandler.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\LockAppHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\la57setup.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\lpk-" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\lpksetup.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\lpremove.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DsmUserTask.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\netcfg.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\runonce.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\secinit.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\colorcpl.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dccw.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Dism.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\proquota.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\UserAccountControlSettings.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\shutdown.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\efsui.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\cipher.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\edpnotify.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MicrosoftEdgeCP.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rekeywiz.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dnscacheugc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\nslookup.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\lodctr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\unlodctr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ddodiag.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\omadmclient.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\omadmprc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DmOmaCpMo.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\coredpussvr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DeviceEnroller.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dmcertinst.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dmcfghost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CredentialUIBroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SensorDataService.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SecurityHealthHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\prproc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SecurityHealthService.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Windows.Media.BackgroundPlayback.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\sfc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wusa.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wbem\wbemtest.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wbem\scrcons.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ApplyTrustOffline.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CustomInstallExec.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\deploymentcsphelper.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\expand.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ReAgentc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RelPost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MuiUnattend.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dxdiag.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\fontdrvhost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\winlogon.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ucsvc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\fltMC.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\lsass.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ntoskrnl.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\services.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\smss.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\csrss.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Boot\winload.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\AggregatorHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dtdump.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\runexehelper.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rdrleakdiag.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wpr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\pacjsworker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\userinit.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wininit.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DeviceCensus.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dllhost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\conhost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\extrac32.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\makecab.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\svchost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\compact.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dwm.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dcomcnfg.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Locator.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Com\MigRegDB.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RpcPing.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\mtstocom.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Com\comrepl.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dllhst3g.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\setupcl.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\setupugc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wimserv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\chkdsk.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\chkntfs.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wsqmcons.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\autochk.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\browser_broker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\browserexport.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Boot\winresume.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\winresume.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\winload.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\bthudtask.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\fsquirt.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\bitsadmin.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\refsutil.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\appidcertstorecheck.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\appidpolicyconverter.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SndVol.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\sdbinst.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\pcalua.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\LaunchTM.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\pcaui.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Taskmgr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Utilman.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\EaseOfAccessDialog.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Narrator.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\osk.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\sethc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\AtBroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Magnify.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\EoAExperiences.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CloudExperienceHostBroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ApplicationFrameHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ShellAppRuntime.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\desktopimgdownldr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemSettingsAdminFlows.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\VSSVC.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\convertvhd.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wuauclt.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MusNotifyIcon.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WindowsUpdateElevatedInstaller.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MusNotification.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MusNotificationUx.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MoNotificationUx.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\UsoClient.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Speech_OneCore\common\SpeechModelDownload.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Speech_OneCore\common\SpeechRuntime.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DeviceCredentialDeployment.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\LegacyNetUXHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wevtutil.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dasHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DiskSnapshot.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\verifier.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Register-CimProvider.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wbem\WinMgmt.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wbem\WmiPrvSE.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\winrs.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\winrshost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wbem\WMIC.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WSManHTTPConfig.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wsmprovhost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\LogonUI.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\mpnotify.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wlrmdr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\diskpart.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\diskraid.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\vds.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\vdsldr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\fixmapi.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Netplwiz.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PasswordOnWakeSettingFlyout.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\UserAccountBroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\LaunchWinApp.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\verifiergui.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tzsync.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wksprt.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\InputSwitchToastHandler.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\UIMgrBroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ctfmon.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\taskhostw.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\at.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\schtasks.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\alg.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\cmd.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PackagedCWALauncher.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\mmgaserver.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\AuthHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\backgroundTaskHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\VaultCmd.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\licensingdiag.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CertEnrollCtrl.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RuntimeBroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\BackgroundTransferHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ByteCodeGenerator.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WWAHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WaaSMedicAgent.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\upfc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wuapihost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ttdinject.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tttracer.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\sihost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\pospaymentsworker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RemotePosWorker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\LicenseManagerShellext.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ISM.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SearchFilterHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SearchIndexer.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SearchProtocolHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\directxdatabaseupdater.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dispdiag.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Windows.WARP.JITService.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dxgiadaptercache.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MicrosoftEdgeSH.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\TokenBrokerCookies.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\AppHostRegistrationVerifier.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dstokenclean.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WinRTNetMUAHostServer.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PickerHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemUWPLauncher.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DataStoreCacheDumpTool.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CredentialEnrollmentManager.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wlanext.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\LockScreenContentServer.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SlideToShutDown.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\systray.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RunLegacyCPLElevated.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\control.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\fontview.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wifitask.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tzutil.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\w32tm.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dmclient.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dsregcmd.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\UtcDecoderHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\TpmTool.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\HealthAttestationClientAgent.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\TpmInit.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CloudNotifications.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemSettingsBroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wbem\mofcomp.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wbem\unsecapp.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wbem\WMIADAP.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wbem\WmiApSrv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RMActivate.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RMActivate_isv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RMActivate_ssp.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RMActivate_ssp_isv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\printfilterpipelinesvc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\provtool.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PrintIsolationHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\spoolsv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PinEnrollmentBroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WpcTok.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WpcMon.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ApproveChildRequest.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ofdeploy.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DmNotificationBroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MDMAgent.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MicrosoftEdgeBCHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Eap3Host.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\bcdboot.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\bcdedit.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\bootsect.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\audiodg.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SpatialAudioLicenseSrv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CompPkgSrv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\agentactivationruntimestarter.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\IcsEntitlementHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\XblGameSaveTask.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\notepad.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\TsWpfWrp.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\explorer.exe" /t REG_SZ /d "GpuPreference=1;" /f
 Reg add "HKCU\Software\Gaming" /v "GPUOptimized" REG_DWORD "1" /f
 cls
 goto TweaksPG1English
 
 :AMDEnglish
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming\Resources\NVIDIA GPU Tweaks.reg" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/AMD GPU Tweaks.reg"
+cd %SYSTEMDRIVE%\Gaming\Resources\
+Reg Import NVIDIA GPU Tweaks.reg
+Reg add "HKCU\Software\Gaming" /v "GPUOptimized" REG_DWORD "1" /f
+goto TweaksPG2
 
 :DisablePreemptionEnglish
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "DisablePreemption" /t REG_DWORD /d "1" /f
@@ -362,6 +991,10 @@ ipconfig /renew
 ipconfig /renew6
 Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNsclient" /v "EnableMulticast" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNsclient" /v "DisableSmartNameResolution" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient" /v "EnableIdnMapping" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient" /v "RegistrationEnabled" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient" /v "PreferLocalOverLowerBindingDNS" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient" /v "DisableSmartProtocolReordering" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "TcpMaxConnectRetransmissions" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "Tcp1323Opts" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "TcpTimedWaitDelay" /t REG_DWORD /d "32" /f
@@ -378,19 +1011,56 @@ Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "Negativ
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "DisableParallelAandAAAA" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "NegativeSOACacheTime" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "NetFailureCacheTime" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "EnableAutoDoh" /t REG_DWORD /d "2" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "MaxCacheEntryTtlLimit" /t REG_DWORD /d "fa00" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "MaxNegativeCacheTtl" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "CacheHashTableBucketSize" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "CacheHashTableSize" /t REG_DWORD /d "180" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "MaxSOACacheEntryTtlLimit" /t REG_DWORD /d "12d" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "ServiceDllUnloadOnStop" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "MaxCacheTtl" /t REG_DWORD /d "3840" /f
 Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v "DoNotShowFeedbackNotifications" /t REG_DWORD /d "1" /f
-Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "EnableAutoDoh" /t REG_DWORD /d "2" /f
 Reg add "HKLM\SYSTEM\CurrDisableNagleentControlSet\Services\AFD\Parameters" /v "DoNotHoldNicBuffers" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DisableRawSecurity" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "NonBlockingSendSpecialBuffering" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "IgnorePushBitOnReceives" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DynamicSendBufferDisable" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "FastSendDatagramThreshold" /t REG_DWORD /d "1000" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "MaxActiveTransmitFileCount" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "MaxFastCopyTransmit" /t REG_DWORD /d "1000" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "MaxFastTransmit" /t REG_DWORD /d "8000" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "PriorityBoost" /t REG_DWORD /d "4" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DoNotHoldNICBuffers" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "TransmitWorker" /t REG_DWORD /d "20" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DefaultReceiveWindow" /t REG_DWORD /d "8192" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DefaultSendWindow" /t REG_DWORD /d "8192" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DisableAddressSharing" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "LargeBufferSize" /t REG_DWORD /d "10000" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "IRPStackSize" /t REG_DWORD /d "14" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DisableRawSecurity" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DisableDirectAcceptEx" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DisableChainedReceive" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "EnableDynamicBacklog" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "MinimumDynamicBacklog" /t REG_DWORD /d "20" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "MaximumDynamicBacklog" /t REG_DWORD /d "1000" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DynamicBacklogGrowthDelta" /t REG_DWORD /d "10" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "BufferMultiplier" /t REG_DWORD /d "400" /f
 Reg add "HKLM\SOFTWARE\Microsoft\MSMQ\Parameters" /v "TCPNoDelay" /t REG_DWORD /d "1" /f
 Reg add "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i" /v "TCPNoDelay" /t REG_DWORD /d "1" /f
 Reg add "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i" /v "TcpAckFrequency" /t REG_DWORD /d "1" /f
 Reg add "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i" /v "TcpDelAckTicks" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i" /v "TcpInitialRTT" /d "300" /t REG_DWORD /f
+Reg add "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp" /v "TcpAutotuning" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Internet Settings" /v "TcpAutotuning" /t REG_DWORD /d "1" /f
+Reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp" /v "TcpAutotuning" /t REG_DWORD /d "1" /f
+Reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v "TcpAutotuning" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS" /v "Tcp Autotuning Level" /t REG_SZ /d "Experimental" /f
+Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS" /v "Application DSCP Marking Request" /t REG_SZ /d "Allowed" /f
+Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\TCPIP\v6Transition" /v "TcpAutotuningLevel" /t REG_DWORD /d "3" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\services\Tcpip\Parameters" /v "EnableWsd" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\services\Tcpip\Parameters" /v "TcpHybridAck" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "EnableConnectionRateLimiting" /t REG_DWORD /d "0" /f
 Reg add "HKCU\Software\Gaming" /v "TcpIpOptimized" REG_DWORD "1" /f
 goto TweaksPG2English
 
@@ -401,6 +1071,10 @@ netsh winsock reset
 netsh winsock reset proxy
 netsh winsock reset catalog
 netsh advfirewall reset
+netsh advfirewall set allprofiles state off
+netsh advfirewall firewall delete rule all
+netsh advfirewall set allprofiles firewallpolicy blockinbound,blockoutbound
+netsh advfirewall set allprofiles state on
 netsh interface ipv4 reset
 netsh interface ipv6 reset
 netsh interface ip delete arpcache
@@ -465,10 +1139,19 @@ Reg add "HKLM\System\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002b
 Reg add "HKLM\System\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /v "PowerMizerLevel" /t REG_DWORD /d "1" /f
 Reg add "HKLM\System\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /v "PowerMizerLevelAC" /t REG_DWORD /d "1" /f
 Reg add "HKLM\System\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /v "PerfLevelSrc" /t REG_DWORD /d "8738" /f
-netsh interface ipv4 add dnsservers "Ethernet" address=1.1.1.1 index=1
-netsh interface ipv4 add dnsservers "Ethernet" address=8.8.8.8 index=2
-netsh interface ipv4 add dnsservers "Wi-Fi" address=1.1.1.1 index=1
-netsh interface ipv4 add dnsservers "Wi-Fi" address=8.8.8.8 index=2
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Video\{DEB039CC-B704-4F53-B43E-9DD4432FA2E9}\0000" /v "PerfLevelSrc" /t REG_DWORD /d "00003322" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Video\{DEB039CC-B704-4F53-B43E-9DD4432FA2E9}\0000" /v "PowerMizerEnable" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Video\{DEB039CC-B704-4F53-B43E-9DD4432FA2E9}\0000" /v "PowermizerLevel" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Video\{DEB039CC-B704-4F53-B43E-9DD4432FA2E9}\0000" /v "PowermizerLevelAC" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\BITS" /v "EnablePeercaching" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\BITS" /v "DisablePeerCachingClient" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\BITS" /v "DisablePeerCachingServer" /t REG_DWORD /d "1" /f
+set INTERFACE=Ethernet
+set DNS1=8.8.8.8
+set DNS2=8.8.4.4
+set INTERFACE=Wi-Fi
+set DNS1=8.8.8.8
+set DNS2=8.8.4.4
 Reg add "HKCU\Software\Gaming" /v "NicOptimized" /t REG_DWORD "1" /f
 cls
 goto TweaksPG2English
@@ -711,6 +1394,128 @@ set toDisable=DiagTrack diagnosticshub.standardcollector.service dmwappushservic
    sc stop %%a
    sc config %%a start= disabled 
 ))
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\pla" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\GraphicsPerfSvc" /f
+Reg delete "HKLM\SOFTWARE\AMDLOG" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\AMD External Events Utility" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\GraphicsPerfSvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\GpuEnergyDrv" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\luafv" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\PktMon" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost\diagnostics" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost\wercplsupport" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost\GraphicsPerfSvcGroup" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\diagnosticshub.standardcollector.service" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\DiagTrack" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\dmwappushservice" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\SystemUsageReportSvc_QUEENCREEK" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\Psched" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\WerSvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\gencounter" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\FileInfo" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\Filetrace" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\WdiServiceHost" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\WdiSystemHost" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\diagsvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\TroubleshootingSvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\NDKPerf" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\NDKPing" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\storqosflt" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\NdisCap" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\PcaSvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\lfsvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\DPS" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\wercplsupport" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\InventorySvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\ss_conn_service" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\ss_conn_service2" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\MozillaMaintenance" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\COMSysApp" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\SENS" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\EventSystem" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost" /v "rdxgroup" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost" /v "GraphicsPerfSvcGroup" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost" /v "autoTimeSvc" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost" /v "NetworkServiceAndNoImpersonation" /f
+Reg delete "HKLM\SYSTEM\ControlSet001\Services\ASUSSystemAnalysis" /f
+Reg delete "HKLM\SYSTEM\ControlSet001\Services\ASUSSystemDiagnosis" /f
+Reg delete "HKLM\SYSTEM\ControlSet001\Services\ASUSLinkNear" /f
+Reg delete "HKLM\SYSTEM\ControlSet001\Services\ASUSLinkRemote" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\ASUSSwitch" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\AsusAppService" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\ASUSSoftwareManager" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\ASUSSwitch" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\PNRPAutoReg" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\p2psvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\p2pimsvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\PNRPsvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\PNRPAutoReg" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\PeerDistSvc" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost" /v "LocalServicePeerNet" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost" /v "P9RdrService" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost" /v "PeerDist" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost" /v "WerSvcGroup" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\WpcMonSvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Control\Services\GoogleChromeBetaElevationService" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Control\Services\GoogleChromeElevationService" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\DusmSvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\TermService" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\RemoteRegistry" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\RpcLocator" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\WinRM" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\KtmRm" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\smphost" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\BDESVC" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\AxInstSV" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\AJRouter" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\SysMain" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\bam" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\Beep" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\CldFlt" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\dam" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\hvcrash" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\RetailDemo" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\BcastDVRUserService" /f
+Reg delete "HKLM\SYSTEM\ControlSet001\Services\CaptureService" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost\BcastDVRUserService" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost\InvSvcGroup" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\defragsvc" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost" /v "defragsvc" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost" /v "InvSvcGroup" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost" /v "BcastDVRUserService" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\ALG" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\tzautoupdate" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\MapsBroker" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\SmsRouter" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\WMPNetworkSvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\QWAVE" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\CscService" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\svsvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\MSiSCSI" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\QWAVEdrv" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\PimIndexMaintenanceSvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\WwanSvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\LMS" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\bttflt" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\MsKeyboardFilter" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\wcncsvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\fhsvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\WPDBusEnum" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\SEMgrSvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\PhoneSvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\SessionEnv" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\SQLWriter" /v "Start" /t REG_DWORD /d "3" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\SQLTELEMETRY$SQLEXPRESS" /v "Start" /t REG_DWORD /d "3" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\SQLTELEMETRY" /v "Start" /t REG_DWORD /d "3" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\SQLBrowser" /v "Start" /t REG_DWORD /d "3" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\SQLAgent$SQLEXPRESS" /v "Start" /t REG_DWORD /d "3" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\SQLSERVERAGENT" /v "Start" /t REG_DWORD /d "3" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\MSSQL$SQLEXPRESS" /v "Start" /t REG_DWORD /d "3" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\MySQL80" /v "Start" /t REG_DWORD /d "3" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\clr_optimization_v4.0.30319_64" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\clr_optimization_v4.0.30319_32" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\clr_optimization_v2.0.50727_64" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\clr_optimization_v2.0.50727_32" /f
 Reg add "HKCU\Software\Gaming" /v "ServicesOptimized" /t REG_DWORD /d "1" /f
 cls
 goto TweaksPG2English
@@ -1287,7 +2092,7 @@ Reg add "HKLM\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotRepo
 @REM WiFi Sense: Shared HotSpot Auto-Connect: Disable
 Reg add "HKLM\Software\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots" /v "value" /t REG_DWORD /d "0" /f
 @REM Optional Tweaks"
-Reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge" /v WebWidgetAllowed /t REG_DWORD /d "0" /f
+Reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge" /v "WebWidgetAllowed" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings" /v UxOption /t REG_DWORD /d "1" /f
 Reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\schedule\Maintenance" /v "MaintenanceDisabled" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SOFTWARE\Microsoft\Windows\scheduledDiagnostics" /v "EnableExecution" /t REG_DWORD /d "0" /f
@@ -1408,12 +2213,10 @@ Reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "N
 Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Messaging" /v "AllowMessageSync" /t Reg_ /d "0" /f
 Reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePriority" /t REG_DWORD /d "3" /f
 Reg add "HKLM\System\CurrentControlSet\Enum\%%g\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePriority" /t REG_DWORD /d "3" /f
-Reg add "HKLM\SYSTEM\ControlSet001\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMax" /t REG_DWORD /d "0" /f
-Reg add "HKLM\SYSTEM\ControlSet001\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMin" /t REG_DWORD /d "0" /f
-Reg add "HKLM\SYSTEM\ControlSet002\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMax" /t REG_DWORD /d "0" /f
-Reg add "HKLM\SYSTEM\ControlSet002\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMin" /t REG_DWORD /d "0" /f
-Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMax" /t REG_DWORD /d "0" /f
-Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMin" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\ControlSet001\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMax" /t REG_DWORD /d "64" /f
+Reg add "HKLM\SYSTEM\ControlSet001\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMin" /t REG_DWORD /d "64" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMax" /t REG_DWORD /d "64" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMin" /t REG_DWORD /d "64" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "CoreParkingDisabled" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "FeatureTestControl" /t REG_DWORD /d "0x0000ffff" /f
 Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds" /v "AllowBuildPreview" /t REG_DWORD /d "0" /f
@@ -1676,8 +2479,8 @@ echo.
 echo                                                             %COL%[1;4;34mGPU ^& CPU%COL%[0m
 echo.
 echo              %COL%[33m[%COL%[37m 4 %COL%[33m]%COL%[37m All GPU Tweaks              %COL%[33m[%COL%[37m 5 %COL%[33m]%COL%[37m Optimize Intel iGPU        %COL%[33m[%COL%[37m 6 %COL%[33m]%COL%[37m AMD GPU Tweaks
-echo              %COL%[90mRozne Niezbedne Poprawki Dla      %COL%[90mZwieksz Dedykowana Ilosc         %COL%[90mZoptymalizuj Ustawienia AMD
-echo              %COL%[90mRoznych Mark I Producentow GPU    %COL%[90mPamieci Vram Dla Intel GPU       %COL%[91mComingSoon
+echo              %COL%[90mRozne Niezbedne Poprawki Dla      %COL%[90mZwieksz Dedykowana Ilosc         %COL%[90mSkonfiguruj Ustawienia Karty
+echo              %COL%[90mRoznych Mark I Producentow GPU    %COL%[90mPamieci Vram Dla Intel GPU       %COL%[90mGraficznej Do Zoptymalizowanych
 echo.
 echo                                                        %COL%[1;4;34mMiscellaneous Tweaks%COL%[0m
 echo.
@@ -1778,6 +2581,7 @@ Reg add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v OptInOrOutP
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup" /v "SendTelemetryData" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SOFTWARE\NVIDIA Corporation\Global\Startup\SendTelemetryData" /v "0" /t REG_DWORD /d "0" /f
 Reg add "HKCU\Software\Gaming" /v "NvidiaGPUOptimized" REG_DWORD "1" /f
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming\Resources\NVIDIA GPU Tweaks.reg" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/NVIDIA GPU Tweaks.reg"
 cls
 goto NVEnglish
 
@@ -1846,13 +2650,639 @@ Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "PP_sclkDeepSleepDisable" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "PP_ThermalAutoThrottlingEnable" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "DisableDrmdmaPowerGating" /t REG_DWORD /d "1" /f
+Reg delete "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows Media Foundation" /v "EnableFrameServerMode" /f
+Reg add "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows Media Foundation" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows Media Foundation" /v "EnableFrameServerMode" /f
+Reg add "HKLM\SOFTWARE\Microsoft\Windows Media Foundation" /f
+Reg add "HKCU\Software\Microsoft\DirectX\GraphicsSettings" /v "SwapEffectUpgradeCache" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Microsoft\DirectX\GraphicsSettings" /v "SpecificGPUOptionApplicable" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Microsoft\Avalon.Graphics" /v "DisableHWAcceleration" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SOFTWARE\Microsoft\Avalon.Graphics" /v "MaxMultisampleSize" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SOFTWARE\Microsoft\Avalon.Graphics" /v "UseReferenceRasterizer" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl" /v "MonitorLatencyTolerance" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl" /v "MonitorRefreshLatencyTolerance" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\WOW6432Node\Microsoft\Avalon.Graphics" /v "DisableHWAcceleration" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SOFTWARE\WOW6432Node\Microsoft\Avalon.Graphics" /v "MaxMultisampleSize" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SOFTWARE\WOW6432Node\Microsoft\Avalon.Graphics" /v "UseReferenceRasterizer" /t REG_DWORD /d "1" /f
+Reg add "HKU\.DEFAULT\SOFTWARE\Microsoft\Avalon.Graphics" /v "DisableHWAcceleration" /t REG_DWORD /d "0" /f
+Reg add "HKU\.DEFAULT\SOFTWARE\Microsoft\Avalon.Graphics" /v "MaxMultisampleSize" /t REG_DWORD /d "0" /f
+Reg add "HKU\.DEFAULT\SOFTWARE\Microsoft\Avalon.Graphics" /v "UseReferenceRasterizer" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Microsoft\Direct3D" /v "DisableVidMemVBs" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Microsoft\Direct3D" /v "MMX Fast Path" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Microsoft\Direct3D" /v "FlipNoVsync" /t REG_DWORD /d "1" /f
+Reg add "HKU\.DEFAULT\SOFTWARE\Microsoft\Direct3D" /v "DisableVidMemVBs" /t REG_DWORD /d "1" /f
+Reg add "HKU\.DEFAULT\SOFTWARE\Microsoft\Direct3D" /v "MMX Fast Path" /t REG_DWORD /d "1" /f
+Reg add "HKU\.DEFAULT\SOFTWARE\Microsoft\Direct3D" /v "FlipNoVsync" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Microsoft\Direct3D\Drivers" /v "SoftwareOnly" /t REG_DWORD /d "0" /f
+Reg add "HKU\.DEFAULT\SOFTWARE\Microsoft\Direct3D\Drivers" /v "SoftwareOnly" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SOFTWARE\WOW6432Node\Microsoft\Direct3D" /v "DisableVidMemVBs" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SOFTWARE\WOW6432Node\Microsoft\Direct3D" /v "MMX Fast Path" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\WOW6432Node\Microsoft\Direct3D" /v "FlipNoVsync" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\WOW6432Node\Microsoft\Direct3D\Drivers" /v "SoftwareOnly" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\SubSystems" /v "Optional" /t REG_SZ /d "" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Scheduler" /v "EnablePreemption" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "TdrLevel" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "UseGpuTimer" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "RmGpsPsEnablePerCpuCoreDpc" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "PowerSavingTweaks" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "DisableWriteCombining" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "EnableRuntimePowerManagement" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "PrimaryPushBufferSize" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "FlTransitionLatency" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "D3PCLatency" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "RMDeepLlEntryLatencyUsec" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "PciLatencyTimerControl" /t REG_DWORD /d "20" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "Node3DLowLatency" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "LOWLATENCY" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "RmDisableRegistryCaching" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "RMDisablePostL2Compression" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "PlatformSupportMiracast" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "RmGpsPsEnablePerCpuCoreDpc" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "DpiMapIommuContiguous" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" /t REG_SZ /d "AutoHDREnable=0;GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rundll32.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\bdeunlock.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\bdechangepin.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ClipDLS.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ScriptRunner.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ApplySettingsTemplateCatalog.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Microsoft.Uev.CscUnpinTool.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\UevAppMonitor.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Microsoft.Uev.SyncController.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\chgport.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\chgusr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\query.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\logoff.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\qappsrv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\qprocess.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\reset.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rwinsta.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tscon.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tsdiscon.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tskill.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\msg.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\quser.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\qwinsta.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\baaupdate.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\logagent.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\mfpmp.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PackageInspector.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\manage-bde.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PresentationSettings.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\AgentService.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\repair-bde.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ClipRenew.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\gpscript.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CustomShellHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\AssignedAccessGuard.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\mavinject.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\BitLockerDeviceEncryption.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rdpinit.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rdpshell.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\AppVClient.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\BdeHdCfg.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CameraSettingsUIHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RemoteAppLifetimeManager.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rdpsign.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\fveprompt.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\iotstartup.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\fvenotify.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WPDShextAutoplay.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\BdeUISrv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wbadmin.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wbengine.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\bootim.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WinBioDataModelOOBE.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PresentationHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rstrui.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\srdelayed.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SrTasks.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SpaceAgent.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\provlaunch.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\EduPrintProv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\UNP\UNPUXHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\UNP\UNPUXLauncher.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\UNP\UpdateNotificationMgr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Spectrum.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SIHClient.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\xwizard.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\takeown.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\vssadmin.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\where.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\cacls.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\eventcreate.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\fsavailux.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ftp.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\grpconv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\runas.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\systeminfo.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\taskkill.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tasklist.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\timeout.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\waitfor.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\whoami.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\mstsc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\TSTheme.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wkspbroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\TSWbPrxy.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RdpSa.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RdpSaProxy.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RdpSaUacHelper.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\sessionmsg.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\TieringEngineService.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rdpclip.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rdpinput.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\TapiUnattend.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dialer.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tcmsetup.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MultiDigiMon.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tabcal.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\FsIso.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dvdplay.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\calc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\charmap.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\credwiz.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\certreq.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\certutil.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\klist.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ksetup.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\nltest.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\regini.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\regsvr32.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\setspn.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\regedt32.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ResetEngine.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SysResetErr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\systemreset.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemResetPlatform\SystemResetPlatform.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\migwiz\mighost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\pwlauncher.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\fodhelper.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Fondue.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\OptionalFeatures.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CheckNetIsolation.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\msiexec.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\mblctr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\msconfig.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\mmc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WindowsActionDialog.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\cliconfg.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\odbcad32.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\odbcconf.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\iscsicpl.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\iscsicli.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\IESettingSync.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ie4uinit.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ie4ushowIE.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\F12\IEChooser.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ieUnatt.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\iexpress.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wextract.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\mshta.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wiaacmgr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wiawow64.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\bridgeunattend.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\eventvwr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\gpresult.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\gpupdate.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\esentutl.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\eudcedit.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wecutil.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\easinvoker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\EhStorAuthn.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DpiScaling.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Dxpserver.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DeviceProperties.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DisplaySwitch.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemSettingsRemoveDevice.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SyncHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DevicePairingWizard.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ComputerDefaults.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DataExchangeHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CompMgmtLauncher.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\convert.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\find.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ktmutil.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\label.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\openfiles.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\replace.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Robocopy.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\stordiag.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\choice.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\clip.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\doskey.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\forfiles.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\print.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\subst.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\cttune.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\cttunesvr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\help.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\msdtc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CastSrv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\UserDataSource.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\curl.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tar.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\spaceman.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\spaceutil.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\EDPCleanup.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MDMAppInstaller.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ARP.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\finger.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\HOSTNAME.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MRINFO.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\NETSTAT.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ROUTE.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\sort.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\TCPSVCS.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\xcopy.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\auditpol.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\mountvol.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\net.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\net1.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\netsh.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PATHPING.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PING.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Reg" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\sc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\setx.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\TRACERT.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\attrib.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ClipUp.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\diskusage.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\findstr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\icacls.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ipconfig.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CIDiag.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\comp.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\fc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\fsutil.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\recover.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\sdclt.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PerceptionSimulation\PerceptionSimulationService.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tcblaunch.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\securekernel.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SgrmBroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SgrmLpac.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\upnpcont.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\BioIso.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\NgcIso.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dusmtask.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WinBioPlugIns\FaceFodUninstaller.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\oobe\oobeldr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\oobe\windeploy.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\oobe\audit.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\oobe\AuditShD.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MBR2GPT.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\oobe\Setup.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\poqexec.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PkgMgr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Dism\DismHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\cmdkey.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dpapimig.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\LsaIso.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\cscript.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RmClient.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SecEdit.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wscript.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\icsunattend.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\NetHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\cmmon32.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\cmstp.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\cmdl32.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rasautou.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rasdial.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rasphone.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ntprint.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\printui.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DeviceEject.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\powercfg.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\sigverif.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\drvinst.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\hdwwiz.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\pnputil.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wowreg32.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\InfDefault-" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ndadmin.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\newdev.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\driverquery.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PnPUnattend.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\oobe\FirstLogonAnim.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\oobe\msoobe.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\oobe\UserOOBEBroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\netbtugc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\netiougc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\nbtstat.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\NetCfgNotifyObjectHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\djoin.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\getmac.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\shrpubw.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemPropertiesAdvanced.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemPropertiesComputerName.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemPropertiesDataExecutionPrevention.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemPropertiesHardware.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemPropertiesPerformance.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemPropertiesProtection.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemPropertiesRemote.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\winver.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\sxstrace.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Sysprep\sysprep.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WSCollect.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WSReset.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\changepk.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\LicensingUI.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\phoneactivate.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\UpgradeResultsUI.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\GenValObj.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\slui.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SppExtComObj.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\sppsvc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Speech\SpeechUX\SpeechUXWiz.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\snmptrap.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\immersivetpmvscmgrsvr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rmttpmvscmgrsvr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tpmvscmgr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tpmvscmgrsvr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\OpenWith.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ThumbnailExtractionHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\verclsid.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WallpaperHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\prevhost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rundll32.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\mcbuilder.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MSchedExe.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WUDFCompanionHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WUDFHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\AxInstUI.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\consent.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\LanguageComponentsInstallerComHandler.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\LockAppHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\la57setup.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\lpk-" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\lpksetup.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\lpremove.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DsmUserTask.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\netcfg.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\runonce.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\secinit.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\colorcpl.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dccw.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Dism.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\proquota.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\UserAccountControlSettings.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\shutdown.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\efsui.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\cipher.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\edpnotify.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MicrosoftEdgeCP.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rekeywiz.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dnscacheugc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\nslookup.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\lodctr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\unlodctr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ddodiag.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\omadmclient.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\omadmprc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DmOmaCpMo.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\coredpussvr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DeviceEnroller.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dmcertinst.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dmcfghost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CredentialUIBroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SensorDataService.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SecurityHealthHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\prproc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SecurityHealthService.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Windows.Media.BackgroundPlayback.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\sfc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wusa.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wbem\wbemtest.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wbem\scrcons.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ApplyTrustOffline.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CustomInstallExec.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\deploymentcsphelper.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\expand.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ReAgentc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RelPost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MuiUnattend.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dxdiag.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\fontdrvhost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\winlogon.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ucsvc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\fltMC.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\lsass.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ntoskrnl.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\services.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\smss.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\csrss.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Boot\winload.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\AggregatorHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dtdump.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\runexehelper.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\rdrleakdiag.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wpr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\pacjsworker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\userinit.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wininit.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DeviceCensus.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dllhost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\conhost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\extrac32.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\makecab.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\svchost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\compact.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dwm.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dcomcnfg.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Locator.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Com\MigRegDB.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RpcPing.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\mtstocom.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Com\comrepl.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dllhst3g.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\setupcl.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\setupugc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wimserv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\chkdsk.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\chkntfs.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wsqmcons.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\autochk.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\browser_broker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\browserexport.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Boot\winresume.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\winresume.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\winload.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\bthudtask.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\fsquirt.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\bitsadmin.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\refsutil.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\appidcertstorecheck.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\appidpolicyconverter.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SndVol.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\sdbinst.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\pcalua.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\LaunchTM.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\pcaui.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Taskmgr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Utilman.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\EaseOfAccessDialog.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Narrator.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\osk.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\sethc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\AtBroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Magnify.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\EoAExperiences.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CloudExperienceHostBroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ApplicationFrameHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ShellAppRuntime.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\desktopimgdownldr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemSettingsAdminFlows.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\VSSVC.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\convertvhd.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wuauclt.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MusNotifyIcon.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WindowsUpdateElevatedInstaller.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MusNotification.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MusNotificationUx.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MoNotificationUx.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\UsoClient.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Speech_OneCore\common\SpeechModelDownload.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Speech_OneCore\common\SpeechRuntime.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DeviceCredentialDeployment.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\LegacyNetUXHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wevtutil.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dasHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DiskSnapshot.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\verifier.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Register-CimProvider.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wbem\WinMgmt.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wbem\WmiPrvSE.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\winrs.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\winrshost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wbem\WMIC.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WSManHTTPConfig.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wsmprovhost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\LogonUI.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\mpnotify.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wlrmdr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\diskpart.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\diskraid.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\vds.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\vdsldr.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\fixmapi.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Netplwiz.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PasswordOnWakeSettingFlyout.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\UserAccountBroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\LaunchWinApp.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\verifiergui.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tzsync.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wksprt.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\InputSwitchToastHandler.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\UIMgrBroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ctfmon.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\taskhostw.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\at.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\schtasks.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\alg.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\cmd.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PackagedCWALauncher.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\mmgaserver.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\AuthHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\backgroundTaskHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\VaultCmd.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\licensingdiag.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CertEnrollCtrl.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RuntimeBroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\BackgroundTransferHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ByteCodeGenerator.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WWAHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WaaSMedicAgent.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\upfc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wuapihost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ttdinject.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tttracer.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\sihost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\pospaymentsworker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RemotePosWorker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\LicenseManagerShellext.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ISM.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SearchFilterHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SearchIndexer.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SearchProtocolHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\directxdatabaseupdater.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dispdiag.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Windows.WARP.JITService.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dxgiadaptercache.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MicrosoftEdgeSH.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\TokenBrokerCookies.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\AppHostRegistrationVerifier.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dstokenclean.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WinRTNetMUAHostServer.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PickerHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemUWPLauncher.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DataStoreCacheDumpTool.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CredentialEnrollmentManager.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wlanext.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\LockScreenContentServer.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SlideToShutDown.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\systray.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RunLegacyCPLElevated.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\control.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\fontview.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wifitask.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\tzutil.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\w32tm.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dmclient.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\dsregcmd.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\UtcDecoderHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\TpmTool.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\HealthAttestationClientAgent.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\TpmInit.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CloudNotifications.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SystemSettingsBroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wbem\mofcomp.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wbem\unsecapp.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wbem\WMIADAP.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\wbem\WmiApSrv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RMActivate.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RMActivate_isv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RMActivate_ssp.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\RMActivate_ssp_isv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\printfilterpipelinesvc.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\provtool.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PrintIsolationHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\spoolsv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\PinEnrollmentBroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WpcTok.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\WpcMon.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ApproveChildRequest.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\ofdeploy.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\DmNotificationBroker.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MDMAgent.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\MicrosoftEdgeBCHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\Eap3Host.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\bcdboot.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\bcdedit.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\bootsect.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\audiodg.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\SpatialAudioLicenseSrv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\CompPkgSrv.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\agentactivationruntimestarter.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\IcsEntitlementHost.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\XblGameSaveTask.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\notepad.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\TsWpfWrp.exe" /t REG_SZ /d "GpuPreference=1;" /f
+Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\explorer.exe" /t REG_SZ /d "GpuPreference=1;" /f
 Reg add "HKCU\Software\Gaming" /v "GPUOptimized" REG_DWORD "1" /f
 cls
 goto TweaksPG1Polish
 
 :AMDPolish
-
-
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming\Resources\NVIDIA GPU Tweaks.reg" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/AMD GPU Tweaks.reg"
+cd %SYSTEMDRIVE%\Gaming\Resources\
+Reg Import NVIDIA GPU Tweaks.reg
+Reg add "HKCU\Software\Gaming" /v "GPUOptimized" REG_DWORD "1" /f
+goto TweaksPG2
 
 :DisablePreemptionPolish
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "DisablePreemption" /t REG_DWORD /d "1" /f
@@ -1871,6 +3301,10 @@ ipconfig /renew
 ipconfig /renew6
 Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNsclient" /v "EnableMulticast" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNsclient" /v "DisableSmartNameResolution" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient" /v "EnableIdnMapping" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient" /v "RegistrationEnabled" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient" /v "PreferLocalOverLowerBindingDNS" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient" /v "DisableSmartProtocolReordering" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "TcpMaxConnectRetransmissions" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "Tcp1323Opts" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "TcpTimedWaitDelay" /t REG_DWORD /d "32" /f
@@ -1887,19 +3321,60 @@ Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "Negativ
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "DisableParallelAandAAAA" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "NegativeSOACacheTime" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "NetFailureCacheTime" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "EnableAutoDoh" /t REG_DWORD /d "2" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "MaxCacheEntryTtlLimit" /t REG_DWORD /d "fa00" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "MaxNegativeCacheTtl" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "CacheHashTableBucketSize" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "CacheHashTableSize" /t REG_DWORD /d "180" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "MaxSOACacheEntryTtlLimit" /t REG_DWORD /d "12d" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "ServiceDllUnloadOnStop" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "MaxCacheTtl" /t REG_DWORD /d "3840" /f
 Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v "DoNotShowFeedbackNotifications" /t REG_DWORD /d "1" /f
-Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "EnableAutoDoh" /t REG_DWORD /d "2" /f
 Reg add "HKLM\SYSTEM\CurrDisableNagleentControlSet\Services\AFD\Parameters" /v "DoNotHoldNicBuffers" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DisableRawSecurity" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "NonBlockingSendSpecialBuffering" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "IgnorePushBitOnReceives" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DynamicSendBufferDisable" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DisableRawSecurity" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "NonBlockingSendSpecialBuffering" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "IgnorePushBitOnReceives" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DynamicSendBufferDisable" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "FastSendDatagramThreshold" /t REG_DWORD /d "1000" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "MaxActiveTransmitFileCount" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "MaxFastCopyTransmit" /t REG_DWORD /d "1000" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "MaxFastTransmit" /t REG_DWORD /d "8000" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "PriorityBoost" /t REG_DWORD /d "4" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DoNotHoldNICBuffers" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "TransmitWorker" /t REG_DWORD /d "20" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DefaultReceiveWindow" /t REG_DWORD /d "8192" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DefaultSendWindow" /t REG_DWORD /d "8192" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DisableAddressSharing" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "LargeBufferSize" /t REG_DWORD /d "10000" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "IRPStackSize" /t REG_DWORD /d "14" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DisableRawSecurity" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DisableDirectAcceptEx" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DisableChainedReceive" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "EnableDynamicBacklog" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "MinimumDynamicBacklog" /t REG_DWORD /d "20" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "MaximumDynamicBacklog" /t REG_DWORD /d "1000" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DynamicBacklogGrowthDelta" /t REG_DWORD /d "10" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "BufferMultiplier" /t REG_DWORD /d "400" /f
 Reg add "HKLM\SOFTWARE\Microsoft\MSMQ\Parameters" /v "TCPNoDelay" /t REG_DWORD /d "1" /f
 Reg add "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i" /v "TCPNoDelay" /t REG_DWORD /d "1" /f
 Reg add "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i" /v "TcpAckFrequency" /t REG_DWORD /d "1" /f
 Reg add "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i" /v "TcpDelAckTicks" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i" /v "TcpInitialRTT" /d "300" /t REG_DWORD /f
+Reg add "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp" /v "TcpAutotuning" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Internet Settings" /v "TcpAutotuning" /t REG_DWORD /d "1" /f
+Reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp" /v "TcpAutotuning" /t REG_DWORD /d "1" /f
+Reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v "TcpAutotuning" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS" /v "Tcp Autotuning Level" /t REG_SZ /d "Experimental" /f
+Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS" /v "Application DSCP Marking Request" /t REG_SZ /d "Allowed" /f
+Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\TCPIP\v6Transition" /v "TcpAutotuningLevel" /t REG_DWORD /d "3" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\services\Tcpip\Parameters" /v "EnableWsd" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\services\Tcpip\Parameters" /v "TcpHybridAck" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "EnableConnectionRateLimiting" /t REG_DWORD /d "0" /f
 Reg add "HKCU\Software\Gaming" /v "TcpIpOptimized" REG_DWORD "1" /f
 goto TweaksPG2Polish
 
@@ -1910,6 +3385,11 @@ netsh winsock reset
 netsh winsock reset proxy
 netsh winsock reset catalog
 netsh advfirewall reset
+netsh advfirewall set allprofiles state off >nul 2>&1
+netsh advfirewall firewall delete rule all
+netsh advfirewall set allprofiles firewallpolicy blockinbound,blockoutbound >nul 2>&1
+netsh advfirewall reset >nul 2>&1
+netsh advfirewall set allprofiles state on >nul 2>&1
 netsh interface ipv4 reset
 netsh interface ipv6 reset
 netsh interface ip delete arpcache
@@ -1974,10 +3454,19 @@ Reg add "HKLM\System\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002b
 Reg add "HKLM\System\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /v "PowerMizerLevel" /t REG_DWORD /d "1" /f
 Reg add "HKLM\System\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /v "PowerMizerLevelAC" /t REG_DWORD /d "1" /f
 Reg add "HKLM\System\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /v "PerfLevelSrc" /t REG_DWORD /d "8738" /f
-netsh interface ipv4 add dnsservers "Ethernet" address=1.1.1.1 index=1
-netsh interface ipv4 add dnsservers "Ethernet" address=8.8.8.8 index=2
-netsh interface ipv4 add dnsservers "Wi-Fi" address=1.1.1.1 index=1
-netsh interface ipv4 add dnsservers "Wi-Fi" address=8.8.8.8 index=2
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Video\{DEB039CC-B704-4F53-B43E-9DD4432FA2E9}\0000" /v "PerfLevelSrc" /t REG_DWORD /d "00003322" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Video\{DEB039CC-B704-4F53-B43E-9DD4432FA2E9}\0000" /v "PowerMizerEnable" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Video\{DEB039CC-B704-4F53-B43E-9DD4432FA2E9}\0000" /v "PowermizerLevel" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Video\{DEB039CC-B704-4F53-B43E-9DD4432FA2E9}\0000" /v "PowermizerLevelAC" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\BITS" /v "EnablePeercaching" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\BITS" /v "DisablePeerCachingClient" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\BITS" /v "DisablePeerCachingServer" /t REG_DWORD /d "1" /f
+set INTERFACE=Ethernet
+set DNS1=8.8.8.8
+set DNS2=8.8.4.4
+set INTERFACE=Wi-Fi
+set DNS1=8.8.8.8
+set DNS2=8.8.4.4
 Reg add "HKCU\Software\Gaming" /v "NicOptimized" /t REG_DWORD "1" /f
 cls
 goto TweaksPG2Polish
@@ -2220,6 +3709,128 @@ set toDisable=DiagTrack diagnosticshub.standardcollector.service dmwappushservic
    sc stop %%a
    sc config %%a start= disabled 
 ))
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\pla" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\GraphicsPerfSvc" /f
+Reg delete "HKLM\SOFTWARE\AMDLOG" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\AMD External Events Utility" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\GraphicsPerfSvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\GpuEnergyDrv" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\luafv" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\PktMon" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost\diagnostics" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost\wercplsupport" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost\GraphicsPerfSvcGroup" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\diagnosticshub.standardcollector.service" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\DiagTrack" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\dmwappushservice" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\SystemUsageReportSvc_QUEENCREEK" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\Psched" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\WerSvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\gencounter" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\FileInfo" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\Filetrace" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\WdiServiceHost" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\WdiSystemHost" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\diagsvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\TroubleshootingSvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\NDKPerf" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\NDKPing" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\storqosflt" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\NdisCap" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\PcaSvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\lfsvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\DPS" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\wercplsupport" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\InventorySvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\ss_conn_service" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\ss_conn_service2" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\MozillaMaintenance" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\COMSysApp" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\SENS" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\EventSystem" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost" /v "rdxgroup" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost" /v "GraphicsPerfSvcGroup" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost" /v "autoTimeSvc" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost" /v "NetworkServiceAndNoImpersonation" /f
+Reg delete "HKLM\SYSTEM\ControlSet001\Services\ASUSSystemAnalysis" /f
+Reg delete "HKLM\SYSTEM\ControlSet001\Services\ASUSSystemDiagnosis" /f
+Reg delete "HKLM\SYSTEM\ControlSet001\Services\ASUSLinkNear" /f
+Reg delete "HKLM\SYSTEM\ControlSet001\Services\ASUSLinkRemote" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\ASUSSwitch" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\AsusAppService" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\ASUSSoftwareManager" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\ASUSSwitch" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\PNRPAutoReg" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\p2psvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\p2pimsvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\PNRPsvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\PNRPAutoReg" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\PeerDistSvc" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost" /v "LocalServicePeerNet" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost" /v "P9RdrService" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost" /v "PeerDist" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost" /v "WerSvcGroup" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\WpcMonSvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Control\Services\GoogleChromeBetaElevationService" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Control\Services\GoogleChromeElevationService" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\DusmSvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\TermService" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\RemoteRegistry" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\RpcLocator" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\WinRM" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\KtmRm" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\smphost" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\BDESVC" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\AxInstSV" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\AJRouter" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\SysMain" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\bam" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\Beep" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\CldFlt" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\dam" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\hvcrash" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\RetailDemo" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\BcastDVRUserService" /f
+Reg delete "HKLM\SYSTEM\ControlSet001\Services\CaptureService" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost\BcastDVRUserService" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost\InvSvcGroup" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\defragsvc" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost" /v "defragsvc" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost" /v "InvSvcGroup" /f
+Reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost" /v "BcastDVRUserService" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\ALG" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\tzautoupdate" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\MapsBroker" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\SmsRouter" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\WMPNetworkSvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\QWAVE" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\CscService" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\svsvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\MSiSCSI" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\QWAVEdrv" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\PimIndexMaintenanceSvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\WwanSvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\LMS" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\bttflt" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\MsKeyboardFilter" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\wcncsvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\fhsvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\WPDBusEnum" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\SEMgrSvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\PhoneSvc" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\SessionEnv" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\SQLWriter" /v "Start" /t REG_DWORD /d "3" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\SQLTELEMETRY$SQLEXPRESS" /v "Start" /t REG_DWORD /d "3" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\SQLTELEMETRY" /v "Start" /t REG_DWORD /d "3" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\SQLBrowser" /v "Start" /t REG_DWORD /d "3" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\SQLAgent$SQLEXPRESS" /v "Start" /t REG_DWORD /d "3" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\SQLSERVERAGENT" /v "Start" /t REG_DWORD /d "3" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\MSSQL$SQLEXPRESS" /v "Start" /t REG_DWORD /d "3" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\MySQL80" /v "Start" /t REG_DWORD /d "3" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\clr_optimization_v4.0.30319_64" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\clr_optimization_v4.0.30319_32" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\clr_optimization_v2.0.50727_64" /f
+Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\clr_optimization_v2.0.50727_32" /f
 Reg add "HKCU\Software\Gaming" /v "ServicesOptimized" /t REG_DWORD /d "1" /f
 cls
 goto 
@@ -2534,7 +4145,6 @@ Sc config XblGameSave start= disabled
 Sc config XboxGipSvc start= disabled
 Sc config XboxNetApiSvc start= disabled
 Sc config diagnosticshub.standardcollector.service start=disabled
-Sc config dmwappushservice start=disabled
 Sc config xbgm start= disabled
 Sc config WpcMonSvc start= disabled
 Sc config DoSvc start=disabled
@@ -2917,12 +4527,10 @@ Reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "N
 Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Messaging" /v "AllowMessageSync" /t Reg_ /d "0" /f
 Reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePriority" /t REG_DWORD /d "3" /f
 Reg add "HKLM\System\CurrentControlSet\Enum\%%g\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePriority" /t REG_DWORD /d "3" /f
-Reg add "HKLM\SYSTEM\ControlSet001\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMax" /t REG_DWORD /d "0" /f
-Reg add "HKLM\SYSTEM\ControlSet001\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMin" /t REG_DWORD /d "0" /f
-Reg add "HKLM\SYSTEM\ControlSet002\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMax" /t REG_DWORD /d "0" /f
-Reg add "HKLM\SYSTEM\ControlSet002\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMin" /t REG_DWORD /d "0" /f
-Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMax" /t REG_DWORD /d "0" /f
-Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMin" /t REG_DWORD /d "0" /f
+Reg add "HKLM\SYSTEM\ControlSet001\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMax" /t REG_DWORD /d "64" /f
+Reg add "HKLM\SYSTEM\ControlSet001\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMin" /t REG_DWORD /d "64" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMax" /t REG_DWORD /d "64" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMin" /t REG_DWORD /d "64" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "CoreParkingDisabled" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "FeatureTestControl" /t REG_DWORD /d "0x0000ffff" /f
 Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds" /v "AllowBuildPreview" /t REG_DWORD /d "0" /f

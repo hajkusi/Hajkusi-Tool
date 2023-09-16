@@ -20,9 +20,9 @@ rmdir %SYSTEMDRIVE%\PerfLogs\ /s /q
 cls
 title Deleting Files And Folders From Temp In Progress\Trwa Usuwanie Plikow I Folderow z Temp 
 echo deleting.../usuwanie...
-goto AllTempAndLogs
+goto AllTempAndLogsItd
 
-:AllTempAndLogs
+:AllTempAndLogsItd
 cd "C:\Windows\Temp"
 for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q/f)
 cd "C:\Windows\Prefetch"
@@ -56,6 +56,7 @@ cd resources
 del app.asar /s /q /f
 cd logs
 del *.log* /s /q /f
+del "%userprofile%\recent\*.*" /s /q /f
 goto RobloxDownloads
 
 :RobloxDownloads
