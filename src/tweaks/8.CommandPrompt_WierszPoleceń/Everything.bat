@@ -47,7 +47,6 @@ echo   Please Enter "I_Agree" Without Quotes To Continue:
 echo.
 echo.
 echo.
-Set /p "Input=%DEL%                                                            >: %COL%[92m"
 If %Input% EQU I_Agree ( goto DisclaimerEnglish ) else ( goto AlertEnglish )
 :DisclaimerEnglish
 reg add "HKCU\Software\Gaming" /v "Disclaimer" /f >nul 2>&1
@@ -966,14 +965,14 @@ Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\Syst
 Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\explorer.exe" /t REG_SZ /d "GpuPreference=1;" /f
 Reg add "HKCU\Software\Gaming" /v "GPUOptimized" REG_DWORD "1" /f
 cls
-goto TweaksPG1English
+goto TweaksPG2English
 
 :AMDEnglish
 curl -g -L -# -o "%SYSTEMDRIVE%\Gaming\Resources\NVIDIA GPU Tweaks.reg" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/AMD GPU Tweaks.reg"
 cd %SYSTEMDRIVE%\Gaming\Resources\
 Reg Import NVIDIA GPU Tweaks.reg
 Reg add "HKCU\Software\Gaming" /v "GPUOptimized" REG_DWORD "1" /f
-goto TweaksPG2
+goto TweaksPG2English
 
 :DisablePreemptionEnglish
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "DisablePreemption" /t REG_DWORD /d "1" /f
@@ -1897,7 +1896,7 @@ goto PromptForHardWareEnglish
 :PromptForHardWareEnglish
 cls
 SET /P AREYOUSURE=Size of a HardwareDataQueueSize You Choosed Is %HardwareDataQueueSize% Continue?, Or Change Number\Rozmiar Wybranej Kolejki Sprzetu Komputerowego to %HardwareDataQueueSize % Kontynuuj? Czy Zmien Numer(Y/N)
-IF /I "%AREYOUSURE%" NEQ "Y" goto GetInput
+IF /I "%AREYOUSURE%" NEQ "Y" goto GetInputEnglish
 IF /I "%AREYOUSURE%" NEQ "N" goto HardwareDataQueueSizeEnglish
 
 :HardwareDataQueueSizeEnglish
@@ -2548,8 +2547,6 @@ Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DevicePickerUserSv
 Reg add "HKCU\Software\Gaming" /v "BluetoothFixes" REG_DWORD "1" /f
 goto TweaksPG2Polish
 
-echo Tweaking Your Gpu\Tweakowanie Twojej Karty Graficznej
-
 :NvidiaPolish
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "RmGpsPsEnablePerCpuCoreDpc" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Power" /v "RmGpsPsEnablePerCpuCoreDpc" /t REG_DWORD /d "1" /f
@@ -2630,7 +2627,7 @@ Reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProf
 Reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "AlwaysOn" /t REG_DWORD /d "1" /f
 Reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v "MaxConnectionsPerServer" /t REG_DWORD /d "16" /f
 Reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v "MaxConnectionsPer1_0Server" /t REG_DWORD /d "16" /f
-Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\ParamReg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "MaxUserPort" /t REG_DWORD /d "65534" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\ParamReg" add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "MaxUserPort" /t REG_DWORD /d "65534" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "TcpTimedWaitDelay" /t REG_DWORD /d "30" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "EnableWsd" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Nsi\{eb004a03-9b1a-11d4-9123-0050047759bc}\0" /v "0200" /t Reg_BINARY /d "0000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000ff000000000000000000000000000000000000000000ff000000000000000000000000000000" /f
@@ -3275,14 +3272,14 @@ Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\Syst
 Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\explorer.exe" /t REG_SZ /d "GpuPreference=1;" /f
 Reg add "HKCU\Software\Gaming" /v "GPUOptimized" REG_DWORD "1" /f
 cls
-goto TweaksPG1Polish
+goto TweaksPG2Polish
 
 :AMDPolish
 curl -g -L -# -o "%SYSTEMDRIVE%\Gaming\Resources\NVIDIA GPU Tweaks.reg" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/AMD GPU Tweaks.reg"
 cd %SYSTEMDRIVE%\Gaming\Resources\
 Reg Import NVIDIA GPU Tweaks.reg
 Reg add "HKCU\Software\Gaming" /v "GPUOptimized" REG_DWORD "1" /f
-goto TweaksPG2
+goto TweaksPG2Polish
 
 :DisablePreemptionPolish
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "DisablePreemption" /t REG_DWORD /d "1" /f
@@ -3494,15 +3491,15 @@ control.exe desk.cpl,Settings,@Settings
 :ChooseScalePolish
 echo What is your current display scaling percentage? 100, 125, 150, 175, 200, 225, 250, 300, 350 (Don't put a %% symbol)
 set /p choice=" scale > "
-if /i "%choice%"=="100" Reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseXCurve" /t Reg_BINARY /d "0000000000000000C0CC0C0000000000809919000000000040662600000000000033330000000000" /f >nul 2>&1 & goto Continue
-if /i "%choice%"=="125" Reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseXCurve" /t Reg_BINARY /d "00000000000000000000100000000000000020000000000000003000000000000000400000000000" /f >nul 2>&1 & goto Continue
-if /i "%choice%"=="150" Reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseXCurve" /t Reg_BINARY /d "0000000000000000303313000000000060662600000000009099390000000000C0CC4C0000000000" /f >nul 2>&1 & goto Continue
-if /i "%choice%"=="175" Reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseXCurve" /t Reg_BINARY /d "00000000000000006066160000000000C0CC2C000000000020334300000000008099590000000000" /f >nul 2>&1 & goto Continue
-if /i "%choice%"=="200" Reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseXCurve" /t Reg_BINARY /d "000000000000000090991900000000002033330000000000B0CC4C00000000004066660000000000" /f >nul 2>&1 & goto Continue
-if /i "%choice%"=="225" Reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseXCurve" /t Reg_BINARY /d "0000000000000000C0CC1C0000000000809939000000000040665600000000000033730000000000" /f >nul 2>&1 & goto Continue
-if /i "%choice%"=="250" Reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseXCurve" /t Reg_BINARY /d "00000000000000000000200000000000000040000000000000006000000000000000800000000000" /f >nul 2>&1 & goto Continue
-if /i "%choice%"=="300" Reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseXCurve" /t Reg_BINARY /d "00000000000000006066260000000000C0CC4C000000000020337300000000008099990000000000" /f >nul 2>&1 & goto Continue
-if /i "%choice%"=="350" Reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseXCurve" /t Reg_BINARY /d "0000000000000000C0CC2C0000000000809959000000000040668600000000000033B30000000000" /f >nul 2>&1 & goto Continue
+if /i "%choice%"=="100" Reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseXCurve" /t Reg_BINARY /d "0000000000000000C0CC0C0000000000809919000000000040662600000000000033330000000000" /f >nul 2>&1 & goto ContinuePolish
+if /i "%choice%"=="125" Reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseXCurve" /t Reg_BINARY /d "00000000000000000000100000000000000020000000000000003000000000000000400000000000" /f >nul 2>&1 & goto ContinuePolish
+if /i "%choice%"=="150" Reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseXCurve" /t Reg_BINARY /d "0000000000000000303313000000000060662600000000009099390000000000C0CC4C0000000000" /f >nul 2>&1 & goto ContinuePolish
+if /i "%choice%"=="175" Reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseXCurve" /t Reg_BINARY /d "00000000000000006066160000000000C0CC2C000000000020334300000000008099590000000000" /f >nul 2>&1 & goto ContinuePolish
+if /i "%choice%"=="200" Reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseXCurve" /t Reg_BINARY /d "000000000000000090991900000000002033330000000000B0CC4C00000000004066660000000000" /f >nul 2>&1 & goto ContinuePolish
+if /i "%choice%"=="225" Reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseXCurve" /t Reg_BINARY /d "0000000000000000C0CC1C0000000000809939000000000040665600000000000033730000000000" /f >nul 2>&1 & goto ContinuePolish
+if /i "%choice%"=="250" Reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseXCurve" /t Reg_BINARY /d "00000000000000000000200000000000000040000000000000006000000000000000800000000000" /f >nul 2>&1 & goto ContinuePolish
+if /i "%choice%"=="300" Reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseXCurve" /t Reg_BINARY /d "00000000000000006066260000000000C0CC4C000000000020337300000000008099990000000000" /f >nul 2>&1 & goto ContinuePolish
+if /i "%choice%"=="350" Reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseXCurve" /t Reg_BINARY /d "0000000000000000C0CC2C0000000000809959000000000040668600000000000033B30000000000" /f >nul 2>&1 & goto ContinuePolish
 goto ChooseScalePolish
 
 :ContinuePolish
@@ -3833,9 +3830,9 @@ Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\clr_optimization_v2.0.50727_6
 Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\clr_optimization_v2.0.50727_32" /f
 Reg add "HKCU\Software\Gaming" /v "ServicesOptimized" /t REG_DWORD /d "1" /f
 cls
-goto 
+goto TweaksPG2Polish
 
-:AudioOptions
+:AudioOptionsPolish
 cd "%SYSTEMDRIVE%\Gaming\Resources\"
 if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\nssm.exe" ( goto RealPolish ) else ( goto DownloadnssmPolish )
 :DownloadnssmPolish
@@ -4187,7 +4184,7 @@ Reg add "HKLM\Software\Policies\Microsoft\Windows\CloudContent" /v "DisableWindo
 Reg add "HKCU\Software\Gaming" /v "DiagnosticsDisabled" /t REG_DWORD /d "1" /f
 goto TweaksPG1Polish
 
-:SMB1
+:SMB1Polish
 Powershell -Command "Disable-WindowsOptionalFeature -Online -FeatureName 'SMB1Protocol' -NoRestart"
 Powershell -Command "Disable-WindowsOptionalFeature -Online -FeatureName 'SmbDirect' -NoRestart"
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\mrxsmb10" /v "Start" /t REG_DWORD /d "0" /f
@@ -4195,7 +4192,7 @@ Reg add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" /v "SMB
 Reg add "HKCU\Software\Gaming" /v "SMB1ProtocolDisabled" /t REG_DWORD /d "1" /f
 goto TweaksPG1Polish
 
-:GetInput
+:GetInputPolish
 cls
 Set "HardwareDataQueueSize="
 Rem Request input from the user. 
@@ -4211,7 +4208,7 @@ goto PromptForHardWarePolish
 :PromptForHardWarePolish
 cls
 SET /P AREYOUSURE=Size of a HardwareDataQueueSize You Choosed Is %HardwareDataQueueSize% Continue?, Or Change Number\Rozmiar Wybranej Kolejki Sprzetu Komputerowego to %HardwareDataQueueSize % Kontynuuj? Czy Zmien Numer(Y/N)
-IF /I "%AREYOUSURE%" NEQ "Y" goto GetInput
+IF /I "%AREYOUSURE%" NEQ "Y" goto GetInputPolish
 IF /I "%AREYOUSURE%" NEQ "N" goto HardwareDataQueueSizePolish
 
 :HardwareDataQueueSizePolish
