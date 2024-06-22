@@ -2419,10 +2419,10 @@ echo              %COL%[90mDo Uzycia Z Bateria.              %COL%[90mcej Servic
 echo.
 echo              %COL%[33m[%COL%[37m 4 %COL%[33m]%COL%[37m Affinity                    %COL%[33m[%COL%[37m 5 %COL%[33m]%COL%[37m W32 Priority Separation     %COL%[33m[%COL%[37m 6 %COL%[33m]%COL%[37m Mouse Fix
 echo              %COL%[90mThis Tweak Will Spread Devices    %COL%[90mOptymalizuje Priorytet Uzy        %COL%[90mOptymalizuje Ustawienia
-echo              %COL%[90mOn Multiple Cpu Cores             %COL%[90mcia Uruchomionych Usług          %COL%[90mTwojej Myszki
+echo              %COL%[90mOn Multiple Cpu Cores             %COL%[90mcia Uruchomionych Uslug          %COL%[90mTwojej Myszki
 echo.
 echo              %COL%[33m[%COL%[37m 7 %COL%[33m]%COL%[37m Telemetria                  %COL%[33m[%COL%[37m 8 %COL%[33m]%COL%[37m Sc                          %COL%[33m[%COL%[37m 9 %COL%[33m]%COL%[37m Fse
-echo              %COL%[90mWylacz\Usun Servisy               %COL%[90mKonfiguruje Ustawienia            %COL%[90mWlacz Optymalizacje
+echo              %COL%[90mWylacz\Usun Serwisy               %COL%[90mKonfiguruje Ustawienia            %COL%[90mWlacz Optymalizacje
 echo              %COL%[90mTelemtrii                         %COL%[90mKomendy Sc                        %COL%[90mPelnoekranowe
 echo.             
 echo              %COL%[33m[%COL%[37m 10 %COL%[33m]%COL%[37m Diagnostyka                %COL%[33m[%COL%[37m 11 %COL%[33m]%COL%[37m Protokol SMB1              %COL%[33m[%COL%[37m 12 %COL%[33m]%COL%[37m HardWareDataQueueSize
@@ -2474,8 +2474,8 @@ echo.
 echo              %COL%[33m[%COL%[37m 1 %COL%[33m]%COL%[37m Optymalizuj TCP/IP          %COL%[33m[%COL%[37m 2 %COL%[33m]%COL%[37m Optymalizuj NIC            %COL%[33m[%COL%[37m 3 %COL%[33m]%COL%[37m Optymalizuj Netsh
 echo              %COL%[90mZmienia Protokol Internetowy      %COL%[90mZoptymalizuj Karte Sieciowa      %COL%[90mTen Tweak Zoptymalizuje
 echo              %COL%[91mNie Uzywaj Jesli Uzywasz Wifi     %COL%[91mNie Uzywaj Jesli Uzywasz Wifi    %COL%[90mKonfiguracje Sieci Komputerowej
-echo.
-echo                                                             %COL%[1;4;34mGPU ^& CPU%COL%[0m
+echo.             %COL%[91mJezeli Uzywasz Windows 11 Uzyj
+echo              %COL%[91mPliku Windows11Only.bat               %COL%[1;4;34mGPU ^& CPU%COL%[0m
 echo.
 echo              %COL%[33m[%COL%[37m 4 %COL%[33m]%COL%[37m All GPU Tweaks              %COL%[33m[%COL%[37m 5 %COL%[33m]%COL%[37m Optimize Intel iGPU        %COL%[33m[%COL%[37m 6 %COL%[33m]%COL%[37m AMD GPU Tweaks
 echo              %COL%[90mRozne Niezbedne Poprawki Dla      %COL%[90mZwieksz Dedykowana Ilosc         %COL%[90mSkonfiguruj Ustawienia Karty
