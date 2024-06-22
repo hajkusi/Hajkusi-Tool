@@ -18,7 +18,47 @@ REM Add ANSI escape sequences
 reg add HKCU\CONSOLE /v VirtualTerminalLevel /t REG_DWORD /d 1 /f >nul 2>&1
 reg add "HKLM\System\CurrentControlSet\Control\CrashControl" /v "DisplayParameters" /t REG_DWORD /d "1" /f >nul 2>&1 
 cls
-goto LanguageChooser
+goto CheckForUpdates
+
+:CheckForUpdates
+set version=0.6v2
+set versioncheck=%VERSION%
+if exist "%TEMP%\Updater.bat" DEL /S /Q /F "%TEMP%\Updater.bat" >nul 2>&1
+curl -L -# -o "%TEMP%\Updater.bat" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/Updater" >nul 2>&1
+call "%TEMP%\Updater.bat"
+if "%VERSION%" EQU "%VERSIONCHECK%" ( goto LanguageChooser
+) else goto Updater
+
+:Updater
+	cls
+	Mode 65,16
+	echo.
+	echo  --------------------------------------------------------------
+	echo                           Update found
+	echo  --------------------------------------------------------------
+	echo.
+	echo                    Your current version: %VERSIONCHECK%
+	echo.
+	echo                          New version: %VERSION%
+	echo.
+	echo.
+	echo.
+	echo      [Y] Yes, Update
+	echo      [N] No
+	echo.
+	%SYSTEMROOT%\System32\choice.exe /c:YN /n /m "%DEL%                                >:"
+	set choice=%errorlevel%
+        If "%choice%"=="1" goto Update
+        If "%choice%"=="2" goto Failed
+:Update
+Echo Updating
+curl -L -# -o "%USERPROFILE%/Desktop/Tweaks.Zip" "https://github.com/hajkusi/Gaming-Pack/releases/latest/download/Tweaks.zip"
+call %USERPROFILE%/Desktop/Tweaks.Zip
+exit /b
+
+:Failed
+Echo You Have Old Version
+exit /b
 
 :LanguageChooser
 echo.
