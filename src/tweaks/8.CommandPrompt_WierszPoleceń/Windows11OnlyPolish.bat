@@ -35,7 +35,7 @@ cls
 cls
 set /a time=%time%-1
 if %time% == 0 goto :done
-call echo %~n0%~x0 wylaczy sie za %time% sekund
+call echo %~n0%~x0 Wylaczy Sie Za %time% Sekund
 ping localhost -n 2 >nul
 goto Timer
 
