@@ -6,4 +6,5 @@
 
 ## Languages
 
-[![](Readme/Flags/Poland.png)](Readme/Readme.pl-PL.md)
+[![](Readme/Flags/Polandv2.png)](Readme/Readme.pl-PL.md)
+[![](Readme/Flags/USA.png)](Readme/Readme.en-EN.md)
