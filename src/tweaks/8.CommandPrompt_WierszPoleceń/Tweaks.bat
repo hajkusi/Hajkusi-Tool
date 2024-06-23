@@ -61,7 +61,7 @@ Echo You Have Old Version
 exit /b
 
 :LanguageChooser
-Mkdir %SYSTEMDRIVE%\Gaming_Pack\Resources\ >nul 2>&1
+Mkdir %SYSTEMDRIVE%\Gaming-Pack\Resources\ >nul 2>&1
 cls
 echo.
 echo              %COL%[33m[%COL%[37m 1 %COL%[33m]%COL%[37m Polski                                                                              %COL%[33m[%COL%[37m 2 %COL%[33m]%COL%[37m English
@@ -91,7 +91,7 @@ echo.
 echo.
 If %Input% EQU I_Agree ( goto DisclaimerEnglish ) else ( goto AlertEnglish )
 :DisclaimerEnglish
-reg add "HKCU\Software\Gaming" /v "Disclaimer" /f >nul 2>&1
+reg add "HKCU\Software\Gaming-Pack" /v "Disclaimer" /f >nul 2>&1
 goto TitleEnglish
 
 :TitleEnglish
@@ -124,7 +124,7 @@ echo.
 Set /p "Input=%DEL%                                                            >: %COL%[92m"
 If %Input% EQU Zgadzam_Sie ( goto DisclaimerPolish ) else ( goto AlertPolish )
 :DisclaimerPolish
-reg add "HKCU\Software\Gaming" /v "Disclaimer" /f >nul 2>&1
+reg add "HKCU\Software\Gaming-Pack" /v "Disclaimer" /f >nul 2>&1
 goto TitlePolish
 
 :TitlePolish
@@ -268,7 +268,7 @@ bcdedit /deletevalue useplatformclock
 bcdedit /set useplatformtick yes
 bcdedit /set tscsyncpolicy enhanced
 echo.
-Reg add "HKCU\Software\Gaming" /v "BCDEditOptimized" REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "BCDEditOptimized" REG_DWORD "1" /f
 cls
 goto TweaksPG2English
   
@@ -276,7 +276,7 @@ goto TweaksPG2English
 echo Fix Bluetooth By scar#1000
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DevicesFlowUserSvc" /v Start /t REG_DWORD /d "3" /f
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DevicePickerUserSvc" /v Start /t REG_DWORD /d "3" /f
-Reg add "HKCU\Software\Gaming" /v "BluetoothFixes" REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "BluetoothFixes" REG_DWORD /d "1" /f
 goto TweaksPG2English
 
 echo Tweaking Your Gpu\Tweakowanie Twojej Karty Graficznej
@@ -1004,15 +1004,15 @@ Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\Syst
 Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\notepad.exe" /t REG_SZ /d "GpuPreference=1;" /f
 Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\TsWpfWrp.exe" /t REG_SZ /d "GpuPreference=1;" /f
 Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\explorer.exe" /t REG_SZ /d "GpuPreference=1;" /f
-Reg add "HKCU\Software\Gaming" /v "GPUOptimized" REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "GPUOptimized" REG_DWORD "1" /f
 cls
 goto TweaksPG2English
 
 :AMDEnglish
 curl -g -L -# -o "%SYSTEMDRIVE%\Gaming\Resources\NVIDIA GPU Tweaks.reg" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/AMD GPU Tweaks.reg"
-cd %SYSTEMDRIVE%\Gaming\Resources\
+cd %SYSTEMDRIVE%\Gaming-Pack\Resources\
 Reg Import NVIDIA GPU Tweaks.reg
-Reg add "HKCU\Software\Gaming" /v "GPUOptimized" REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "GPUOptimized" REG_DWORD "1" /f
 goto TweaksPG2English
 
 :DisablePreemptionEnglish
@@ -1021,7 +1021,7 @@ Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "DisablePreemptionO
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "EnableCEPreemption" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "ComputePreemption" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "DisableCudaContextPreemption" /t REG_DWORD /d "1" /f
-Reg add "HKCU\Software\Gaming" /v "PreemptionDisabled" REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "PreemptionDisabled" REG_DWORD "1" /f
 goto TweaksPG1English
 
 :TcpIpEnglish
@@ -1101,7 +1101,7 @@ Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\TCPIP\v6Transition" /v "TcpAut
 Reg add "HKLM\SYSTEM\CurrentControlSet\services\Tcpip\Parameters" /v "EnableWsd" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\services\Tcpip\Parameters" /v "TcpHybridAck" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "EnableConnectionRateLimiting" /t REG_DWORD /d "0" /f
-Reg add "HKCU\Software\Gaming" /v "TcpIpOptimized" REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "TcpIpOptimized" REG_DWORD "1" /f
 goto TweaksPG2English
 
 :NetshOptionsEnglish
@@ -1157,7 +1157,7 @@ netsh int teredo set state disabled
 netsh int tcp set global maxsynretransmissions=2
 netsh winsock set autotuning onv
 Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Psched" /v "NonBestEffortLimit" /t REG_DWORD /d "0" /f
-Reg add "HKCU\Software\Gaming" /v "NetshOptimized" /t REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "NetshOptimized" /t REG_DWORD "1" /f
 goto TweaksPG2English
 
 :NicEnglish
@@ -1192,7 +1192,7 @@ set DNS2=8.8.4.4
 set INTERFACE=Wi-Fi
 set DNS1=8.8.8.8
 set DNS2=8.8.4.4
-Reg add "HKCU\Software\Gaming" /v "NicOptimized" /t REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "NicOptimized" /t REG_DWORD "1" /f
 cls
 goto TweaksPG2English
 
@@ -1234,7 +1234,7 @@ goto ChooseScaleEnglish
 Reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseYCurve" /t Reg_BINARY /d "0000000000000000fd11010000000000002404000000000000fc12000000000000c0bb0100000000" /f
 Reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csrss.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d "4" /f
 Reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csrss.exe\PerfOptions" /v IoPriority /t REG_DWORD /d "3" /f
-Reg add "HKCU\Software\Gaming" /v "MouseOptimized" REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "MouseOptimized" REG_DWORD "1" /f
 goto TweaksPG1English
 
 :SystemAuto-LoggersEnglish
@@ -1284,7 +1284,7 @@ Reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\WUDF" /v "LogLevel" /
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Lsa\Credssp" /v "DebugLogLevel" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "DisableThirdPartySuggestions" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "DisableWindowsconsumerFeatures" /t REG_DWORD /d "1" /f
-Reg add "HKCU\Software\Gaming" /v "SystemAuto-LoggersOptimized" REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "SystemAuto-LoggersOptimized" REG_DWORD "1" /f
 cls
 goto TweaksPG1English
 
@@ -1298,7 +1298,7 @@ Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager" /v "CoalescingTi
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power\ModernSleep" /v "CoalescingTimerInterval" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "CoalescingTimerInterval" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v "CoalescingTimerInterval" /t REG_DWORD /d "0" /f
-Reg add "HKCU\Software\Gaming" /v "USBPowerSavingDisabled" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "USBPowerSavingDisabled" /t REG_DWORD /d "1" /f
 goto TweaksPG2English
 
 :USBPowerSavingEnglish
@@ -1313,13 +1313,13 @@ Reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters" /v "Selective
 Reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters" /v "D3ColdSupported" /t REG_DWORD /d "0" /f
 )
 
-Reg add "HKCU\Software\Gaming" /v "USBPowerSavingDisabled" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "USBPowerSavingDisabled" /t REG_DWORD /d "1" /f
 goto TweaksPG2English
 
 :PowerThrottlingEnglish
 Echo Disabling PowerThrottling 
 Reg add "HKLM\SYSTEM\ControlSet001\Control\Power\PowerThrottling" /v "PowerThrottlingOff" /t REG_DWORD /d "1" /f
-Reg add "HKCU\Software\Gaming" /v "PowerThrottlingDisabled" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "PowerThrottlingDisabled" /t REG_DWORD /d "1" /f
 goto TweaksPG2English
 
 :ServicesEnglish
@@ -1556,30 +1556,30 @@ Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\clr_optimization_v4.0.30319_6
 Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\clr_optimization_v4.0.30319_32" /f
 Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\clr_optimization_v2.0.50727_64" /f
 Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\clr_optimization_v2.0.50727_32" /f
-Reg add "HKCU\Software\Gaming" /v "ServicesOptimized" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "ServicesOptimized" /t REG_DWORD /d "1" /f
 cls
 goto TweaksPG2English
 
 :AudioOptionsEnglish
-cd "%SYSTEMDRIVE%\Gaming\Resources\"
-if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\nssm.exe" ( goto RealEnglish ) else ( goto DownloadnssmEnglish )
+cd "%SYSTEMDRIVE%\Gaming-Pack\Resources\"
+if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\nssm.exe" ( goto RealEnglish ) else ( goto DownloadnssmEnglish )
 :DownloadnssmEnglish
-curl -g -L -# -o "%SYSTEMDRIVE%\Gaming\Resources\nssm.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/nssm.exe"
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\nssm.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/nssm.exe"
 goto RealEnglish
 :RealEnglish
-if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\REAL.exe" ( goto ContinueAudioOptionsEnglish ) else ( goto DownloadREALEnglish )
+if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\REAL.exe" ( goto ContinueAudioOptionsEnglish ) else ( goto DownloadREALEnglish )
 :DownloadREALEnglish
-curl -g -L -# -o "%SYSTEMDRIVE%\Gaming\Resources\REAL.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/REAL.exe"
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\REAL.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/REAL.exe"
 goto ContinueAudioOptions
 :ContinueAudioOptionsEnglish
-nssm install GamingAudio "%SYSTEMDRIVE%\Gaming\Resources\REAL.exe"
+nssm install GamingAudio "%SYSTEMDRIVE%\Gaming-Pack\Resources\REAL.exe"
 nssm set GamingAudio DisplayName Gaming Audio Latency Reducer Service
 nssm set GamingAudio Description Reduces Audio Latency
 nssm set GamingAudio Start SERVICE_AUTO_START
 nssm set GamingAudio AppAffinity 1
 nssm set GamingAudio start SERVICE_AUTO_START
 nssm start GamingAudio
-Reg add "HKCU\Software\Gaming" /v "AudioOptimized" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "AudioOptimized" /t REG_DWORD /d "1" /f
 goto TweaksPG2English
 
 :TelemetryEnglish
@@ -1831,7 +1831,7 @@ Echo Disabling Settings App Unnecessary And Telemetry Options\Wylaczanie Niepotr
 Reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" /v EnableWebContentEvaluation /t REG_DWORD /d "0" /f
 REM - Let websites provide locally...
 Reg add "HKCU\Control Panel\International\User Profile" /v HttpAcceptLanguageOptOut /t REG_DWORD /d "1" /f
-Reg add "HKCU\Software\Gaming" /v "TelemetryOptimized" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "TelemetryOptimized" /t REG_DWORD /d "1" /f
 goto TweaksPG1English
 
 :PowerCfgEnglish
@@ -1853,7 +1853,7 @@ PowerCfg -change -standby-timeout-ac 0
 PowerCfg -change -standby-timeout-dc 0
 PowerCfg -setacvalueindex scheme_current sub_processor PROCTHROTTLEMAX 100
 PowerCfg -setacvalueindex scheme_current sub_processor PROCTHROTTLEMIN 100
-Reg add "HKCU\Software\Gaming" /v "PowerCfgOptimized" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "PowerCfgOptimized" /t REG_DWORD /d "1" /f
 cls
 goto TweaksPG1English
 
@@ -1882,7 +1882,7 @@ Sc stop diagnosticshub.standardcollector.service
 Sc stop mwappushservice
 Sc stop DoSvc
 Sc stop dmwappushservice
-Reg add "HKCU\Software\Gaming" /v "ScOptimized" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "ScOptimized" /t REG_DWORD /d "1" /f
 goto TweaksPG1English
 
 :FSEEnglish
@@ -1900,7 +1900,7 @@ Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /v "AllowGameDVR" /t 
 Reg add "HKLM\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR" /v /t REG_DWORD /d "0" /f
 Reg add "HKCU\System\GameConfigStore" /v "Win32_AutoGameModeDefaultProfile" /t Reg_BINARY /d "020001000000c4200000000000000000000000000000000000000000000000000000000000000000" /f
 Reg add "HKCU\System\GameConfigStore" /v "Win32_GameModeRelatedProcesses" /t Reg_BINARY /d "010001000100670061006d006500700061006e0065006c002e006500780065000000ee001e8af974e0553503201136031e000000e05535031e0000000f000000a0e8000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" /f
-Reg add "HKCU\Software\Gaming" /v "FSEEnabled" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "FSEEnabled" /t REG_DWORD /d "1" /f
 goto TweaksPG1English
 
 :DisableDiagnosticsEnglish
@@ -1910,7 +1910,7 @@ Reg add "HKLM\SOFTWARE\Microsoft\WindowsSelfHost\UI\Strings" /v "DiagnosticError
 Reg add "HKLM\SOFTWARE\Microsoft\WindowsSelfHost\UI\Strings" /v "DiagnosticLinkText" /t REG_SZ /d "" /f
 Reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "DisableTailoredExperiencesWithDiagnosticData" /t REG_DWORD /d "1" /f
 Reg add "HKLM\Software\Policies\Microsoft\Windows\CloudContent" /v "DisableWindowsconsumerFeatures" /t REG_DWORD /d "1" /f
-Reg add "HKCU\Software\Gaming" /v "DiagnosticsDisabled" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "DiagnosticsDisabled" /t REG_DWORD /d "1" /f
 goto TweaksPG1English
 
 :SMB1English
@@ -1918,7 +1918,7 @@ Powershell -Command "Disable-WindowsOptionalFeature -Online -FeatureName 'SMB1Pr
 Powershell -Command "Disable-WindowsOptionalFeature -Online -FeatureName 'SmbDirect' -NoRestart"
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\mrxsmb10" /v "Start" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" /v "SMB1" /t REG_DWORD /d "0" /f
-Reg add "HKCU\Software\Gaming" /v "SMB1ProtocolDisabled" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "SMB1ProtocolDisabled" /t REG_DWORD /d "1" /f
 goto TweaksPG1English
 
 :GetInputEnglish
@@ -1944,7 +1944,7 @@ IF /I "%AREYOUSURE%" NEQ "N" goto HardwareDataQueueSizeEnglish
 Echo Setting HardwareDataQueueSize\Ustawianie Rozmiaru Sprzetowej Kolejki Komputerowej
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\mouclass\Parameters" /v "MouseDataQueueSize" /t REG_DWORD /d "%HardwareDataQueueSize%" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters" /v "KeyboardDataQueueSize" /t REG_DWORD /d "%HardwareDataQueueSize%" /f
-Reg add "HKCU\Software\Gaming" /v "HardWareQueueSizeOptimized" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "HardWareQueueSizeOptimized" /t REG_DWORD /d "1" /f
 goto TweaksPG1English
 
 :Win32PriorityEnglish
@@ -1956,7 +1956,7 @@ Reg add "HKLM\SYSTEM\ControlSet001\Control\PriorityControl" /v "IRQ0Priority" /t
 Reg add "HKLM\SYSTEM\ControlSet001\Control\PriorityControl" /v "IRQ4294967286Priority" /t REG_DWORD /d "00000002" /f
 Reg add "HKLM\SYSTEM\ControlSet001\Control\PriorityControl" /v "IRQ4294967287Priority" /t REG_DWORD /d "00000003" /f
 Reg add "HKLM\SYSTEM\ControlSet001\Control\PriorityControl" /v "ConvertibleSlateMode" /t REG_DWORD /d "00000000" /f
-Reg add "HKCU\Software\Gaming" /v "Win32Optimized" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "Win32Optimized" /t REG_DWORD /d "1" /f
 goto TweaksPG1English
 
 :Programs
@@ -2002,7 +2002,7 @@ set listofbloatware=Automate Appconnector Microsoft3DViewer MicrosoftPowerBIForW
    PowerShell -Command "Get-AppxPackage -allusers *%%a* | Remove-AppxPackage"
 cls
 ))
-Reg add "HKCU\Software\Gaming" /v "Debloated" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "Debloated" /t REG_DWORD /d "1" /f
 goto TweaksPG2English
 
 :SvcHostEnglish
@@ -2017,7 +2017,7 @@ Echo Disabling Windows Attempt To Save As Much RAM As Possible, Such As Sharing 
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingCombining" /t REG_DWORD /d "1" /f
 
 Reg add "HKLM\System\CurrentControlSet\Control\Session Manager" /v "HeapDeCommitFreeBlockThreshold" /t REG_DWORD /d "262144" /f
-Reg add "HKCU\Software\Gaming" /v "RamOptimized" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "RamOptimized" /t REG_DWORD /d "1" /f
 cls
 :N
 Echo Enter The Amount Of RAM That You Have\Wpisz Ilosc Ramu Ktory Posiadasz. (Example\Np.: 4GB, 6GB, 8GB, 16GB, 32GB, 64GB)
@@ -2084,15 +2084,15 @@ wmic pagefileset where name="%SystemDrive%\\pagefile.sys" delete
 goto TweaksPG1English
 
 :AddTakeOwnerShipEnglish
-if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\Show-Take-Ownership-Context-Menu.Reg" ( goto RegImportContextEnglish ) else ( goto DownloadShow-Take-Ownership-Context-Menu.RegEnglish )
+if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\Show-Take-Ownership-Context-Menu.Reg" ( goto RegImportContextEnglish ) else ( goto DownloadShow-Take-Ownership-Context-Menu.RegEnglish )
 :DownloadShow-Take-Ownership-Context-Menu.RegEnglish
-curl -g -L -# -o "%SYSTEMDRIVE%\Gaming_Pack\Resources\Show-Take-Ownership-Context-Menu.Reg" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/Show-Take-Ownership-Context-Menu.Reg"
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\Show-Take-Ownership-Context-Menu.Reg" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/Show-Take-Ownership-Context-Menu.Reg"
 goto RegImportContextEnglish
 
 :MsiModeEnglish
 Reg add "HKLM\SYSTEM\CurrentControlSet\Enum\%%g\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties" /v "MSISupported" /t REG_DWORD /d "0x00000001" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties" /v "MSISupported" /t REG_DWORD /d "1" /f
-Reg add "HKCU\Software\Gaming" /v "MsiModeEnabled" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "MsiModeEnabled" /t REG_DWORD /d "1" /f
 goto TweaksPG1English
 
 :AffinityEnglish
@@ -2110,18 +2110,18 @@ goto TweaksPG1English
 
 :DisableWriteCombiningEnglish
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "DisableWriteCombining" /t Reg_DWORD /d "1" /f
-Reg add "HKCU\Software\Gaming" /v "WriteCombiningOptimized" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "WriteCombiningOptimized" /t REG_DWORD /d "1" /f
 goto TweaksPG1English
 
 :DisableHDCPEnglish
-Reg add "HKCU\Software\Gaming" /v "HDCPOptimized" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "HDCPOptimized" /t REG_DWORD /d "1" /f
 Reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /v "RMHdcpKeyglobZero" /t REG_DWORD /d "1" /f
 goto TweaksPG1English
 
 :RegImportContextEnglish
-cd %SYSTEMDRIVE%\Gaming_Pack\Resources\
+cd %SYSTEMDRIVE%\Gaming-Pack\Resources\
 Reg import Show-Take-Ownership-Context-Menu.Reg
-Reg add "HKCU\Software\Gaming" /v "TakeOwnerShipAdded" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "TakeOwnerShipAdded" /t REG_DWORD /d "1" /f
 cls
 goto TweaksPG2English
 
@@ -2218,7 +2218,7 @@ Reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplicat
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "HiberbootEnabled" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabledDefault" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabled" /t REG_DWORD /d "0" /f
-Reg add "HKCU\Software\Gaming" /v "TuningTweak" /t
+Reg add "HKCU\Software\Gaming-Pack" /v "TuningTweak" /t
 Reg add "HKLM\SYSTEM\ControlSet001\Control\Class\{4D36E968-E325-11CE-BFC1-08002BE10318}\0000" /v "AllowDeepCStates" /t REG_DWORD /d "0" /f
 for /f %%i in ('Reg query "HKLM\System\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /t REG_SZ /s /e /f "NVIDIA" ^| findstr "HKEY"') do (
 Reg add "%%i" /v "DisableDynamicPstate" /t REG_DWORD /d "1" /f
@@ -2279,7 +2279,7 @@ Reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Set
 Reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization" /v "SystemSettingsDownloadMode" /t REG_DWORD /d "0" /f
 Reg delete "HKLM\SYSTEM\ControlSet001\Control\Session Manager\kernel" /v "DistributeTimers" /f
 Reg add "HKLM\SYSTEM\ControlSet001\Control\Session Manager\kernel" /f
-Reg add "HKCU\Software\Gaming" /v "DistributedTimers" /t REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "DistributedTimers" /t REG_DWORD "1" /f
 Fsutil behavior set memoryusage 2
 Fsutil behavior set mftzone 2
 Fsutil behavior set disablelastaccess 1
@@ -2290,7 +2290,7 @@ Fsutil 8dot3name set 1
 Fsutil resource setavailable C:\
 Fsutil resource setlog shrink 10 C:\
 Fsutil behavior set disable8dot3 1
-Reg add "HKCU\Software\Gaming" /v "FsutilOptimized" /t REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "FsutilOptimized" /t REG_DWORD "1" /f
 schtasks /Change /TN "Microsoft\Windows\ExploitGuard\ExploitGuard MDM policy Refresh" /Disable
 schtasks /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Cache Maintenance"
 schtasks /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Cleanup" /Disable
@@ -2300,7 +2300,7 @@ schtasks /change /disable /tn "NvTmRep_CrashReport1_{B2FE1952-0186-46C3-BAEC-A80
 schtasks /change /disable /tn "NvTmRep_CrashReport2_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}"
 schtasks /change /disable /tn "NvTmRep_CrashReport3_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}"
 schtasks /change /disable /tn "NvTmRep_CrashReport4_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}"
-Reg add "HKCU\Software\Gaming" /v "NvTmRepDisabled" /t REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "NvTmRepDisabled" /t REG_DWORD "1" /f
 SET DEVMGR_SHOW_NONPRESENT_DEVICES=1
 Powershell -NoProfile -Command "Disable-MMAgent -PagingCombining -mc"
 Defrag.exe
@@ -2313,7 +2313,7 @@ dir /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExten
 dir /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum >List.txt
 for /f %%i in ('findstr /i . List.txt 2^>nul') do dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
 del /s /q List.txt
-Reg add "HKCU\Software\Gaming" /v "GPeditEnabled" /t REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "GPeditEnabled" /t REG_DWORD "1" /f
 cls
 goto PromptforIEUnintaller
 
@@ -2418,24 +2418,24 @@ Reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\sh
 goto TweaksPG2English
 
 :SoftRestartEnglish
-if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\NSudo.exe" ( goto NSudoEnglish ) else ( goto DownloadNSudoEnglish )
+if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\NSudo.exe" ( goto NSudoEnglish ) else ( goto DownloadNSudoEnglish )
 :DownloadNSudoEnglish
-curl -g -L -# -o "%SystemDrive%\Gaming_Pack\Resources\NSudo.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/NSudo.exe"
-cd "%SYSTEMDRIVE%\Gaming_Pack\Resources\"
+curl -g -L -# -o "%SystemDrive%\Gaming-Pack\Resources\NSudo.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/NSudo.exe"
+cd "%SYSTEMDRIVE%\Gaming-Pack\Resources\"
 :NsudoEnglish
 NSudo.exe -U:S -ShowWindowMode:Hide cmd /c "Reg add "HKLM\SYSTEM\CurrentControlSet\Services\TrustedInstaller" /v "Start" /t REG_DWORD /d "3" /f" >nul 2>&1
 NSudo.exe -U:S -ShowWindowMode:Hide cmd /c "sc start "TrustedInstaller"" >nul 2>&1
-if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\Restart" ( goto EmptyStandbyListEnglish ) else ( goto DownloadRestart64English )
+if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\Restart" ( goto EmptyStandbyListEnglish ) else ( goto DownloadRestart64English )
 :DownloadRestart64English
-curl -g -L -# -o "%SystemDrive%\Gaming_Pack\Resources\Restart64.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/restart64.exe"
+curl -g -L -# -o "%SystemDrive%\Gaming-Pack\Resources\Restart64.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/restart64.exe"
 goto EmptyStandbyList
 :EmptyStandbyListEnglish
-if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\EmptyStandbyList.exe" ( goto ContinueSoftRestartEnglish ) else ( goto DownloadEmptyStandbyListEnglish )
+if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\EmptyStandbyList.exe" ( goto ContinueSoftRestartEnglish ) else ( goto DownloadEmptyStandbyListEnglish )
 :DownloadEmptyStandbyListEnglish
-curl -g -L -# -o "%SystemDrive%\Gaming_Pack\Resources\EmptyStandbyList.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/EmptyStandbyList.exe"
+curl -g -L -# -o "%SystemDrive%\Gaming-Pack\Resources\EmptyStandbyList.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/EmptyStandbyList.exe"
 goto ContinueSoftRestart
 :ContinueSoftRestartEnglish
-cd %SystemDrive%\Gaming_Pack\Resources\
+cd %SystemDrive%\Gaming-Pack\Resources\
 echo netsh advfirewall reset >RefreshNet.bat
 echo ipconfig /release >>RefreshNet.bat
 echo ipconfig /renew >>RefreshNet.bat
@@ -2577,7 +2577,7 @@ bcdedit /deletevalue useplatformclock
 bcdedit /set useplatformtick yes
 bcdedit /set tscsyncpolicy enhanced
 echo.
-Reg add "HKCU\Software\Gaming" /v "BCDEditOptimized" REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "BCDEditOptimized" REG_DWORD "1" /f
 cls
 goto TweaksPG2Polish
   
@@ -2585,7 +2585,7 @@ goto TweaksPG2Polish
 echo Fix Bluetooth By scar#1000
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DevicesFlowUserSvc" /v Start /t REG_DWORD /d "3" /f
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DevicePickerUserSvc" /v Start /t REG_DWORD /d "3" /f
-Reg add "HKCU\Software\Gaming" /v "BluetoothFixes" REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "BluetoothFixes" REG_DWORD "1" /f
 goto TweaksPG2Polish
 
 :NvidiaPolish
@@ -2618,7 +2618,7 @@ Reg add "HKLM\SOFTWARE\NVIDIA Corporation\Global\FTS" /v "EnableRID66610" /t REG
 Reg add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v OptInOrOutPreference /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup" /v "SendTelemetryData" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SOFTWARE\NVIDIA Corporation\Global\Startup\SendTelemetryData" /v "0" /t REG_DWORD /d "0" /f
-Reg add "HKCU\Software\Gaming" /v "NvidiaGPUOptimized" REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "NvidiaGPUOptimized" REG_DWORD "1" /f
 curl -g -L -# -o "%SYSTEMDRIVE%\Gaming\Resources\NVIDIA GPU Tweaks.reg" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/NVIDIA GPU Tweaks.reg"
 cls
 goto NVEnglish
@@ -2640,23 +2640,23 @@ if errorlevel  2 goto NV2English
 if errorlevel  1 goto NV1English
 
 :NV1English
-powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1137695847094698054/NvidiaProfileInspector.exe' -OutFile %SYSTEMDRIVE%\Gaming_Pack\Resources\NvidiaProfileInspector.exe
-powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1138757435759276125/UltraQuality_By_Hajkusi.nip' -OutFile %SYSTEMDRIVE%\Gaming_Pack\Resources\UltraQuality_By_Hajkusi.nip
-start "" /wait "%SYSTEMDRIVE%\Gaming_Pack\Resources\NvidiaProfileInspector.exe" "%SYSTEMDRIVE%\Gaming_Pack\Resources\UltraQuality_By_Hajkusi.nip\"
+powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1137695847094698054/NvidiaProfileInspector.exe' -OutFile %SYSTEMDRIVE%\Gaming-Pack\Resources\NvidiaProfileInspector.exe
+powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1138757435759276125/UltraQuality_By_Hajkusi.nip' -OutFile %SYSTEMDRIVE%\Gaming-Pack\Resources\UltraQuality_By_Hajkusi.nip
+start "" /wait "%SYSTEMDRIVE%\Gaming-Pack\Resources\NvidiaProfileInspector.exe" "%SYSTEMDRIVE%\Gaming-Pack\Resources\UltraQuality_By_Hajkusi.nip\"
 timeout 2 >nul
 goto :AllGPUPolish
 
 :NV2English
-powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1137695847094698054/NvidiaProfileInspector.exe' -OutFile %SYSTEMDRIVE%\Gaming_Pack\Resources\NvidiaProfileInspector.exe
-powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1138757456349122600/Quality_By_Hajkusi.nip' -OutFile %SYSTEMDRIVE%\Gaming_Pack\Resources\Quality_By_Hajkusi.nip
-start "" /wait "%SYSTEMDRIVE%/Gaming_Pack/Resources/NvidiaProfileInspector.exe" "%SYSTEMDRIVE%/Gaming_Pack/Resources/Quality_By_Hajkusi.nip\"
+powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1137695847094698054/NvidiaProfileInspector.exe' -OutFile %SYSTEMDRIVE%\Gaming-Pack\Resources\NvidiaProfileInspector.exe
+powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1138757456349122600/Quality_By_Hajkusi.nip' -OutFile %SYSTEMDRIVE%\Gaming-Pack\Resources\Quality_By_Hajkusi.nip
+start "" /wait "%SYSTEMDRIVE%/Gaming-Pack/Resources/NvidiaProfileInspector.exe" "%SYSTEMDRIVE%/Gaming-Pack/Resources/Quality_By_Hajkusi.nip\"
 timeout 2 >nul
 goto :AllGPUPolish
 
 :NV3English
-powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1137695847094698054/NvidiaProfileInspector.exe' -OutFile %SYSTEMDRIVE%\Gaming_Pack\Resources\NvidiaProfileInspector.exe
-powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1138759533838225498/Latency_And_MaxPerformance_By_Hajkusi.nip' -OutFile %SYSTEMDRIVE%\Gaming_Pack\Resources\Latency_And_MaxPerformance_By_Hajkusi.nip
-start "" /wait "%SYSTEMDRIVE%\Gaming_Pack\Resources\NvidiaProfileInspector.exe" "%SYSTEMDRIVE%\Gaming_Pack\Resources\Latency_and_MaxPerformance_By_Hajkusi.nip\"
+powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1137695847094698054/NvidiaProfileInspector.exe' -OutFile %SYSTEMDRIVE%\Gaming-Pack\Resources\NvidiaProfileInspector.exe
+powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1138759533838225498/Latency_And_MaxPerformance_By_Hajkusi.nip' -OutFile %SYSTEMDRIVE%\Gaming-Pack\Resources\Latency_And_MaxPerformance_By_Hajkusi.nip
+start "" /wait "%SYSTEMDRIVE%\Gaming-Pack\Resources\NvidiaProfileInspector.exe" "%SYSTEMDRIVE%\Gaming-Pack\Resources\Latency_and_MaxPerformance_By_Hajkusi.nip\"
 timeout 2 >nul
 goto :AllGPUPolish
 
@@ -3311,7 +3311,7 @@ Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\Syst
 Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\notepad.exe" /t REG_SZ /d "GpuPreference=1;" /f
 Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\System32\TsWpfWrp.exe" /t REG_SZ /d "GpuPreference=1;" /f
 Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "C:\Windows\explorer.exe" /t REG_SZ /d "GpuPreference=1;" /f
-Reg add "HKCU\Software\Gaming" /v "GPUOptimized" REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "GPUOptimized" REG_DWORD "1" /f
 cls
 goto TweaksPG2Polish
 
@@ -3319,7 +3319,7 @@ goto TweaksPG2Polish
 curl -g -L -# -o "%SYSTEMDRIVE%\Gaming\Resources\NVIDIA GPU Tweaks.reg" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/AMD GPU Tweaks.reg"
 cd %SYSTEMDRIVE%\Gaming\Resources\
 Reg Import NVIDIA GPU Tweaks.reg
-Reg add "HKCU\Software\Gaming" /v "GPUOptimized" REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "GPUOptimized" REG_DWORD "1" /f
 goto TweaksPG2Polish
 
 :DisablePreemptionPolish
@@ -3328,7 +3328,7 @@ Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "DisablePreemptionO
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "EnableCEPreemption" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "ComputePreemption" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "DisableCudaContextPreemption" /t REG_DWORD /d "1" /f
-Reg add "HKCU\Software\Gaming" /v "PreemptionDisabled" REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "PreemptionDisabled" REG_DWORD "1" /f
 cls
 goto TweaksPG1Polish
 
@@ -3413,7 +3413,7 @@ Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\TCPIP\v6Transition" /v "TcpAut
 Reg add "HKLM\SYSTEM\CurrentControlSet\services\Tcpip\Parameters" /v "EnableWsd" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\services\Tcpip\Parameters" /v "TcpHybridAck" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "EnableConnectionRateLimiting" /t REG_DWORD /d "0" /f
-Reg add "HKCU\Software\Gaming" /v "TcpIpOptimized" REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "TcpIpOptimized" REG_DWORD "1" /f
 goto TweaksPG2Polish
 
 :NetshOptionsPolish
@@ -3470,7 +3470,7 @@ netsh int teredo set state disabled
 netsh int tcp set global maxsynretransmissions=2
 netsh winsock set autotuning onv
 Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Psched" /v "NonBestEffortLimit" /t REG_DWORD /d "0" /f
-Reg add "HKCU\Software\Gaming" /v "NetshOptimized" /t REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "NetshOptimized" /t REG_DWORD "1" /f
 goto TweaksPG2Polish
 
 :NicPolish
@@ -3505,7 +3505,7 @@ set DNS2=8.8.4.4
 set INTERFACE=Wi-Fi
 set DNS1=8.8.8.8
 set DNS2=8.8.4.4
-Reg add "HKCU\Software\Gaming" /v "NicOptimized" /t REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "NicOptimized" /t REG_DWORD "1" /f
 cls
 goto TweaksPG2Polish
 
@@ -3547,7 +3547,7 @@ goto ChooseScalePolish
 Reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseYCurve" /t Reg_BINARY /d "0000000000000000fd11010000000000002404000000000000fc12000000000000c0bb0100000000" /f
 Reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csrss.exe\PerfOptions" /v CpuPriorityClass /t REG_DWORD /d "4" /f
 Reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csrss.exe\PerfOptions" /v IoPriority /t REG_DWORD /d "3" /f
-Reg add "HKCU\Software\Gaming" /v "MouseOptimized" REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "MouseOptimized" REG_DWORD "1" /f
 goto TweaksPG1Polish
 
 Echo Disabling System Auto-Loggers
@@ -3599,7 +3599,7 @@ Reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\WUDF" /v "LogLevel" /
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Lsa\Credssp" /v "DebugLogLevel" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "DisableThirdPartySuggestions" /t REG_DWORD /d "1" /f
 Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "DisableWindowsconsumerFeatures" /t REG_DWORD /d "1" /f
-Reg add "HKCU\Software\Gaming" /v "SystemAuto-LoggersOptimized" REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "SystemAuto-LoggersOptimized" REG_DWORD "1" /f
 cls
 goto TweaksPG1Polish
 
@@ -3632,7 +3632,7 @@ goto TweaksPG2Polish
 :PowerThrottlingPolish
 Echo Disabling PowerThrottling 
 Reg add "HKLM\SYSTEM\ControlSet001\Control\Power\PowerThrottling" /v "PowerThrottlingOff" /t REG_DWORD /d "1" /f
-Reg add "HKCU\Software\Gaming" /v "PowerThrottlingDisabled" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "PowerThrottlingDisabled" /t REG_DWORD /d "1" /f
 goto TweaksPG2Polish
 
 :ServicesPolish
@@ -3869,20 +3869,20 @@ Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\clr_optimization_v4.0.30319_6
 Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\clr_optimization_v4.0.30319_32" /f
 Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\clr_optimization_v2.0.50727_64" /f
 Reg delete "HKLM\SYSTEM\CurrentControlSet\Services\clr_optimization_v2.0.50727_32" /f
-Reg add "HKCU\Software\Gaming" /v "ServicesOptimized" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "ServicesOptimized" /t REG_DWORD /d "1" /f
 cls
 goto TweaksPG2Polish
 
 :AudioOptionsPolish
 cd "%SYSTEMDRIVE%\Gaming\Resources\"
-if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\nssm.exe" ( goto RealPolish ) else ( goto DownloadnssmPolish )
+if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\nssm.exe" ( goto RealPolish ) else ( goto DownloadnssmPolish )
 :DownloadnssmPolish
-curl -g -L -# -o "%SYSTEMDRIVE%\Gaming\Resources\nssm.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/nssm.exe"
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\nssm.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/nssm.exe"
 goto RealPolish
 :RealPolish
-if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\REAL.exe" ( goto ContinueAudioOptionsPolish ) else ( goto DownloadREALPolish )
+if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\REAL.exe" ( goto ContinueAudioOptionsPolish ) else ( goto DownloadREALPolish )
 :DownloadREALPolish
-curl -g -L -# -o "%SYSTEMDRIVE%\Gaming\Resources\REAL.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/REAL.exe"
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\REAL.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/REAL.exe"
 goto ContinueAudioOptionsPolish
 :ContinueAudioOptionsPolish
 nssm install GamingAudio "%SYSTEMDRIVE%\Gaming\Resources\REAL.exe"
@@ -3892,7 +3892,7 @@ nssm set GamingAudio Start SERVICE_AUTO_START
 nssm set GamingAudio AppAffinity 1
 nssm set GamingAudio start SERVICE_AUTO_START
 nssm start GamingAudio
-Reg add "HKCU\Software\Gaming" /v "AudioOptimized" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "AudioOptimized" /t REG_DWORD /d "1" /f
 goto TweaksPG2Polish
 
 :TelemetryPolish
@@ -4144,7 +4144,7 @@ Echo Disabling Settings App Unnecessary And Telemetry Options\Wylaczanie Niepotr
 Reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" /v EnableWebContentEvaluation /t REG_DWORD /d "0" /f
 REM - Let websites provide locally...
 Reg add "HKCU\Control Panel\International\User Profile" /v HttpAcceptLanguageOptOut /t REG_DWORD /d "1" /f
-Reg add "HKCU\Software\Gaming" /v "TelemetryOptimized" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "TelemetryOptimized" /t REG_DWORD /d "1" /f
 goto TweaksPG1Polish
 
 :PowerCfgPolish
@@ -4166,7 +4166,7 @@ PowerCfg -change -standby-timeout-ac 0
 PowerCfg -change -standby-timeout-dc 0
 PowerCfg -setacvalueindex scheme_current sub_processor PROCTHROTTLEMAX 100
 PowerCfg -setacvalueindex scheme_current sub_processor PROCTHROTTLEMIN 100
-Reg add "HKCU\Software\Gaming" /v "PowerCfgOptimized" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "PowerCfgOptimized" /t REG_DWORD /d "1" /f
 cls
 goto TweaksPG1Polish
 
@@ -4194,7 +4194,7 @@ Sc stop diagnosticshub.standardcollector.service
 Sc stop mwappushservice
 Sc stop DoSvc
 Sc stop dmwappushservice
-Reg add "HKCU\Software\Gaming" /v "ScOptimized" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "ScOptimized" /t REG_DWORD /d "1" /f
 goto TweaksPG1Polish
 
 :FSEPolish
@@ -4212,7 +4212,7 @@ Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /v "AllowGameDVR" /t 
 Reg add "HKLM\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR" /v /t REG_DWORD /d "0" /f
 Reg add "HKCU\System\GameConfigStore" /v "Win32_AutoGameModeDefaultProfile" /t Reg_BINARY /d "020001000000c4200000000000000000000000000000000000000000000000000000000000000000" /f
 Reg add "HKCU\System\GameConfigStore" /v "Win32_GameModeRelatedProcesses" /t Reg_BINARY /d "010001000100670061006d006500700061006e0065006c002e006500780065000000ee001e8af974e0553503201136031e000000e05535031e0000000f000000a0e8000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" /f
-Reg add "HKCU\Software\Gaming" /v "FSEEnabled" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "FSEEnabled" /t REG_DWORD /d "1" /f
 goto TweaksPG1Polish
 
 :DisableDiagnosticsPolish
@@ -4222,7 +4222,7 @@ Reg add "HKLM\SOFTWARE\Microsoft\WindowsSelfHost\UI\Strings" /v "DiagnosticError
 Reg add "HKLM\SOFTWARE\Microsoft\WindowsSelfHost\UI\Strings" /v "DiagnosticLinkText" /t REG_SZ /d "" /f
 Reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "DisableTailoredExperiencesWithDiagnosticData" /t REG_DWORD /d "1" /f
 Reg add "HKLM\Software\Policies\Microsoft\Windows\CloudContent" /v "DisableWindowsconsumerFeatures" /t REG_DWORD /d "1" /f
-Reg add "HKCU\Software\Gaming" /v "DiagnosticsDisabled" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "DiagnosticsDisabled" /t REG_DWORD /d "1" /f
 goto TweaksPG1Polish
 
 :SMB1Polish
@@ -4230,7 +4230,7 @@ Powershell -Command "Disable-WindowsOptionalFeature -Online -FeatureName 'SMB1Pr
 Powershell -Command "Disable-WindowsOptionalFeature -Online -FeatureName 'SmbDirect' -NoRestart"
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\mrxsmb10" /v "Start" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" /v "SMB1" /t REG_DWORD /d "0" /f
-Reg add "HKCU\Software\Gaming" /v "SMB1ProtocolDisabled" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "SMB1ProtocolDisabled" /t REG_DWORD /d "1" /f
 goto TweaksPG1Polish
 
 :GetInputPolish
@@ -4256,7 +4256,7 @@ IF /I "%AREYOUSURE%" NEQ "N" goto HardwareDataQueueSizePolish
 Echo Setting HardwareDataQueueSize\Ustawianie Rozmiaru Sprzetowej Kolejki Komputerowej
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\mouclass\Parameters" /v "MouseDataQueueSize" /t REG_DWORD /d "%HardwareDataQueueSize%" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters" /v "KeyboardDataQueueSize" /t REG_DWORD /d "%HardwareDataQueueSize%" /f
-Reg add "HKCU\Software\Gaming" /v "HardWareQueueSizeOptimized" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "HardWareQueueSizeOptimized" /t REG_DWORD /d "1" /f
 goto TweaksPG1Polish 
 
 :Win32PriorityPolish
@@ -4268,7 +4268,7 @@ Reg add "HKLM\SYSTEM\ControlSet001\Control\PriorityControl" /v "IRQ0Priority" /t
 Reg add "HKLM\SYSTEM\ControlSet001\Control\PriorityControl" /v "IRQ4294967286Priority" /t REG_DWORD /d "00000002" /f
 Reg add "HKLM\SYSTEM\ControlSet001\Control\PriorityControl" /v "IRQ4294967287Priority" /t REG_DWORD /d "00000003" /f
 Reg add "HKLM\SYSTEM\ControlSet001\Control\PriorityControl" /v "ConvertibleSlateMode" /t REG_DWORD /d "00000000" /f
-Reg add "HKCU\Software\Gaming" /v "Win32Optimized" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "Win32Optimized" /t REG_DWORD /d "1" /f
 goto TweaksPG1Polish
 
 :Programs
@@ -4314,7 +4314,7 @@ set listofbloatware=Automate Appconnector Microsoft3DViewer MicrosoftPowerBIForW
    PowerShell -Command "Get-AppxPackage -allusers *%%a* | Remove-AppxPackage"
 cls
 ))
-Reg add "HKCU\Software\Gaming" /v "Debloated" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "Debloated" /t REG_DWORD /d "1" /f
 goto TweaksPG2Polish
 
 :SvcHostPolish
@@ -4329,7 +4329,7 @@ Echo Disabling Windows Attempt To Save As Much RAM As Possible, Such As Sharing 
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingCombining" /t REG_DWORD /d "1" /f
 
 Reg add "HKLM\System\CurrentControlSet\Control\Session Manager" /v "HeapDeCommitFreeBlockThreshold" /t REG_DWORD /d "262144" /f
-Reg add "HKCU\Software\Gaming" /v "RamOptimized" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "RamOptimized" /t REG_DWORD /d "1" /f
 cls
 :N
 Echo Enter The Amount Of RAM That You Have\Wpisz Ilosc Ramu Ktory Posiadasz. (Example\Np.: 4GB, 6GB, 8GB, 16GB, 32GB, 64GB)
@@ -4396,15 +4396,15 @@ wmic pagefileset where name="%SystemDrive%\\pagefile.sys" delete
 goto TweaksPG1Polish
 
 :AddTakeOwnerShipPolish
-if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\Show-Take-Ownership-Context-Menu.Reg" ( goto RegImportContext ) else ( goto DownloadShow-Take-Ownership-Context-Menu.Reg )
+if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\Show-Take-Ownership-Context-Menu.Reg" ( goto RegImportContext ) else ( goto DownloadShow-Take-Ownership-Context-Menu.Reg )
 :DownloadShow-Take-Ownership-Context-Menu.Reg
-curl -g -L -# -o "%SYSTEMDRIVE%\Gaming_Pack\Resources\Show-Take-Ownership-Context-Menu.Reg" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/Show-Take-Ownership-Context-Menu.Reg"
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\Show-Take-Ownership-Context-Menu.Reg" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/Show-Take-Ownership-Context-Menu.Reg"
 goto RegImportContextPolish
 
 :MsiModePolish
 Reg add "HKLM\SYSTEM\CurrentControlSet\Enum\%%g\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties" /v "MSISupported" /t REG_DWORD /d "0x00000001" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties" /v "MSISupported" /t REG_DWORD /d "1" /f
-Reg add "HKCU\Software\Gaming" /v "MsiModeEnabled" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "MsiModeEnabled" /t REG_DWORD /d "1" /f
 goto TweaksPG1Polish
 
 :AffinityPolish
@@ -4422,18 +4422,18 @@ goto TweaksPG1Polish
 
 :DisableWriteCombiningPolish
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "DisableWriteCombining" /t Reg_DWORD /d "1" /f
-Reg add "HKCU\Software\Gaming" /v "WriteCombiningOptimized" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "WriteCombiningOptimized" /t REG_DWORD /d "1" /f
 goto TweaksPG1English
 
 :DisableHDCPPolish
 Reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /v "RMHdcpKeyglobZero" /t REG_DWORD /d "1" /f
-Reg add "HKCU\Software\Gaming" /v "HDCPOptimized" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "HDCPOptimized" /t REG_DWORD /d "1" /f
 goto TweaksPG1Polish
 
 :RegImportContextPolish
-cd %SYSTEMDRIVE%\Gaming_Pack\Resources\
+cd %SYSTEMDRIVE%\Gaming-Pack\Resources\
 Reg import Show-Take-Ownership-Context-Menu.Reg
-Reg add "HKCU\Software\Gaming" /v "TakeOwnerShipAdded" /t REG_DWORD /d "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "TakeOwnerShipAdded" /t REG_DWORD /d "1" /f
 cls
 goto TweaksPG2Polish
 
@@ -4530,7 +4530,7 @@ Reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplicat
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "HiberbootEnabled" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabledDefault" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabled" /t REG_DWORD /d "0" /f
-Reg add "HKCU\Software\Gaming" /v "TuningTweak" /t
+Reg add "HKCU\Software\Gaming-Pack" /v "TuningTweak" /t
 Reg add "HKLM\SYSTEM\ControlSet001\Control\Class\{4D36E968-E325-11CE-BFC1-08002BE10318}\0000" /v "AllowDeepCStates" /t REG_DWORD /d "0" /f
 for /f %%i in ('Reg query "HKLM\System\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /t REG_SZ /s /e /f "NVIDIA" ^| findstr "HKEY"') do (
 Reg add "%%i" /v "DisableDynamicPstate" /t REG_DWORD /d "1" /f
@@ -4591,7 +4591,7 @@ Reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Set
 Reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization" /v "SystemSettingsDownloadMode" /t REG_DWORD /d "0" /f
 Reg delete "HKLM\SYSTEM\ControlSet001\Control\Session Manager\kernel" /v "DistributeTimers" /f
 Reg add "HKLM\SYSTEM\ControlSet001\Control\Session Manager\kernel" /f
-Reg add "HKCU\Software\Gaming" /v "DistributedTimers" /t REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "DistributedTimers" /t REG_DWORD "1" /f
 Fsutil behavior set memoryusage 2
 Fsutil behavior set mftzone 2
 Fsutil behavior set disablelastaccess 1
@@ -4602,7 +4602,7 @@ Fsutil 8dot3name set 1
 Fsutil resource setavailable C:\
 Fsutil resource setlog shrink 10 C:\
 Fsutil behavior set disable8dot3 1
-Reg add "HKCU\Software\Gaming" /v "FsutilOptimized" /t REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "FsutilOptimized" /t REG_DWORD "1" /f
 schtasks /Change /TN "Microsoft\Windows\ExploitGuard\ExploitGuard MDM policy Refresh" /Disable
 schtasks /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Cache Maintenance"
 schtasks /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Cleanup" /Disable
@@ -4612,7 +4612,7 @@ schtasks /change /disable /tn "NvTmRep_CrashReport1_{B2FE1952-0186-46C3-BAEC-A80
 schtasks /change /disable /tn "NvTmRep_CrashReport2_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}"
 schtasks /change /disable /tn "NvTmRep_CrashReport3_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}"
 schtasks /change /disable /tn "NvTmRep_CrashReport4_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}"
-Reg add "HKCU\Software\Gaming" /v "NvTmRepDisabled" /t REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "NvTmRepDisabled" /t REG_DWORD "1" /f
 SET DEVMGR_SHOW_NONPRESENT_DEVICES=1
 Powershell -NoProfile -Command "Disable-MMAgent -PagingCombining -mc"
 Defrag.exe
@@ -4625,7 +4625,7 @@ dir /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExten
 dir /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum >List.txt
 for /f %%i in ('findstr /i . List.txt 2^>nul') do dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
 del /s /q List.txt
-Reg add "HKCU\Software\Gaming" /v "GPeditEnabled" /t REG_DWORD "1" /f
+Reg add "HKCU\Software\Gaming-Pack" /v "GPeditEnabled" /t REG_DWORD "1" /f
 cls
 goto TweaksPG2Polish
 
@@ -4736,24 +4736,24 @@ Reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\sh
 goto TweaksPG2Polish
 
 :SoftRestartPolish
-if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\NSudo.exe" ( goto NSudoPolish ) else ( goto DownloadNSudoPolish )
+if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\NSudo.exe" ( goto NSudoPolish ) else ( goto DownloadNSudoPolish )
 :DownloadNSudoPolish
-curl -g -L -# -o "%SystemDrive%\Gaming_Pack\Resources\NSudo.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/NSudo.exe"
-cd "%SYSTEMDRIVE%\Gaming_Pack\Resources\"
+curl -g -L -# -o "%SystemDrive%\Gaming-Pack\Resources\NSudo.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/NSudo.exe"
+cd "%SYSTEMDRIVE%\Gaming-Pack\Resources\"
 :NsudoPolish
 NSudo.exe -U:S -ShowWindowMode:Hide cmd /c "Reg add "HKLM\SYSTEM\CurrentControlSet\Services\TrustedInstaller" /v "Start" /t REG_DWORD /d "3" /f" >nul 2>&1
 NSudo.exe -U:S -ShowWindowMode:Hide cmd /c "sc start "TrustedInstaller"" >nul 2>&1
-if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\Restart" ( goto EmptyStandbyListPolish ) else ( goto DownloadRestart64Polish )
+if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\Restart" ( goto EmptyStandbyListPolish ) else ( goto DownloadRestart64Polish )
 :DownloadRestart64Polish
-curl -g -L -# -o "%SystemDrive%\Gaming_Pack\Resources\Restart64.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/restart64.exe"
+curl -g -L -# -o "%SystemDrive%\Gaming-Pack\Resources\Restart64.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/restart64.exe"
 goto EmptyStandbyListPolish
 :EmptyStandbyListPolish
-if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\EmptyStandbyList.exe" ( goto ContinueSoftRestartPolish ) else ( goto DownloadEmptyStandbyListPolish )
+if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\EmptyStandbyList.exe" ( goto ContinueSoftRestartPolish ) else ( goto DownloadEmptyStandbyListPolish )
 :DownloadEmptyStandbyListPolish
-curl -g -L -# -o "%SystemDrive%\Gaming_Pack\Resources\EmptyStandbyList.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/EmptyStandbyList.exe"
+curl -g -L -# -o "%SystemDrive%\Gaming-Pack\Resources\EmptyStandbyList.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/EmptyStandbyList.exe"
 goto ContinueSoftRestartPolish
 :ContinueSoftRestartPolish
-cd %SystemDrive%\Gaming_Pack\Resources\
+cd %SystemDrive%\Gaming-Pack\Resources\
 echo netsh advfirewall reset >RefreshNet.bat
 echo ipconfig /release >>RefreshNet.bat
 echo ipconfig /renew >>RefreshNet.bat
