@@ -61,7 +61,7 @@ Echo You Have Old Version
 exit /b
 
 :LanguageChooser
-Mkdir C:\Gaming-Pack\Resources
+Mkdir %SYSTEMDRIVE%\Gaming_Pack\Resources\
 cls
 echo.
 echo              %COL%[33m[%COL%[37m 1 %COL%[33m]%COL%[37m Polski                                                                              %COL%[33m[%COL%[37m 2 %COL%[33m]%COL%[37m English
@@ -260,7 +260,6 @@ if /i "%choice%"=="N" (set "PG=TweaksPG1") & goto TweaksPG1English
 :BCDTweaksEnglish
 Title Applying Tweaks
 setlocal EnableDelayedExpansion
-mkdir %SYSTEMDRIVE%\Gaming_Pack\Resources\
 cls
 echo Applying BCD Tweaks For Lower Input Delay
 echo.
