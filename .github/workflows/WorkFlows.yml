@@ -19,3 +19,10 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: Beta0.6v3
+        path: /home/runner/work/Gaming-Pack/Gaming-Pack/src/Tweaks
+        if-no-files-found: error
