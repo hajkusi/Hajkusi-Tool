@@ -21,8 +21,8 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Upload Artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v4.1.7
       with:
         name: Beta0.6v3
-        path: /Gaming-Pack/src/Tweaks
+        path: src/**
         if-no-files-found: error
