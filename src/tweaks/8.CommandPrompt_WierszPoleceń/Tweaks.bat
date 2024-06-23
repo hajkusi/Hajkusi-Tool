@@ -1562,14 +1562,14 @@ goto TweaksPG2English
 
 :AudioOptionsEnglish
 cd "%SYSTEMDRIVE%\Gaming-Pack\Resources\"
-if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\nssm.exe" ( goto RealEnglish ) else ( goto DownloadnssmEnglish )
+if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\Nssm.exe" ( goto RealEnglish ) else ( goto DownloadnssmEnglish )
 :DownloadnssmEnglish
-curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\nssm.exe" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/nssm.exe"
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\Nssm.exe" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/Nssm.exe"
 goto RealEnglish
 :RealEnglish
 if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\REAL.exe" ( goto ContinueAudioOptionsEnglish ) else ( goto DownloadREALEnglish )
 :DownloadREALEnglish
-curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\REAL.exe" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/REAL.exe"
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\Real.exe" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/Real.exe"
 goto ContinueAudioOptions
 :ContinueAudioOptionsEnglish
 nssm install GamingAudio "%SYSTEMDRIVE%\Gaming-Pack\Resources\REAL.exe"
@@ -2086,7 +2086,7 @@ goto TweaksPG1English
 :AddTakeOwnerShipEnglish
 if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\Show-Take-Ownership-Context-Menu.Reg" ( goto RegImportContextEnglish ) else ( goto DownloadShow-Take-Ownership-Context-Menu.RegEnglish )
 :DownloadShow-Take-Ownership-Context-Menu.RegEnglish
-curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\Show-Take-Ownership-Context-Menu.Reg" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/Show-Take-Ownership-Context-Menu.Reg"
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\Show-Take-Ownership-Context-Menu.Reg" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/Show-Take-Ownership-Context-Menu.Reg"
 goto RegImportContextEnglish
 
 :MsiModeEnglish
@@ -2420,19 +2420,19 @@ goto TweaksPG2English
 :SoftRestartEnglish
 if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\NSudo.exe" ( goto NSudoEnglish ) else ( goto DownloadNSudoEnglish )
 :DownloadNSudoEnglish
-curl -g -L -# -o "%SystemDrive%\Gaming-Pack\Resources\NSudo.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/NSudo.exe"
+curl -g -L -# -o "%SystemDrive%\Gaming-Pack\Resources\NSudo.exe" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/Nsudo.exe"
 cd "%SYSTEMDRIVE%\Gaming-Pack\Resources\"
 :NsudoEnglish
 NSudo.exe -U:S -ShowWindowMode:Hide cmd /c "Reg add "HKLM\SYSTEM\CurrentControlSet\Services\TrustedInstaller" /v "Start" /t REG_DWORD /d "3" /f" >nul 2>&1
 NSudo.exe -U:S -ShowWindowMode:Hide cmd /c "sc start "TrustedInstaller"" >nul 2>&1
-if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\Restart" ( goto EmptyStandbyListEnglish ) else ( goto DownloadRestart64English )
+if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\Restart64.exe" ( goto EmptyStandbyListEnglish ) else ( goto DownloadRestart64English )
 :DownloadRestart64English
-curl -g -L -# -o "%SystemDrive%\Gaming-Pack\Resources\Restart64.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/restart64.exe"
+curl -g -L -# -o "%SystemDrive%\Gaming-Pack\Resources\Restart64.exe" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/Restart64.exe"
 goto EmptyStandbyList
 :EmptyStandbyListEnglish
 if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\EmptyStandbyList.exe" ( goto ContinueSoftRestartEnglish ) else ( goto DownloadEmptyStandbyListEnglish )
 :DownloadEmptyStandbyListEnglish
-curl -g -L -# -o "%SystemDrive%\Gaming-Pack\Resources\EmptyStandbyList.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/EmptyStandbyList.exe"
+curl -g -L -# -o "%SystemDrive%\Gaming-Pack\Resources\EmptyStandbyList.exe" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/EmptyStandbyList.exe"
 goto ContinueSoftRestart
 :ContinueSoftRestartEnglish
 cd %SystemDrive%\Gaming-Pack\Resources\
@@ -3316,7 +3316,7 @@ cls
 goto TweaksPG2Polish
 
 :AMDPolish
-curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\NVIDIA GPU Tweaks.reg" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/AMD-GPU-Tweaks.reg"
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\AMD GPU Tweaks.reg" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/AMD-GPU-Tweaks.reg"
 cd %SYSTEMDRIVE%\Gaming-Pack\Resources\
 Reg Import NVIDIA GPU Tweaks.reg
 Reg add "HKCU\Software\Gaming-Pack" /v "GPUOptimized" REG_DWORD "1" /f
@@ -3877,12 +3877,12 @@ goto TweaksPG2Polish
 cd "%SYSTEMDRIVE%\Gaming\Resources\"
 if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\nssm.exe" ( goto RealPolish ) else ( goto DownloadnssmPolish )
 :DownloadnssmPolish
-curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\nssm.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/nssm.exe"
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\Nssm.exe" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/Nssm.exe"
 goto RealPolish
 :RealPolish
-if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\REAL.exe" ( goto ContinueAudioOptionsPolish ) else ( goto DownloadREALPolish )
+if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\Real.exe" ( goto ContinueAudioOptionsPolish ) else ( goto DownloadREALPolish )
 :DownloadREALPolish
-curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\REAL.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/REAL.exe"
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\Real.exe" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/Real.exe"
 goto ContinueAudioOptionsPolish
 :ContinueAudioOptionsPolish
 nssm install GamingAudio "%SYSTEMDRIVE%\Gaming\Resources\REAL.exe"
@@ -4150,9 +4150,9 @@ goto TweaksPG1Polish
 :PowerCfgPolish
 Curl -L -# -o "%SYSTEMDRIVE%/Gaming-Pack/Resources/ExtremeSpeed.pow" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/ExtremeSpeed.pow"
 Powercfg -import "%SYSTEMDRIVE%/Gaming-Pack/Resources/ExtremeSpeed.pow" 77777777-7777-7777-7777-777777777777
-PowerCfg -setactive 77777777-7777-7777-7777-777777777799
-PowerCfg -setacvalueindex 77777777-7777-7777-7777-777777777799 238c9fa8-0aad-41ed-83f4-97be242c8f20 94d3a615-a899-4ac5-ae2b-e4d8f634367f 1
-PowerCfg -setdcvalueindex 77777777-7777-7777-7777-777777777799 238c9fa8-0aad-41ed-83f4-97be242c8f20 94d3a615-a899-4ac5-ae2b-e4d8f634367f 1
+PowerCfg -setactive 77777777-7777-7777-7777-777777777777
+PowerCfg -setacvalueindex 77777777-7777-7777-7777-777777777777 238c9fa8-0aad-41ed-83f4-97be242c8f20 94d3a615-a899-4ac5-ae2b-e4d8f634367f 1
+PowerCfg -setdcvalueindex 77777777-7777-7777-7777-777777777777 238c9fa8-0aad-41ed-83f4-97be242c8f20 94d3a615-a899-4ac5-ae2b-e4d8f634367f 1
 PowerCfg -setacvalueindex scHEME_CURRENT 4f971e89-eebd-4455-a8de-9e59040e7347 5ca83367-6e45-459f-a27b-476b1d01c936 0
 PowerCfg -setACvalueindex scheme_current SUB_PROCESSOR SYscOOLPOL 1
 PowerCfg -setDCvalueindex scheme_current SUB_PROCESSOR SYscOOLPOL 1
@@ -4398,7 +4398,7 @@ goto TweaksPG1Polish
 :AddTakeOwnerShipPolish
 if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\Show-Take-Ownership-Context-Menu.Reg" ( goto RegImportContext ) else ( goto DownloadShow-Take-Ownership-Context-Menu.Reg )
 :DownloadShow-Take-Ownership-Context-Menu.Reg
-curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\Show-Take-Ownership-Context-Menu.Reg" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/Show-Take-Ownership-Context-Menu.Reg"
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\Show-Take-Ownership-Context-Menu.Reg" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/Show-Take-Ownership-Context-Menu.Reg"
 goto RegImportContextPolish
 
 :MsiModePolish
@@ -4738,19 +4738,19 @@ goto TweaksPG2Polish
 :SoftRestartPolish
 if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\NSudo.exe" ( goto NSudoPolish ) else ( goto DownloadNSudoPolish )
 :DownloadNSudoPolish
-curl -g -L -# -o "%SystemDrive%\Gaming-Pack\Resources\NSudo.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/NSudo.exe"
+curl -g -L -# -o "%SystemDrive%\Gaming-Pack\Resources\NSudo.exe" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/NSudo.exe"
 cd "%SYSTEMDRIVE%\Gaming-Pack\Resources\"
 :NsudoPolish
 NSudo.exe -U:S -ShowWindowMode:Hide cmd /c "Reg add "HKLM\SYSTEM\CurrentControlSet\Services\TrustedInstaller" /v "Start" /t REG_DWORD /d "3" /f" >nul 2>&1
 NSudo.exe -U:S -ShowWindowMode:Hide cmd /c "sc start "TrustedInstaller"" >nul 2>&1
 if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\Restart" ( goto EmptyStandbyListPolish ) else ( goto DownloadRestart64Polish )
 :DownloadRestart64Polish
-curl -g -L -# -o "%SystemDrive%\Gaming-Pack\Resources\Restart64.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/restart64.exe"
+curl -g -L -# -o "%SystemDrive%\Gaming-Pack\Resources\Restart64.exe" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/Restart64.exe"
 goto EmptyStandbyListPolish
 :EmptyStandbyListPolish
 if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\EmptyStandbyList.exe" ( goto ContinueSoftRestartPolish ) else ( goto DownloadEmptyStandbyListPolish )
 :DownloadEmptyStandbyListPolish
-curl -g -L -# -o "%SystemDrive%\Gaming-Pack\Resources\EmptyStandbyList.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/EmptyStandbyList.exe"
+curl -g -L -# -o "%SystemDrive%\Gaming-Pack\Resources\EmptyStandbyList.exe" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/EmptyStandbyList.exe"
 goto ContinueSoftRestartPolish
 :ContinueSoftRestartPolish
 cd %SystemDrive%\Gaming-Pack\Resources\
