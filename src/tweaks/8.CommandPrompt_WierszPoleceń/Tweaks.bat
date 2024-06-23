@@ -1009,10 +1009,10 @@ cls
 goto TweaksPG2English
 
 :AMDEnglish
-curl -g -L -# -o "%SYSTEMDRIVE%\Gaming\Resources\NVIDIA GPU Tweaks.reg" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/AMD GPU Tweaks.reg"
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming\Resources\AMD GPU Tweaks.reg" "https://github.com/hajkusi/Gaming-Pack/blob/main/Files/AMD%20GPU%20Tweaks.reg"
 cd %SYSTEMDRIVE%\Gaming-Pack\Resources\
-Reg Import NVIDIA GPU Tweaks.reg
-Reg add "HKCU\Software\Gaming-Pack" /v "GPUOptimized" REG_DWORD "1" /f
+Reg Import AMD GPU Tweaks.reg
+Reg add "HKCU\Software\Gaming-Pack" /v "AMDGPUOptimized" REG_DWORD "1" /f
 goto TweaksPG2English
 
 :DisablePreemptionEnglish
