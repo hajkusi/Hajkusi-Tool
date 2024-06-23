@@ -311,8 +311,8 @@ Reg add "HKLM\SOFTWARE\NVIDIA Corporation\Global\FTS" /v "EnableRID66610" /t REG
 Reg add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v OptInOrOutPreference /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup" /v "SendTelemetryData" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SOFTWARE\NVIDIA Corporation\Global\Startup\SendTelemetryData" /v "0" /t REG_DWORD /d "0" /f
-Reg add "HKCU\Software\Gaming" /v "NvidiaGPUOptimized" REG_DWORD "1" /f
-curl -g -L -# -o "%SYSTEMDRIVE%\Gaming\Resources\NVIDIA GPU Tweaks.reg" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/NVIDIA GPU Tweaks.reg"
+Reg add "HKCU\Software\Gaming-Pack" /v "NvidiaGPUOptimized" REG_DWORD "1" /f
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\NVIDIA GPU Tweaks.reg" "https://github.com/hajkusi/Gaming-Pack/blob/main/Files/NVIDIA%20GPU%20Tweaks.reg"
 cls
 goto NVEnglish
 
@@ -333,23 +333,23 @@ if errorlevel  2 goto NV2English
 if errorlevel  1 goto NV1English
 
 :NV1English
-powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1137695847094698054/NvidiaProfileInspector.exe' -OutFile %SYSTEMDRIVE%\Gaming_Pack\Resources\NvidiaProfileInspector.exe
-powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1138757435759276125/UltraQuality_By_Hajkusi.nip' -OutFile %SYSTEMDRIVE%\Gaming_Pack\Resources\UltraQuality_By_Hajkusi.nip
-start "" /wait "%SYSTEMDRIVE%\Gaming_Pack\Resources\NvidiaProfileInspector.exe" "%SYSTEMDRIVE%\Gaming_Pack\Resources\UltraQuality_By_Hajkusi.nip\"
+powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1137695847094698054/NvidiaProfileInspector.exe' -OutFile %SYSTEMDRIVE%\Gaming-Pack\Resources\NvidiaProfileInspector.exe
+powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1138757435759276125/UltraQuality_By_Hajkusi.nip' -OutFile %SYSTEMDRIVE%\Gaming-Pack\Resources\UltraQuality_By_Hajkusi.nip
+start "" /wait "%SYSTEMDRIVE%\Gaming-Pack\Resources\NvidiaProfileInspector.exe" "%SYSTEMDRIVE%\Gaming-Pack\Resources\UltraQuality_By_Hajkusi.nip\"
 timeout 2 >nul
 goto :AllGPUEnglish
 
 :NV2English
-powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1137695847094698054/NvidiaProfileInspector.exe' -OutFile %SYSTEMDRIVE%\Gaming_Pack\Resources\NvidiaProfileInspector.exe
-powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1138757456349122600/Quality_By_Hajkusi.nip' -OutFile %SYSTEMDRIVE%\Gaming_Pack\Resources\Quality_By_Hajkusi.nip
-start "" /wait "%SYSTEMDRIVE%/Gaming_Pack/Resources/NvidiaProfileInspector.exe" "%SYSTEMDRIVE%/Gaming_Pack/Resources/Quality_By_Hajkusi.nip\"
+powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1137695847094698054/NvidiaProfileInspector.exe' -OutFile %SYSTEMDRIVE%\Gaming-Pack\Resources\NvidiaProfileInspector.exe
+powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1138757456349122600/Quality_By_Hajkusi.nip' -OutFile %SYSTEMDRIVE%\Gaming-Pack\Resources\Quality_By_Hajkusi.nip
+start "" /wait "%SYSTEMDRIVE%/Gaming-Pack/Resources/NvidiaProfileInspector.exe" "%SYSTEMDRIVE%/Gaming-Pack/Resources/Quality_By_Hajkusi.nip\"
 timeout 2 >nul
 goto :AllGPUEnglish
 
 :NV3English
-powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1137695847094698054/NvidiaProfileInspector.exe' -OutFile %SYSTEMDRIVE%\Gaming_Pack\Resources\NvidiaProfileInspector.exe
-powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1138759533838225498/Latency_And_MaxPerformance_By_Hajkusi.nip' -OutFile %SYSTEMDRIVE%\Gaming_Pack\Resources\Latency_And_MaxPerformance_By_Hajkusi.nip
-start "" /wait "%SYSTEMDRIVE%\Gaming_Pack\Resources\NvidiaProfileInspector.exe" "%SYSTEMDRIVE%\Gaming_Pack\Resources\Latency_and_MaxPerformance_By_Hajkusi.nip\"
+powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1137695847094698054/NvidiaProfileInspector.exe' -OutFile %SYSTEMDRIVE%\Gaming-Pack\Resources\NvidiaProfileInspector.exe
+powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1138759533838225498/Latency_And_MaxPerformance_By_Hajkusi.nip' -OutFile %SYSTEMDRIVE%\Gaming-Pack\Resources\Latency_And_MaxPerformance_By_Hajkusi.nip
+start "" /wait "%SYSTEMDRIVE%\Gaming-Pack\Resources\NvidiaProfileInspector.exe" "%SYSTEMDRIVE%\Gaming-Pack\Resources\Latency_and_MaxPerformance_By_Hajkusi.nip\"
 timeout 2 >nul
 goto :AllGPUEnglish
 
