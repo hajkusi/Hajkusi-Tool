@@ -61,7 +61,7 @@ Echo You Have Old Version
 exit /b
 
 :LanguageChooser
-Mkdir %SYSTEMDRIVE%\Gaming_Pack\Resources\
+Mkdir %SYSTEMDRIVE%\Gaming_Pack\Resources\ >nul 2>&1
 cls
 echo.
 echo              %COL%[33m[%COL%[37m 1 %COL%[33m]%COL%[37m Polski                                                                              %COL%[33m[%COL%[37m 2 %COL%[33m]%COL%[37m English
