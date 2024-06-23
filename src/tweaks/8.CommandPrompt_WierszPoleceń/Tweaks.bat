@@ -62,6 +62,7 @@ exit /b
 
 :LanguageChooser
 Mkdir C:\Gaming-Pack\Resources
+cls
 echo.
 echo              %COL%[33m[%COL%[37m 1 %COL%[33m]%COL%[37m Polski                                                                              %COL%[33m[%COL%[37m 2 %COL%[33m]%COL%[37m English
 echo.
