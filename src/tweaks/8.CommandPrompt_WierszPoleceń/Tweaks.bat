@@ -1835,7 +1835,7 @@ Reg add "HKCU\Software\Gaming-Pack" /v "TelemetryOptimized" /t REG_DWORD /d "1" 
 goto TweaksPG1English
 
 :PowerCfgEnglish
-Curl -L -# -o "%SYSTEMDRIVE%/Gaming-Pack/Resources/ExtremeSpeed.pow" "https://github.com/hajkusi/Gaming-Pack/blob/main/Files/ExtremeSpeedByHajkusi.pow"
+Curl -L -# -o "%SYSTEMDRIVE%/Gaming-Pack/Resources/ExtremeSpeed.pow" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/ExtremeSpeed.pow"
 Powercfg -import "%SYSTEMDRIVE%/Gaming-Pack/Resources/ExtremeSpeed.pow" 77777777-7777-7777-7777-777777777777
 PowerCfg -setactive 77777777-7777-7777-7777-777777777799
 PowerCfg -setacvalueindex 77777777-7777-7777-7777-777777777799 238c9fa8-0aad-41ed-83f4-97be242c8f20 94d3a615-a899-4ac5-ae2b-e4d8f634367f 1
@@ -4148,7 +4148,7 @@ Reg add "HKCU\Software\Gaming-Pack" /v "TelemetryOptimized" /t REG_DWORD /d "1" 
 goto TweaksPG1Polish
 
 :PowerCfgPolish
-Curl -L -# -o "%SYSTEMDRIVE%/Gaming-Pack/Resources/ExtremeSpeed.pow" "https://github.com/hajkusi/Gaming-Pack/blob/main/Files/ExtremeSpeedByHajkusi.pow"
+Curl -L -# -o "%SYSTEMDRIVE%/Gaming-Pack/Resources/ExtremeSpeed.pow" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/ExtremeSpeed.pow"
 Powercfg -import "%SYSTEMDRIVE%/Gaming-Pack/Resources/ExtremeSpeed.pow" 77777777-7777-7777-7777-777777777777
 PowerCfg -setactive 77777777-7777-7777-7777-777777777799
 PowerCfg -setacvalueindex 77777777-7777-7777-7777-777777777799 238c9fa8-0aad-41ed-83f4-97be242c8f20 94d3a615-a899-4ac5-ae2b-e4d8f634367f 1
