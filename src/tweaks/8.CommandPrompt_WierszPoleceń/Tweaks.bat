@@ -1564,12 +1564,12 @@ goto TweaksPG2English
 cd "%SYSTEMDRIVE%\Gaming-Pack\Resources\"
 if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\nssm.exe" ( goto RealEnglish ) else ( goto DownloadnssmEnglish )
 :DownloadnssmEnglish
-curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\nssm.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/nssm.exe"
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\nssm.exe" "https://github.com/hajkusi/Gaming-Pack/blob/main/Files/nssm.exe"
 goto RealEnglish
 :RealEnglish
 if exist "%SYSTEMDRIVE%\Gaming-Pack\Resources\REAL.exe" ( goto ContinueAudioOptionsEnglish ) else ( goto DownloadREALEnglish )
 :DownloadREALEnglish
-curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\REAL.exe" "https://github.com/auraside/HoneCtrl/raw/main/Files/REAL.exe"
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\REAL.exe" "https://github.com/hajkusi/Gaming-Pack/blob/main/Files/REAL.exe"
 goto ContinueAudioOptions
 :ContinueAudioOptionsEnglish
 nssm install GamingAudio "%SYSTEMDRIVE%\Gaming-Pack\Resources\REAL.exe"
