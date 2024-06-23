@@ -1,5 +1,5 @@
 @echo off
-set /a time=6
+Set /a time=6
 cls
 goto CheckPermissions
 
@@ -10,7 +10,7 @@ goto CheckPermissions
 
 :UACPrompt
 cls
-powershell -NoProfile -Command start -verb runas "'%~s0'" && exit /b
+Powershell -NoProfile -Command start -verb runas "'%~s0'" && exit /b
 goto Timer
 
 :W11Only
@@ -33,10 +33,10 @@ goto Timer
 :Timer
 cls
 cls
-set /a time=%time%-1
-if %time% == 0 goto :done
-call echo %~n0%~x0 Wylaczy Sie Za %time% Sekund
-ping localhost -n 2 >nul
+Set /a time=%time%-1
+If %time% == 0 goto :done
+Call Echo %~n0%~x0 Wylaczy Sie Za %time% Sekund
+Ping localhost -n 2 >nul
 goto Timer
 
 
