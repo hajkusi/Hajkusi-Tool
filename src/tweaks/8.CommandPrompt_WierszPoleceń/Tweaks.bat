@@ -312,7 +312,7 @@ Reg add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v OptInOrOutP
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup" /v "SendTelemetryData" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SOFTWARE\NVIDIA Corporation\Global\Startup\SendTelemetryData" /v "0" /t REG_DWORD /d "0" /f
 Reg add "HKCU\Software\Gaming-Pack" /v "NvidiaGPUOptimized" REG_DWORD "1" /f
-curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\NVIDIA GPU Tweaks.reg" "https://github.com/hajkusi/Gaming-Pack/blob/main/Files/NVIDIA%20GPU%20Tweaks.reg"
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\NVIDIA GPU Tweaks.reg" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/NVIDIA-GPU-Tweaks.reg"
 cls
 goto NVEnglish
 
@@ -2619,7 +2619,7 @@ Reg add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v OptInOrOutP
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup" /v "SendTelemetryData" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SOFTWARE\NVIDIA Corporation\Global\Startup\SendTelemetryData" /v "0" /t REG_DWORD /d "0" /f
 Reg add "HKCU\Software\Gaming-Pack" /v "NvidiaGPUOptimized" REG_DWORD "1" /f
-curl -g -L -# -o "%SYSTEMDRIVE%\Gaming\Resources\NVIDIA GPU Tweaks.reg" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/NVIDIA GPU Tweaks.reg"
+curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\NVIDIA GPU Tweaks.reg" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/NVIDIA-GPU-Tweaks.reg"
 cls
 goto NVEnglish
 
