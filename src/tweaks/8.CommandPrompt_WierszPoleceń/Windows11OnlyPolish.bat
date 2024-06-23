@@ -1,5 +1,5 @@
 @echo off
-set /a time=5
+set /a time=6
 cls
 goto CheckPermissions
 
@@ -14,6 +14,7 @@ powershell -NoProfile -Command start -verb runas "'%~s0'" && exit /b
 goto Timer
 
 :W11Only
+cls
 netsh int tcp set supplemental Internet CongestionProvider=BBR2
 netsh int tcp set supplemental Custom CongestionProvider=BBR2
 netsh int tcp set supplemental InternetCustom CongestionProvider=BBR2
@@ -24,7 +25,8 @@ netsh int tcp set supplemental Template=Datacenter CongestionProvider=BBR2
 netsh int tcp set supplemental Template=Compat CongestionProvider=BBR2
 netsh int tcp set supplemental Template=DatacenterCustom CongestionProvider=BBR2
 netsh int tcp set supplemental Template=InternetCustom CongestionProvider=BBR2
-Timeout /t 2 /nobreak
+Echo BBR2 ( Najlepszy CongestionProvider Jest Ustawiony! )
+Timeout /t 2 /nobreak  > Nul
 goto Timer
 
 
