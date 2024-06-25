@@ -11,7 +11,7 @@ goto CheckPermissions
 :UACPrompt
 cls
 powershell -NoProfile -Command start -verb runas "'%~s0'" && exit /b
-goto Timer
+goto UACPrompt
 
 :W11Only
 cls

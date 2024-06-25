@@ -1,15 +1,19 @@
 @Echo off
 cd %systemdrive%\
-call :IsAdmin
+goto IsAdmin
 
 :IsAdmin
 cls
 Reg query "HKU\S-1-5-19\Environment"
-If Not %ERRORLEVEL% EQU 0 (
- Cls & Echo You Must Have Administrator Rights To Continue ... 
- Pause & Exit
-)
+If Not %ERRORLEVEL% EQU 0 ( goto UACPrompt
+) Else ( goto Appearance )
 
+:UACPrompt
+cls
+Powershell -NoProfile -Command start -verb runas "'%~s0'" && exit /b
+goto UACPrompt
+
+:Appearance
 REM Show Detailed BSoD
 reg add "HKLM\System\CurrentControlSet\Control\CrashControl" /v "DisplayParameters" /t REG_DWORD /d "1" /f >nul 2>&1
 REM Blank/Color Character
