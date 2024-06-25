@@ -18,11 +18,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v4.1.7
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4.3.3
       with:
         name: Beta0.6v3
-        path: src/**
+        path: src/Tweaks
         if-no-files-found: error
