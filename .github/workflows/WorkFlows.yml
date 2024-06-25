@@ -24,5 +24,5 @@ jobs:
       uses: actions/upload-artifact@v4.3.3
       with:
         name: Beta0.6v3
-        path: tree/main/src/tweaks
+        path: main/src/tweaks
         if-no-files-found: warn
