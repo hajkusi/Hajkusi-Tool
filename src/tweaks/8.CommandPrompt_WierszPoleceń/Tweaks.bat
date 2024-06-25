@@ -22,18 +22,18 @@ REM Add ANSI escape sequences
 reg add HKCU\CONSOLE /v VirtualTerminalLevel /t REG_DWORD /d 1 /f >nul 2>&1
 reg add "HKLM\System\CurrentControlSet\Control\CrashControl" /v "DisplayParameters" /t REG_DWORD /d "1" /f >nul 2>&1 
 cls
-goto CheckForUpdates
+goto LanguageChooser
 
-:CheckForUpdates
+:CheckForUpdatesEnglish
 set version=0.6v2
 set versioncheck=%VERSION%
 if exist "%TEMP%\Updater.bat" DEL /S /Q /F "%TEMP%\Updater.bat" >nul 2>&1
 curl -L -# -o "%TEMP%\Updater.bat" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/Updater" >nul 2>&1
 call "%TEMP%\Updater.bat"
-if "%VERSION%" EQU "%VERSIONCHECK%" ( goto LanguageChooser
-) else goto Updater
+if "%VERSION%" EQU "%VERSIONCHECK%" ( goto AlertEnglish
+) else goto UpdaterEnglish
 
-:Updater
+:UpdaterEnglish
 	cls
 	Mode 65,16
 	echo.
@@ -48,20 +48,60 @@ if "%VERSION%" EQU "%VERSIONCHECK%" ( goto LanguageChooser
 	echo.
 	echo.
 	echo      [Y] Yes, Update
-	echo      [N] No
+	echo      [N] No Don't Update
 	echo.
 	%SYSTEMROOT%\System32\choice.exe /c:YN /n /m "%DEL%                                >:"
 	set choice=%errorlevel%
-        If "%choice%"=="1" goto Update
-        If "%choice%"=="2" goto Failed
-:Update
+        If "%choice%"=="1" goto UpdateEnglish
+        If "%choice%"=="2" goto FailedEnglish
+:UpdateEnglish
 Echo Updating
-curl -L -# -o "%USERPROFILE%/Desktop/Tweaks.Zip" "https://github.com/hajkusi/Gaming-Pack/releases/latest/download/Tweaks.zip"
-call %USERPROFILE%/Desktop/Tweaks.Zip
+curl -L -# -o "%USERPROFILE%/Downloads/Tweaks.Zip" "https://github.com/hajkusi/Gaming-Pack/releases/latest/download/Tweaks.zip"
+call %USERPROFILE%/Downloads/Tweaks.Zip
 exit /b
 
-:Failed
-Echo You Have Old Version
+:FailedEnglish
+Echo You Have An Old Version
+exit /b
+
+:CheckForUpdatesPolish
+set version=0.6v2
+set versioncheck=%VERSION%
+if exist "%TEMP%\Updater.bat" DEL /S /Q /F "%TEMP%\Updater.bat" >nul 2>&1
+curl -L -# -o "%TEMP%\Updater.bat" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/Updater" >nul 2>&1
+call "%TEMP%\Updater.bat"
+if "%VERSION%" EQU "%VERSIONCHECK%" ( goto AlertPolish
+) else goto UpdaterPolish
+
+:UpdaterPolish
+	cls
+	Mode 65,16
+	echo.
+	echo  --------------------------------------------------------------
+	echo                           Znaleziono Aktualizacje
+	echo  --------------------------------------------------------------
+	echo.
+	echo                   Twoja Aktualna Wersja: %VERSIONCHECK%
+	echo.
+	echo                          Nowa Wersja: %VERSION%
+	echo.
+	echo.
+	echo.
+	echo      [Y] Tak, Aktualizuj
+	echo      [N] Nie Aktualizuj
+	echo.
+	%SYSTEMROOT%\System32\choice.exe /c:YN /n /m "%DEL%                                >:"
+	set choice=%errorlevel%
+        If "%choice%"=="1" goto UpdatePolish
+        If "%choice%"=="2" goto FailedPolish
+:UpdatePolish
+Echo Aktualizowanie
+curl -L -# -o "%USERPROFILE%/Downloads/Tweaks.Zip" "https://github.com/hajkusi/Gaming-Pack/releases/latest/download/Tweaks.zip"
+call %USERPROFILE%/Downloads/Tweaks.Zip
+exit /b
+
+:FailedPolish
+Echo Posiadasz Stara Wersje
 exit /b
 
 :LanguageChooser
@@ -72,8 +112,8 @@ echo              %COL%[33m[%COL%[37m 1 %COL%[33m]%COL%[37m Polski              
 echo.
 %SYSTEMROOT%\System32\choice.exe /c:12 /n /m "%DEL%                             Select a corresponding number to the options above > "
 set choice=%errorlevel%
-If "%choice%"=="1" goto AlertPolish
-If "%choice%"=="2" goto AlertEnglish
+If "%choice%"=="1" goto CheckForUpdatesPolish
+If "%choice%"=="2" goto CheckForUpdatesEnglish
 
 :AlertEnglish
 cls
@@ -1841,9 +1881,7 @@ goto TweaksPG1English
 :PowerCfgEnglish
 Curl -L -# -o "%SYSTEMDRIVE%/Gaming-Pack/Resources/ExtremeSpeed.pow" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/ExtremeSpeed.pow"
 Powercfg -import "%SYSTEMDRIVE%/Gaming-Pack/Resources/ExtremeSpeed.pow" 77777777-7777-7777-7777-777777777777
-PowerCfg -setactive 77777777-7777-7777-7777-777777777799
-PowerCfg -setacvalueindex 77777777-7777-7777-7777-777777777799 238c9fa8-0aad-41ed-83f4-97be242c8f20 94d3a615-a899-4ac5-ae2b-e4d8f634367f 1
-PowerCfg -setdcvalueindex 77777777-7777-7777-7777-777777777799 238c9fa8-0aad-41ed-83f4-97be242c8f20 94d3a615-a899-4ac5-ae2b-e4d8f634367f 1
+PowerCfg -setactive 77777777-7777-7777-7777-777777777777
 PowerCfg -setacvalueindex scHEME_CURRENT 4f971e89-eebd-4455-a8de-9e59040e7347 5ca83367-6e45-459f-a27b-476b1d01c936 0
 PowerCfg -setACvalueindex scheme_current SUB_PROCESSOR SYscOOLPOL 1
 PowerCfg -setDCvalueindex scheme_current SUB_PROCESSOR SYscOOLPOL 1
@@ -2625,9 +2663,9 @@ Reg add "HKLM\SOFTWARE\NVIDIA Corporation\Global\Startup\SendTelemetryData" /v "
 Reg add "HKCU\Software\Gaming-Pack" /v "NvidiaGPUOptimized" REG_DWORD "1" /f
 curl -g -L -# -o "%SYSTEMDRIVE%\Gaming-Pack\Resources\NVIDIA GPU Tweaks.reg" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/NVIDIA-GPU-Tweaks.reg"
 cls
-goto NVEnglish
+goto NVPolish
 
-:NVEnglish
+:NVPolish
 Reg add "HKCU\Software\NVIDIA Corporation\Global\NVTweak\Devices\509901423-0\Color" /v "NvCplUseColorCorrection" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "PlatformSupportMiracast" /t REG_DWORD /d "0" /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\NVTweak" /v "DisplayPowerSaving" /t REG_DWORD /d "0" /f
@@ -2639,25 +2677,25 @@ echo 2. Quality\Jakosc (Average Computer\Przecietny Komputer)
 echo 3. Max FPS (for show-off\Dla Pokazu)
 echo.   
 choice /C:123 /M "> Enter The Choice On The Keyboard: "	
-if errorlevel  3 goto NV3English
-if errorlevel  2 goto NV2English
-if errorlevel  1 goto NV1English
+if errorlevel  3 goto NV3Polish
+if errorlevel  2 goto NV2Polish
+if errorlevel  1 goto NV1Polish
 
-:NV1English
+:NV1Polish
 powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1137695847094698054/NvidiaProfileInspector.exe' -OutFile %SYSTEMDRIVE%\Gaming-Pack\Resources\NvidiaProfileInspector.exe
 powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1138757435759276125/UltraQuality_By_Hajkusi.nip' -OutFile %SYSTEMDRIVE%\Gaming-Pack\Resources\UltraQuality_By_Hajkusi.nip
 start "" /wait "%SYSTEMDRIVE%\Gaming-Pack\Resources\NvidiaProfileInspector.exe" "%SYSTEMDRIVE%\Gaming-Pack\Resources\UltraQuality_By_Hajkusi.nip\"
 timeout 2 >nul
 goto :AllGPUPolish
 
-:NV2English
+:NV2Polish
 powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1137695847094698054/NvidiaProfileInspector.exe' -OutFile %SYSTEMDRIVE%\Gaming-Pack\Resources\NvidiaProfileInspector.exe
 powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1138757456349122600/Quality_By_Hajkusi.nip' -OutFile %SYSTEMDRIVE%\Gaming-Pack\Resources\Quality_By_Hajkusi.nip
 start "" /wait "%SYSTEMDRIVE%/Gaming-Pack/Resources/NvidiaProfileInspector.exe" "%SYSTEMDRIVE%/Gaming-Pack/Resources/Quality_By_Hajkusi.nip\"
 timeout 2 >nul
 goto :AllGPUPolish
 
-:NV3English
+:NV3Polish
 powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1137695847094698054/NvidiaProfileInspector.exe' -OutFile %SYSTEMDRIVE%\Gaming-Pack\Resources\NvidiaProfileInspector.exe
 powershell -c Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1137464343257153627/1138759533838225498/Latency_And_MaxPerformance_By_Hajkusi.nip' -OutFile %SYSTEMDRIVE%\Gaming-Pack\Resources\Latency_And_MaxPerformance_By_Hajkusi.nip
 start "" /wait "%SYSTEMDRIVE%\Gaming-Pack\Resources\NvidiaProfileInspector.exe" "%SYSTEMDRIVE%\Gaming-Pack\Resources\Latency_and_MaxPerformance_By_Hajkusi.nip\"
@@ -4155,8 +4193,6 @@ goto TweaksPG1Polish
 Curl -L -# -o "%SYSTEMDRIVE%/Gaming-Pack/Resources/ExtremeSpeed.pow" "https://raw.githubusercontent.com/hajkusi/Gaming-Pack/main/Files/ExtremeSpeed.pow"
 Powercfg -import "%SYSTEMDRIVE%/Gaming-Pack/Resources/ExtremeSpeed.pow" 77777777-7777-7777-7777-777777777777
 PowerCfg -setactive 77777777-7777-7777-7777-777777777777
-PowerCfg -setacvalueindex 77777777-7777-7777-7777-777777777777 238c9fa8-0aad-41ed-83f4-97be242c8f20 94d3a615-a899-4ac5-ae2b-e4d8f634367f 1
-PowerCfg -setdcvalueindex 77777777-7777-7777-7777-777777777777 238c9fa8-0aad-41ed-83f4-97be242c8f20 94d3a615-a899-4ac5-ae2b-e4d8f634367f 1
 PowerCfg -setacvalueindex scHEME_CURRENT 4f971e89-eebd-4455-a8de-9e59040e7347 5ca83367-6e45-459f-a27b-476b1d01c936 0
 PowerCfg -setACvalueindex scheme_current SUB_PROCESSOR SYscOOLPOL 1
 PowerCfg -setDCvalueindex scheme_current SUB_PROCESSOR SYscOOLPOL 1
