@@ -22,7 +22,7 @@ If Not %ERRORLEVEL% EQU 0 ( goto UACPrompt
 :UACPrompt
 cls
 Powershell -NoProfile -Command start -verb runas "'%~s0'" && exit /b
-goto UACPrompt
+exit /b 1
 
 :Appearance
 REM Show Detailed BSoD
@@ -2074,7 +2074,7 @@ Reg add "HKLM\System\CurrentControlSet\Control\Session Manager" /v "HeapDeCommit
 Reg add "HKCU\Software\Hajkusi-Tool" /v "RamOptimized" /t REG_DWORD /d "1" /f
 cls
 :N
-Echo Enter The Amount Of RAM That You Have\Wpisz Ilosc Ramu Ktory Posiadasz. (Example\Np.: 4GB, 6GB, 8GB, 16GB, 32GB, 64GB)
+Echo Enter The Amount Of RAM That You Have. (Example: 4GB, 6GB, 8GB, 16GB, 32GB, 64GB)
 echo.
 echo.
 set choice=
@@ -4384,7 +4384,7 @@ Reg add "HKLM\System\CurrentControlSet\Control\Session Manager" /v "HeapDeCommit
 Reg add "HKCU\Software\Hajkusi-Tool" /v "RamOptimized" /t REG_DWORD /d "1" /f
 cls
 :N
-Echo Enter The Amount Of RAM That You Have\Wpisz Ilosc Ramu Ktory Posiadasz. (Example\Np.: 4GB, 6GB, 8GB, 16GB, 32GB, 64GB)
+Echo Wpisz Ilosc Ramu Ktory Posiadasz. (Np.: 4GB, 6GB, 8GB, 16GB, 32GB, 64GB)
 echo.
 echo.
 set choice=

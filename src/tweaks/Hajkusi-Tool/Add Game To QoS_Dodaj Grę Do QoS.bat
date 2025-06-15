@@ -1,30 +1,38 @@
 @echo off
-if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\RunAsTI.cmd" ( goto Exist ) else ( goto DownloadRunAsTI )
-:DownloadRunAsTI
-mkdir %SYSTEMDRIVE%\Gaming_Pack\Resources\
-curl -g -L -# -o "%SYSTEMDRIVE%\Gaming_Pack\Resources\RunAsTI.cmd" "github.com/hajkusi/Gaming-Pack/raw/main/Files/RunAsTI.cmd"
+mkdir %SYSTEMDRIVE%\Hajkusi-Tool\Resources\
+goto:IsAdmin
+
+:IsAdmin
 cls
-goto Exist
+Reg query "HKU\S-1-5-19\Environment"
+If Not %ERRORLEVEL% EQU 0 ( goto UACPrompt
+) Else ( cls && goto Filepicker  )
 
-:Exist
-cd %SYSTEMDRIVE%\Gaming_Pack\Resources\
-whoami /user | find /i "S-1-5-18" > nul 2>&1 || (
-	call RunAsTI.cmd "%~f0" "%*"
-	exit /b
-)
+:UACPrompt
+cls
+Powershell -NoProfile -Command start -verb runas "'%~s0'" && exit /b
+exit /b 1
 
-if exist "%SYSTEMDRIVE%\Gaming_Pack\Resources\FilePicker.exe" ( goto Again ) else ( goto DownloadFilePicker )
+:FilePicker
+if exist "%SYSTEMDRIVE%\Hajkusi-Tool\Resources\FilePicker.exe" ( goto Again ) else ( goto DownloadFilePicker )
 :DownloadFilePicker
-curl -g -L -# -o "%SYSTEMDRIVE%\Gaming_Pack\Resources\FilePicker.exe" "https://github.com/hajkusi/Gaming-Pack/raw/main/Files/FilePicker.exe"
+curl -g -L -# -o "%SYSTEMDRIVE%\Hajkusi-Tool\Resources\FilePicker.exe" "https://github.com/hajkusi/Hajkusi-Tool/raw/main/Files/FilePicker.exe"
 cls
 goto Again
 
 :Again
+for /f "skip=1 tokens=1" %%A in ('wmic cpu get NumberOfLogicalProcessors') do (
+set threads=%%A
+goto next
+)
+:next
+cls
+echo You have %threads% threads
 Set /p "Threads=%DEL% Choose Number Of Threads You Want To Start Your Choosed App With>: 
 cls
-cd %SYSTEMDRIVE%\Gaming_Pack\Resources\
+cd %SYSTEMDRIVE%\Hajkusi-Tool\Resources\
 for /f "tokens=* delims=\" %%i in ('FilePicker.exe exe') do (
-    if "%%i" == "cancelled by user" goto Again
+    if "%%i" == "cancelled by user" exit /b
     Reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\QoS\%%~ni%%~xi" /v "Application Name" /t REG_SZ /d "%%~ni%%~xi" /f
     Reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\QoS\%%~ni%%~xi" /v "DSCP Value" /t REG_SZ /d "46" /f
     Reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\QoS\%%~ni%%~xi" /v "Local IP Prefix Length" /t REG_SZ /d "*" /f
@@ -75,7 +83,7 @@ IF /I "%OPERA%" NEQ "Y" goto End
 IF /I "%OPERA%" NEQ "N" goto ContinueOpera
 
 :End
-rmdir %SYSTEMDRIVE%\Gaming_Pack\ /s /q
+rmdir %SYSTEMDRIVE%\Hajkusi-Tool\ /s /q
 cls
 echo Finished, Please Reboot Your Device For Changes To Apply.\Zakonczono, Prosze Uruchom Ponownie Twoje Urzadzenie zeby Zastosowac
 pause

@@ -4,14 +4,16 @@ cls
 goto CheckPermissions
 
 
-:CheckPermissions
-  Net File 
-   if "%errorlevel%"=="0" ( goto W11Only ) else ( goto UACPrompt )
+:IsAdmin
+cls
+Reg query "HKU\S-1-5-19\Environment"
+If Not %ERRORLEVEL% EQU 0 ( goto Win11Only
+) Else ( goto UACPrompt )
 
 :UACPrompt
 cls
 powershell -NoProfile -Command start -verb runas "'%~s0'" && exit /b
-goto UACPrompt
+exit /b 1
 
 :W11Only
 cls
