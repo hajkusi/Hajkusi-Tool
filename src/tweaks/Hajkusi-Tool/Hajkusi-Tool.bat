@@ -1065,7 +1065,7 @@ cls
 goto TweaksPG2English
 
 :AMDEnglish
-curl -g -L -# -o "%SYSTEMDRIVE%\Gaming\Resources\AMD GPU Tweaks.reg" "https://raw.githubusercontent.com/hajkusi/Hajkusi-Tool/main/Files/AMD-GPU-Tweaks.reg"
+curl -g -L -# -o "%SYSTEMDRIVE%\Hajkusi-Tool\Resources\AMD GPU Tweaks.reg" "https://raw.githubusercontent.com/hajkusi/Hajkusi-Tool/main/Files/AMD-GPU-Tweaks.reg"
 cd %SYSTEMDRIVE%\Hajkusi-Tool\Resources\
 Reg Import AMD GPU Tweaks.reg
 Reg add "HKCU\Software\Hajkusi-Tool" /v "AMDGPUOptimized" REG_DWORD "1" /f
@@ -3928,7 +3928,7 @@ cls
 goto TweaksPG2Polish
 
 :AudioOptionsPolish
-cd "%SYSTEMDRIVE%\Gaming\Resources\"
+cd "%SYSTEMDRIVE%\Hajkusi-Tool\Resources\"
 if exist "%SYSTEMDRIVE%\Hajkusi-Tool\Resources\nssm.exe" ( goto RealPolish ) else ( goto DownloadnssmPolish )
 :DownloadnssmPolish
 curl -g -L -# -o "%SYSTEMDRIVE%\Hajkusi-Tool\Resources\Nssm.exe" "https://raw.githubusercontent.com/hajkusi/Hajkusi-Tool/main/Files/Nssm.exe"
@@ -3939,7 +3939,7 @@ if exist "%SYSTEMDRIVE%\Hajkusi-Tool\Resources\Real.exe" ( goto ContinueAudioOpt
 curl -g -L -# -o "%SYSTEMDRIVE%\Hajkusi-Tool\Resources\Real.exe" "https://raw.githubusercontent.com/hajkusi/Hajkusi-Tool/main/Files/Real.exe"
 goto ContinueAudioOptionsPolish
 :ContinueAudioOptionsPolish
-nssm install GamingAudio "%SYSTEMDRIVE%\Gaming\Resources\REAL.exe"
+nssm install GamingAudio "%SYSTEMDRIVE%\Hajkusi-Tool\Resources\REAL.exe"
 nssm set GamingAudio DisplayName Gaming Audio Latency Reducer Service
 nssm set GamingAudio Description Reduces Audio Latency
 nssm set GamingAudio Start SERVICE_AUTO_START
