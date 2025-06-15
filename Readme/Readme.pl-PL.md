@@ -1,4 +1,4 @@
-## Bardzo Poteżny Optymalizator
+## Bardzo Poteżne Narzędzie
 
 [![GitHub Release](https://img.shields.io/github/v/release/hajkusi/Gaming-Pack?label=Wydanie)](https://github.com/hajkusi/Gaming-Pack/releases/latest/)
 
