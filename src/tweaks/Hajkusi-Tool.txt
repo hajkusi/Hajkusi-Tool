@@ -3,12 +3,6 @@ Tcp optimizer
 1.Select "Optimal" Below
 2.Apply
 3.Yes.
-Hone:
-1.Install Hone (hone.gg)
-2.Click Select All 
-3.Check If Everything Turned On
-4.Select The "Games" Tab
-5.Select A Game And Click "Apply this Tweak"
 QuickBoost
 1.Click "Exclusive Full-Screen & Disable Xbox GameBar"
 2.Click "Disable Startup Telemetry"
@@ -19,15 +13,6 @@ QuickBoost
 7.Select Tab Number 2
 8.If You Have Nvidia Graphics Card Click "Nvidia Highest P-State " Click " Enable"
 9.Close QuickBoost
-OT-Optimizer
-1.If There Is An Update Download It 
-2.Type 1 and Click Enter
-3.Follow The Intrusions
-16.Click "Apply Nvidia Control Panel Tweaks"
-17.Click " MSI Utility (Latency)"
-18.Find your Graphics Card Or Integrated Graphics Card And Set "High" On The Right
-19.Find your Ethernet or Wifi Network Card And Set "High" On The Right
-20.In The Upper-Right Corner, And Click Apply.
 Optimizer
 1.Choose Language English
 2.Check The Left Side In System 1,2,3,4,6,7,8 Option And If You Are Not Using Printer Then 5 Too
@@ -58,22 +43,6 @@ Optymalizator Tcp
 1.Zaznacz "Optimal" Na Dole
 2.Aplikuj
 3.Tak
-Hone:
-1.Zainstaluj Hone (Hone.gg)
-2.Kliknij Zaznacz Wszystko 
-3.Sprawdź Czy Wszystko Jest Zaznaczone
-4.Wybierz Kartę "Games" 
-5.Wybierz Grę I Kliknij "Apply This Tweak"
-QuickBoost
-1.Kliknij "Exclusive Full-Screen & Disable Xbox GameBar"
-2.Kliknij "Disable Startup Telemetry"
-3.Kliknij "Disable Mouse Acceleration"
-4.Kliknij "Disable Unnecessary System Services"
-5.Kliknij "Disable Powersaving"
-6.Kliknij "Apply System Profile Tweaks"
-7.Wybierz Kartę Numer 2
-8.Jeśli Masz Kartę Graficzną Nvidia Kliknij "Nvidia Highest P State" Kliknij "Włącz"
-9.Zamknij QuickBoost
 Optimizer
 1.Wybierz Język Polish
 2.Zaznacz Po Lewej Stronę W System 1,2,3,4,6,7, Opcję, A Jeśli Nie Używasz Drukarki, To Też 5
